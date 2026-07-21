@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsx app.ts"
+    "start": "nodemon --exec tsx server.ts"
   },
   "keywords": [],
   "author": "Zisung",
@@ -22,6 +22,7 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-prettier": "^5.5.6",
+    "nodemon": "^3.1.14",
     "prettier": "^3.9.6",
     "prisma": "^7.9.0",
     "tsx": "^4.23.1"

@@ -12,6 +12,7 @@ model User {
   createdAt DateTime @default(now())
   email     String   @unique
   name      String?
+  phone     String?
   role      Role     @default(USER)
 }
 
