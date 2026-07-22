@@ -9,9 +9,28 @@
 * 🟢 You can import this file directly.
 */
 
-export const Role = {
-  USER: 'USER',
-  ADMIN: 'ADMIN'
+export const UserStatus = {
+  PENDING: 'PENDING',
+  ACTIVE: 'ACTIVE',
+  SUSPENDED: 'SUSPENDED',
+  ARCHIVED: 'ARCHIVED'
 } as const
 
-export type Role = (typeof Role)[keyof typeof Role]
+export type UserStatus = (typeof UserStatus)[keyof typeof UserStatus]
+
+
+export const Gender = {
+  MALE: 'MALE',
+  FEMALE: 'FEMALE',
+  OTHER: 'OTHER'
+} as const
+
+export type Gender = (typeof Gender)[keyof typeof Gender]
+
+
+export const HouseholdRole = {
+  HEAD: 'HEAD',
+  MEMBER: 'MEMBER'
+} as const
+
+export type HouseholdRole = (typeof HouseholdRole)[keyof typeof HouseholdRole]

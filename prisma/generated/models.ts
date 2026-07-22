@@ -8,5 +8,14 @@
  *
  * 🟢 You can import this file directly.
  */
+export type * from './models/Permission.ts'
+export type * from './models/Role.ts'
+export type * from './models/RolePermission.ts'
 export type * from './models/User.ts'
+export type * from './models/UserRole.ts'
+export type * from './models/Region.ts'
+export type * from './models/District.ts'
+export type * from './models/Community.ts'
+export type * from './models/Household.ts'
+export type * from './models/HouseholdMember.ts'
 export type * from './commonInputTypes.ts'

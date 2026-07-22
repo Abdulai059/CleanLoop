@@ -31,8 +31,8 @@ export * from "./enums.ts"
  * const prisma = new PrismaClient({
  *   adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL })
  * })
- * // Fetch zero or more Users
- * const users = await prisma.user.findMany()
+ * // Fetch zero or more Permissions
+ * const permissions = await prisma.permission.findMany()
  * ```
  * 
  * Read more in our [docs](https://pris.ly/d/client).
@@ -42,7 +42,52 @@ export type PrismaClient<LogOpts extends Prisma.LogLevel = never, OmitOpts exten
 export { Prisma }
 
 /**
+ * Model Permission
+ * 
+ */
+export type Permission = Prisma.PermissionModel
+/**
+ * Model Role
+ * 
+ */
+export type Role = Prisma.RoleModel
+/**
+ * Model RolePermission
+ * 
+ */
+export type RolePermission = Prisma.RolePermissionModel
+/**
  * Model User
  * 
  */
 export type User = Prisma.UserModel
+/**
+ * Model UserRole
+ * 
+ */
+export type UserRole = Prisma.UserRoleModel
+/**
+ * Model Region
+ * 
+ */
+export type Region = Prisma.RegionModel
+/**
+ * Model District
+ * 
+ */
+export type District = Prisma.DistrictModel
+/**
+ * Model Community
+ * 
+ */
+export type Community = Prisma.CommunityModel
+/**
+ * Model Household
+ * 
+ */
+export type Household = Prisma.HouseholdModel
+/**
+ * Model HouseholdMember
+ * 
+ */
+export type HouseholdMember = Prisma.HouseholdMemberModel

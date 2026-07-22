@@ -7,16 +7,185 @@ generator client {
   output   = "./generated"
 }
 
-model User {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  email     String   @unique
-  name      String?
-  phone     String?
-  role      Role     @default(USER)
+
+enum UserStatus {
+  PENDING
+  ACTIVE
+  SUSPENDED
+  ARCHIVED
 }
 
-enum Role {
-  USER
-  ADMIN
+enum Gender {
+  MALE
+  FEMALE
+  OTHER
+}
+
+enum HouseholdRole {
+  HEAD
+  MEMBER
+}
+
+model Permission {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  description String?
+
+  roles RolePermission[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+
+model Role {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  description String?
+
+  users       UserRole[]
+  permissions RolePermission[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model RolePermission {
+  roleId       String
+  permissionId String
+
+  role       Role       @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  permission Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+
+  @@id([roleId, permissionId])
+}
+
+model User {
+  id String @id @default(cuid())
+
+  firstName String
+  lastName  String
+
+  phone String @unique
+  email String? @unique
+
+  passwordHash String
+
+  gender Gender?
+
+  status UserStatus @default(PENDING)
+
+  dateOfBirth DateTime?
+
+  profilePhotoUrl String?
+
+  regionId String?
+  districtId String?
+  communityId String?
+
+  region Region? @relation(fields: [regionId], references: [id])
+  district District? @relation(fields: [districtId], references: [id])
+  community Community? @relation(fields: [communityId], references: [id])
+
+  householdMemberships HouseholdMember[]
+
+  roles UserRole[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  passwordChangedAt   DateTime?
+  passwordResetToken  String?
+  passwordResetExpires DateTime?
+}
+
+model UserRole {
+  userId String
+  roleId String
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role Role @relation(fields: [roleId], references: [id], onDelete: Cascade)
+
+  @@id([userId, roleId])
+}
+
+model Region {
+  id String @id @default(cuid())
+
+  name String @unique
+
+  districts District[]
+
+  users User[]
+
+  createdAt DateTime @default(now())
+}
+
+model District {
+  id String @id @default(cuid())
+
+  name String
+
+  regionId String
+
+  region Region @relation(fields: [regionId], references: [id])
+
+  communities Community[]
+
+  users User[]
+
+  createdAt DateTime @default(now())
+
+  @@unique([regionId, name])
+}
+
+model Community {
+  id String @id @default(cuid())
+
+  name String
+
+  districtId String
+
+  district District @relation(fields: [districtId], references: [id])
+
+  households Household[]
+
+  users User[]
+
+  createdAt DateTime @default(now())
+
+  @@unique([districtId, name])
+}
+
+model Household {
+  id String @id @default(cuid())
+
+  name String
+
+  communityId String
+
+  community Community @relation(fields: [communityId], references: [id])
+
+  latitude Decimal? @db.Decimal(10,7)
+  longitude Decimal? @db.Decimal(10,7)
+
+  members HouseholdMember[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model HouseholdMember {
+  householdId String
+  userId String
+
+  role HouseholdRole @default(MEMBER)
+
+  joinedAt DateTime @default(now())
+
+  household Household @relation(fields: [householdId], references: [id], onDelete: Cascade)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([householdId, userId])
 }

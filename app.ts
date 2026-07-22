@@ -1,9 +1,12 @@
 import express, { Request, Response } from "express";
 
+import userRouter from "./routes/userRoutes";
+
 const app = express();
 
-app.get("/", (req: Request, res: Response) => {
-  res.send("Hello, world!");
-});
+// 1) GLOBAL MIDDLEWARES
+
+// 3) ROUTES
+app.use("/api/v1/users", userRouter);
 
 export default app;
