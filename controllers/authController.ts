@@ -1,12 +1,51 @@
-import { catchAsync } from "../utils /catchAsync";
+import { catchAsync } from "../utils/catchAsync";
 import { Request, Response, NextFunction } from "express";
 import prisma from "../lib/prisma";
-import AppError from "../utils /AppError";
+import AppError from "../utils/AppError";
 
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
+// Sign JWT token
+export const signToken = (id: string) => {
+  return jwt.sign({ id }, process.env.JWT_SECRET, {
+    expiresIn: process.env.JWT_EXPIRES_IN,
+  });
+};
 
+export const createSendToken = (
+  user: any,
+  statusCode: number,
+  res: Response,
+) => {
+  const token = signToken(user.id);
+
+  // Set cookie options
+  const cookieOptions = {
+    expires: new Date(
+      Date.now() +
+        Number(process.env.JWT_COOKIE_EXPIRES_IN) * 24 * 60 * 60 * 1000,
+    ),
+    httpOnly: true,
+  };
+
+  // if (process.env.NODE_ENV === "production")
+  //   (cookieOptions as any).secure = true;
+
+  // Set JWT cookie
+  res.cookie("jwt", token, cookieOptions);
+
+  // Remove password from output
+  user.passwordHash = undefined;
+
+  res.status(statusCode).json({
+    status: "success",
+    token,
+    data: {
+      user,
+    },
+  });
+};
 
 export const singUp = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
@@ -20,12 +59,7 @@ export const singUp = catchAsync(
       },
     });
 
-    res.status(201).json({
-      status: "success",
-      data: {
-        user: newUser,
-      },
-    });
+    createSendToken(newUser, 201, res);
   },
 );
 
@@ -50,9 +84,6 @@ export const login = catchAsync(
     }
 
     // 3) If everything ok, send token to client
-    res.status(200).json({
-      status: "success",
-      message: "Login successful",
-    });
+    createSendToken(user, 200, res);
   },
 );
