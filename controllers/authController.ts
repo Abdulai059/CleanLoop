@@ -1,6 +1,6 @@
 import { catchAsync } from "../utils/catchAsync";
 import { Request, Response, NextFunction } from "express";
-import prisma from "../lib/prisma";
+import prisma from "../utils/prisma";
 import AppError from "../utils/AppError";
 
 const jwt = require("jsonwebtoken");
