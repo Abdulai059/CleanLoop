@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --exec tsx server.ts"
+    "start": "nodemon --exec tsx -r dotenv/config server.ts"
   },
   "keywords": [],
   "author": "Zisung",
@@ -13,16 +13,24 @@
   "dependencies": {
     "@prisma/adapter-pg": "^7.9.0",
     "@prisma/client": "^7.9.0",
+    "africastalking": "^0.7.9",
     "bcryptjs": "^3.0.3",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
+    "express-rate-limit": "^8.6.0",
+    "helmet": "^8.3.0",
+    "hpp": "^0.2.3",
     "jsonwebtoken": "^9.0.3",
+    "morgan": "^1.11.0",
     "pg": "^8.22.0"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
     "@types/express": "^5.0.6",
+    "@types/hpp": "^0.2.7",
     "@types/jsonwebtoken": "^9.0.10",
+    "@types/morgan": "^1.9.10",
+    "@types/node": "^26.1.1",
     "@types/pg": "^8.20.0",
     "eslint": "^8.57.1",
     "eslint-config-airbnb-base": "^15.0.0",

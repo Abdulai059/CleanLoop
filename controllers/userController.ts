@@ -19,6 +19,46 @@ export const getAllUsers = catchAsync(
 );
 
 //Update user
+export const updateMe = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    // 1) Block password updates through this route
+    if (req.body.password || req.body.passwordConfirm) {
+      return next(
+        new AppError(
+          "This route is not for password updates. Please use /updateMyPassword",
+          400,
+        ),
+      );
+    }
+
+    // Only allow specific fields to be updated
+    const allowedFields = ["firstName", "lastName", "phone", "email"];
+
+    const updateData: Record<string, any> = {};
+    allowedFields.forEach((field) => {
+      if (req.body[field]) {
+        updateData[field] = req.body[field];
+      }
+    });
+
+    // 3) Update using the logged-in user's own id — never a URL param
+    const user = await prisma.user.update({
+      where: {
+        id: req.user?.id as string,
+      },
+      data: updateData,
+    });
+
+    // 4) Strip password hash before sending back
+    const { passwordHash, ...safeUser } = user;
+    res.status(200).json({
+      status: "success",
+      data: {
+        user: safeUser,
+      },
+    });
+  },
+);
 
 export const getUser = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
