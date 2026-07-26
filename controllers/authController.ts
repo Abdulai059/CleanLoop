@@ -6,8 +6,9 @@ import AppError from "../utils/AppError";
 import crypto from "crypto";
 import { sendSMS } from "../utils/sendSMS";
 
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcryptjs");
+import jwt from "jsonwebtoken";
+import bcrypt from "bcryptjs";
+import { env } from "../config/env";
 
 // Helper function to hash password
 const hashPassword = async (password: string): Promise<string> => {
@@ -24,8 +25,8 @@ const verifyPassword = async (
 
 // Sign JWT token
 export const signToken = (id: string) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRES_IN,
+  return jwt.sign({ id }, env.JWT_SECRET, {
+    expiresIn: env.JWT_EXPIRES_IN,
   });
 };
 
@@ -39,8 +40,7 @@ export const createSendToken = (
   // Set cookie options
   const cookieOptions = {
     expires: new Date(
-      Date.now() +
-        Number(process.env.JWT_COOKIE_EXPIRES_IN) * 24 * 60 * 60 * 1000,
+      Date.now() + env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000,
     ),
     httpOnly: true,
   };
@@ -50,9 +50,6 @@ export const createSendToken = (
 
   // Set JWT cookie
   res.cookie("jwt", token, cookieOptions);
-
-  // Remove password from output
-  user.passwordHash = undefined;
 
   res.status(statusCode).json({
     status: "success",
@@ -97,6 +94,7 @@ export const login = catchAsync(
       where: {
         phone,
       },
+      omit: { passwordHash: false },
     });
 
     if (!user) {
@@ -134,10 +132,10 @@ export const protect = catchAsync(
     }
 
     // 2) Verification token
-    const decoded: any = jwt.verify(
-      token,
-      process.env.JWT_SECRET as string,
-    ) as { id: string; iat: number };
+    const decoded = jwt.verify(token, env.JWT_SECRET) as {
+      id: string;
+      iat: number;
+    };
 
     // 3) Check if user still exists
     const currentUser = await prisma.user.findUnique({
@@ -203,7 +201,6 @@ export const restrictTo = (...allowedRoles: string[]) => {
   };
 };
 
-
 // forgot password
 export const forgotPassword = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
@@ -234,8 +231,8 @@ export const forgotPassword = catchAsync(
 
     // 🛠️ Dynamic Phone Formatting for Africa's Talking Sandbox (0509039974 -> +233509039974)
     const localPhone = user.phone;
-    const formattedPhone = localPhone.startsWith('0') 
-      ? `+233${localPhone.slice(1)}` 
+    const formattedPhone = localPhone.startsWith("0")
+      ? `+233${localPhone.slice(1)}`
       : localPhone;
 
     try {
@@ -299,7 +296,7 @@ export const resetPassword = catchAsync(
         passwordHash: hashedPassword,
         passwordResetToken: null,
         passwordResetExpires: null,
-        passwordChangedAt: new Date(), 
+        passwordChangedAt: new Date(),
       },
     });
 
@@ -307,9 +304,6 @@ export const resetPassword = catchAsync(
     createSendToken(updatedUser, 200, res);
   },
 );
-
-
-
 
 // update password
 export const updatePassword = catchAsync(
@@ -322,6 +316,7 @@ export const updatePassword = catchAsync(
     // 2) Get user from database
     const user = await prisma.user.findUnique({
       where: { id: req.user!.id },
+      omit: { passwordHash: false },
     });
 
     if (!user) {

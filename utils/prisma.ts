@@ -33,7 +33,19 @@ if (process.env.NODE_ENV !== "production") {
 
 const adapter = new PrismaPg(pool);
 
-const prisma = globalForPrisma.prisma || new PrismaClient({ adapter });
+const prisma =
+  globalForPrisma.prisma ||
+  new PrismaClient({
+    adapter,
+    omit: {
+      user: {
+        passwordHash: true,
+        passwordResetToken: true,
+        passwordResetExpires: true,
+        passwordChangedAt: true,
+      },
+    },
+  });
 
 if (process.env.NODE_ENV !== "production") {
   globalForPrisma.prisma = prisma;

@@ -6,8 +6,7 @@ process.on("uncaughtException", (err: Error) => {
 });
 
 // 2. Load environment variables
-import dotenv from "dotenv";
-dotenv.config();
+import "./config/env";
 
 // 3. Import app and dependencies
 import app from "./app";
