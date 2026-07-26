@@ -45,17 +45,22 @@ export const createSendToken = (
     httpOnly: true,
   };
 
-  // if (process.env.NODE_ENV === "production")
-  //   (cookieOptions as any).secure = true;
-
   // Set JWT cookie
   res.cookie("jwt", token, cookieOptions);
+
+  // Strip sensitive fields before sending to client
+  const {
+    passwordHash,
+    passwordResetToken,
+    passwordResetExpires,
+    ...safeUser
+  } = user;
 
   res.status(statusCode).json({
     status: "success",
     token,
     data: {
-      user,
+      user: safeUser,
     },
   });
 };
