@@ -42,7 +42,6 @@ const prisma =
         passwordHash: true,
         passwordResetToken: true,
         passwordResetExpires: true,
-        passwordChangedAt: true,
       },
     },
   });

@@ -94,7 +94,8 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  passwordChangedAt   DateTime?
+  refreshTokens RefreshToken[]
+
   passwordResetToken  String?
   passwordResetExpires DateTime?
 }
@@ -188,4 +189,16 @@ model HouseholdMember {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@id([householdId, userId])
+}
+
+
+model RefreshToken {
+  id        String    @id @default(cuid())
+  userId    String
+  tokenHash String    @unique
+  expiresAt DateTime
+  revokedAt DateTime?
+  createdAt DateTime  @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

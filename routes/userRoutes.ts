@@ -2,7 +2,9 @@ import express, { Router } from "express";
 import {
   forgotPassword,
   login,
+  logout,
   protect,
+  refresh,
   resetPassword,
   singUp,
   updatePassword,
@@ -20,6 +22,9 @@ const router = express.Router();
 
 router.post("/signup", singUp);
 router.post("/login", login);
+
+router.post("/refresh", refresh);
+router.post("/logout", logout);
 
 router.post("/forgotPassword", forgotPassword);
 router.patch("/resetPassword", resetPassword);

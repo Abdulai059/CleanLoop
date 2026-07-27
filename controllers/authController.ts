@@ -25,30 +25,45 @@ const verifyPassword = async (
 
 // Sign JWT token
 export const signToken = (id: string) => {
-  return jwt.sign({ id }, env.JWT_SECRET, {
-    expiresIn: env.JWT_EXPIRES_IN,
+  return jwt.sign({ id }, env.JWT_REFRESH_SECRET, {
+    expiresIn: env.JWT_REFRESH_EXPIRES_IN,
   });
 };
 
-export const createSendToken = (
+// Generate a long random secret for refresh token (not a JWT)
+const signRefreshToken = () => {
+  return crypto.randomBytes(40).toString("hex");
+};
+
+export const createSendToken = async (
   user: any,
   statusCode: number,
   res: Response,
 ) => {
   const token = signToken(user.id);
 
-  // Set cookie options
-  const cookieOptions = {
-    expires: new Date(
-      Date.now() + env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000,
-    ),
+  // 1) Generate + store a new refresh token
+  const refreshToken = signRefreshToken();
+  const refreshTokenHash = crypto
+    .createHash("sha256")
+    .update(refreshToken)
+    .digest("hex");
+
+  // 2) Store refresh token in database
+  await prisma.refreshToken.create({
+    data: {
+      userId: user.id,
+      tokenHash: refreshTokenHash,
+      expiresAt: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000), // 90 days
+    },
+  });
+
+  // 2) Send refresh token as an httpOnly cookie (not in the JSON body — keep it off the client's JS reach)
+  res.cookie("refreshToken", refreshToken, {
     httpOnly: true,
-  };
+    expires: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000),
+  });
 
-  // Set JWT cookie
-  res.cookie("jwt", token, cookieOptions);
-
-  // Strip sensitive fields before sending to client
   const {
     passwordHash,
     passwordResetToken,
@@ -58,10 +73,8 @@ export const createSendToken = (
 
   res.status(statusCode).json({
     status: "success",
-    token,
-    data: {
-      user: safeUser,
-    },
+    token: token, // short-lived, client keeps this in memory
+    data: { user: safeUser },
   });
 };
 
@@ -137,7 +150,7 @@ export const protect = catchAsync(
     }
 
     // 2) Verification token
-    const decoded = jwt.verify(token, env.JWT_SECRET) as {
+    const decoded = jwt.verify(token, env.JWT_REFRESH_SECRET) as {
       id: string;
       iat: number;
     };
@@ -163,22 +176,6 @@ export const protect = catchAsync(
           401,
         ),
       );
-    }
-
-    // 4) Check if user changed password after the token was issued
-    if (currentUser.passwordChangedAt) {
-      const changedTimestamp = Math.floor(
-        currentUser.passwordChangedAt.getTime() / 1000,
-      );
-
-      if (decoded.iat < changedTimestamp) {
-        return next(
-          new AppError(
-            "User recently changed password! Please log in again.",
-            401,
-          ),
-        );
-      }
     }
 
     // GRANT ACCESS TO PROTECTED ROUTE
@@ -234,7 +231,7 @@ export const forgotPassword = catchAsync(
       },
     });
 
-    // 🛠️ Dynamic Phone Formatting for Africa's Talking Sandbox (0509039974 -> +233509039974)
+    // Dynamic Phone Formatting for Africa's Talking Sandbox (0509039974 -> +233509039974)
     const localPhone = user.phone;
     const formattedPhone = localPhone.startsWith("0")
       ? `+233${localPhone.slice(1)}`
@@ -301,7 +298,6 @@ export const resetPassword = catchAsync(
         passwordHash: hashedPassword,
         passwordResetToken: null,
         passwordResetExpires: null,
-        passwordChangedAt: new Date(),
       },
     });
 
@@ -345,11 +341,65 @@ export const updatePassword = catchAsync(
       where: { id: user.id },
       data: {
         passwordHash: hashedPassword,
-        passwordChangedAt: new Date(),
       },
     });
 
     // 6) Log user in, send JWT (This fires res.status().json() internally)
     createSendToken(updatedUser, 200, res);
+  },
+);
+
+export const refresh = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const refreshToken = req.cookies?.refreshToken;
+
+    if (!refreshToken) {
+      return next(new AppError("No refresh token provided", 401));
+    }
+
+    const tokenHash = crypto
+      .createHash("sha256")
+      .update(refreshToken)
+      .digest("hex");
+
+    const storedToken = await prisma.refreshToken.findUnique({
+      where: { tokenHash },
+    });
+
+    if (
+      !storedToken ||
+      storedToken.revokedAt ||
+      storedToken.expiresAt < new Date()
+    ) {
+      return next(new AppError("Invalid or expired refresh token", 401));
+    }
+
+    const newAccessToken = signToken(storedToken.userId);
+
+    res.status(200).json({
+      status: "success",
+      token: newAccessToken,
+    });
+  },
+);
+
+export const logout = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const refreshToken = req.cookies?.refreshToken;
+
+    if (refreshToken) {
+      const tokenHash = crypto
+        .createHash("sha256")
+        .update(refreshToken)
+        .digest("hex");
+
+      await prisma.refreshToken.updateMany({
+        where: { tokenHash, revokedAt: null },
+        data: { revokedAt: new Date() },
+      });
+    }
+
+    res.clearCookie("refreshToken");
+    res.status(200).json({ status: "success" });
   },
 );

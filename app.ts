@@ -7,6 +7,7 @@ import hpp from "hpp";
 import userRouter from "./routes/userRoutes";
 import AppError from "./utils/AppError";
 import globalErrorHandler from "./controllers/errorController";
+import cookieParser from "cookie-parser";
 
 const app = express();
 
@@ -14,6 +15,8 @@ const app = express();
 
 // Set security HTTP headers
 app.use(helmet());
+
+app.use(cookieParser());
 
 // Development logging
 if (process.env.NODE_ENV === "development") {

@@ -9,8 +9,8 @@
  * 🟢 You can import this file directly.
  */
 import type * as runtime from "@prisma/client/runtime/client"
-import type * as $Enums from "../enums.ts"
-import type * as Prisma from "../internal/prismaNamespace.ts"
+import type * as $Enums from "../enums"
+import type * as Prisma from "../internal/prismaNamespace"
 
 /**
  * Model User
@@ -40,7 +40,6 @@ export type UserMinAggregateOutputType = {
   communityId: string | null
   createdAt: Date | null
   updatedAt: Date | null
-  passwordChangedAt: Date | null
   passwordResetToken: string | null
   passwordResetExpires: Date | null
 }
@@ -61,7 +60,6 @@ export type UserMaxAggregateOutputType = {
   communityId: string | null
   createdAt: Date | null
   updatedAt: Date | null
-  passwordChangedAt: Date | null
   passwordResetToken: string | null
   passwordResetExpires: Date | null
 }
@@ -82,7 +80,6 @@ export type UserCountAggregateOutputType = {
   communityId: number
   createdAt: number
   updatedAt: number
-  passwordChangedAt: number
   passwordResetToken: number
   passwordResetExpires: number
   _all: number
@@ -105,7 +102,6 @@ export type UserMinAggregateInputType = {
   communityId?: true
   createdAt?: true
   updatedAt?: true
-  passwordChangedAt?: true
   passwordResetToken?: true
   passwordResetExpires?: true
 }
@@ -126,7 +122,6 @@ export type UserMaxAggregateInputType = {
   communityId?: true
   createdAt?: true
   updatedAt?: true
-  passwordChangedAt?: true
   passwordResetToken?: true
   passwordResetExpires?: true
 }
@@ -147,7 +142,6 @@ export type UserCountAggregateInputType = {
   communityId?: true
   createdAt?: true
   updatedAt?: true
-  passwordChangedAt?: true
   passwordResetToken?: true
   passwordResetExpires?: true
   _all?: true
@@ -241,7 +235,6 @@ export type UserGroupByOutputType = {
   communityId: string | null
   createdAt: Date
   updatedAt: Date
-  passwordChangedAt: Date | null
   passwordResetToken: string | null
   passwordResetExpires: Date | null
   _count: UserCountAggregateOutputType | null
@@ -283,7 +276,6 @@ export type UserWhereInput = {
   communityId?: Prisma.StringNullableFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
-  passwordChangedAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   passwordResetToken?: Prisma.StringNullableFilter<"User"> | string | null
   passwordResetExpires?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   region?: Prisma.XOR<Prisma.RegionNullableScalarRelationFilter, Prisma.RegionWhereInput> | null
@@ -291,6 +283,7 @@ export type UserWhereInput = {
   community?: Prisma.XOR<Prisma.CommunityNullableScalarRelationFilter, Prisma.CommunityWhereInput> | null
   householdMemberships?: Prisma.HouseholdMemberListRelationFilter
   roles?: Prisma.UserRoleListRelationFilter
+  refreshTokens?: Prisma.RefreshTokenListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -309,7 +302,6 @@ export type UserOrderByWithRelationInput = {
   communityId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  passwordChangedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   passwordResetToken?: Prisma.SortOrderInput | Prisma.SortOrder
   passwordResetExpires?: Prisma.SortOrderInput | Prisma.SortOrder
   region?: Prisma.RegionOrderByWithRelationInput
@@ -317,6 +309,7 @@ export type UserOrderByWithRelationInput = {
   community?: Prisma.CommunityOrderByWithRelationInput
   householdMemberships?: Prisma.HouseholdMemberOrderByRelationAggregateInput
   roles?: Prisma.UserRoleOrderByRelationAggregateInput
+  refreshTokens?: Prisma.RefreshTokenOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -338,7 +331,6 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   communityId?: Prisma.StringNullableFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
-  passwordChangedAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   passwordResetToken?: Prisma.StringNullableFilter<"User"> | string | null
   passwordResetExpires?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   region?: Prisma.XOR<Prisma.RegionNullableScalarRelationFilter, Prisma.RegionWhereInput> | null
@@ -346,6 +338,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   community?: Prisma.XOR<Prisma.CommunityNullableScalarRelationFilter, Prisma.CommunityWhereInput> | null
   householdMemberships?: Prisma.HouseholdMemberListRelationFilter
   roles?: Prisma.UserRoleListRelationFilter
+  refreshTokens?: Prisma.RefreshTokenListRelationFilter
 }, "id" | "phone" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -364,7 +357,6 @@ export type UserOrderByWithAggregationInput = {
   communityId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  passwordChangedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   passwordResetToken?: Prisma.SortOrderInput | Prisma.SortOrder
   passwordResetExpires?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
@@ -391,7 +383,6 @@ export type UserScalarWhereWithAggregatesInput = {
   communityId?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
-  passwordChangedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
   passwordResetToken?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   passwordResetExpires?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
 }
@@ -409,7 +400,6 @@ export type UserCreateInput = {
   profilePhotoUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  passwordChangedAt?: Date | string | null
   passwordResetToken?: string | null
   passwordResetExpires?: Date | string | null
   region?: Prisma.RegionCreateNestedOneWithoutUsersInput
@@ -417,6 +407,7 @@ export type UserCreateInput = {
   community?: Prisma.CommunityCreateNestedOneWithoutUsersInput
   householdMemberships?: Prisma.HouseholdMemberCreateNestedManyWithoutUserInput
   roles?: Prisma.UserRoleCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -435,11 +426,11 @@ export type UserUncheckedCreateInput = {
   communityId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  passwordChangedAt?: Date | string | null
   passwordResetToken?: string | null
   passwordResetExpires?: Date | string | null
   householdMemberships?: Prisma.HouseholdMemberUncheckedCreateNestedManyWithoutUserInput
   roles?: Prisma.UserRoleUncheckedCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -455,7 +446,6 @@ export type UserUpdateInput = {
   profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  passwordChangedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   passwordResetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordResetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   region?: Prisma.RegionUpdateOneWithoutUsersNestedInput
@@ -463,6 +453,7 @@ export type UserUpdateInput = {
   community?: Prisma.CommunityUpdateOneWithoutUsersNestedInput
   householdMemberships?: Prisma.HouseholdMemberUpdateManyWithoutUserNestedInput
   roles?: Prisma.UserRoleUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -481,11 +472,11 @@ export type UserUncheckedUpdateInput = {
   communityId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  passwordChangedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   passwordResetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordResetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   householdMemberships?: Prisma.HouseholdMemberUncheckedUpdateManyWithoutUserNestedInput
   roles?: Prisma.UserRoleUncheckedUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -504,7 +495,6 @@ export type UserCreateManyInput = {
   communityId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  passwordChangedAt?: Date | string | null
   passwordResetToken?: string | null
   passwordResetExpires?: Date | string | null
 }
@@ -522,7 +512,6 @@ export type UserUpdateManyMutationInput = {
   profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  passwordChangedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   passwordResetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordResetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
@@ -543,7 +532,6 @@ export type UserUncheckedUpdateManyInput = {
   communityId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  passwordChangedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   passwordResetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordResetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
@@ -564,7 +552,6 @@ export type UserCountOrderByAggregateInput = {
   communityId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  passwordChangedAt?: Prisma.SortOrder
   passwordResetToken?: Prisma.SortOrder
   passwordResetExpires?: Prisma.SortOrder
 }
@@ -585,7 +572,6 @@ export type UserMaxOrderByAggregateInput = {
   communityId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  passwordChangedAt?: Prisma.SortOrder
   passwordResetToken?: Prisma.SortOrder
   passwordResetExpires?: Prisma.SortOrder
 }
@@ -606,7 +592,6 @@ export type UserMinOrderByAggregateInput = {
   communityId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  passwordChangedAt?: Prisma.SortOrder
   passwordResetToken?: Prisma.SortOrder
   passwordResetExpires?: Prisma.SortOrder
 }
@@ -792,6 +777,20 @@ export type UserUpdateOneRequiredWithoutHouseholdMembershipsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutHouseholdMembershipsInput, Prisma.UserUpdateWithoutHouseholdMembershipsInput>, Prisma.UserUncheckedUpdateWithoutHouseholdMembershipsInput>
 }
 
+export type UserCreateNestedOneWithoutRefreshTokensInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRefreshTokensInput, Prisma.UserUncheckedCreateWithoutRefreshTokensInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRefreshTokensInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutRefreshTokensNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRefreshTokensInput, Prisma.UserUncheckedCreateWithoutRefreshTokensInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRefreshTokensInput
+  upsert?: Prisma.UserUpsertWithoutRefreshTokensInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutRefreshTokensInput, Prisma.UserUpdateWithoutRefreshTokensInput>, Prisma.UserUncheckedUpdateWithoutRefreshTokensInput>
+}
+
 export type UserCreateWithoutRolesInput = {
   id?: string
   firstName: string
@@ -805,13 +804,13 @@ export type UserCreateWithoutRolesInput = {
   profilePhotoUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  passwordChangedAt?: Date | string | null
   passwordResetToken?: string | null
   passwordResetExpires?: Date | string | null
   region?: Prisma.RegionCreateNestedOneWithoutUsersInput
   district?: Prisma.DistrictCreateNestedOneWithoutUsersInput
   community?: Prisma.CommunityCreateNestedOneWithoutUsersInput
   householdMemberships?: Prisma.HouseholdMemberCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRolesInput = {
@@ -830,10 +829,10 @@ export type UserUncheckedCreateWithoutRolesInput = {
   communityId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  passwordChangedAt?: Date | string | null
   passwordResetToken?: string | null
   passwordResetExpires?: Date | string | null
   householdMemberships?: Prisma.HouseholdMemberUncheckedCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRolesInput = {
@@ -865,13 +864,13 @@ export type UserUpdateWithoutRolesInput = {
   profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  passwordChangedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   passwordResetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordResetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   region?: Prisma.RegionUpdateOneWithoutUsersNestedInput
   district?: Prisma.DistrictUpdateOneWithoutUsersNestedInput
   community?: Prisma.CommunityUpdateOneWithoutUsersNestedInput
   householdMemberships?: Prisma.HouseholdMemberUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRolesInput = {
@@ -890,10 +889,10 @@ export type UserUncheckedUpdateWithoutRolesInput = {
   communityId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  passwordChangedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   passwordResetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordResetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   householdMemberships?: Prisma.HouseholdMemberUncheckedUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutRegionInput = {
@@ -909,13 +908,13 @@ export type UserCreateWithoutRegionInput = {
   profilePhotoUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  passwordChangedAt?: Date | string | null
   passwordResetToken?: string | null
   passwordResetExpires?: Date | string | null
   district?: Prisma.DistrictCreateNestedOneWithoutUsersInput
   community?: Prisma.CommunityCreateNestedOneWithoutUsersInput
   householdMemberships?: Prisma.HouseholdMemberCreateNestedManyWithoutUserInput
   roles?: Prisma.UserRoleCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRegionInput = {
@@ -933,11 +932,11 @@ export type UserUncheckedCreateWithoutRegionInput = {
   communityId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  passwordChangedAt?: Date | string | null
   passwordResetToken?: string | null
   passwordResetExpires?: Date | string | null
   householdMemberships?: Prisma.HouseholdMemberUncheckedCreateNestedManyWithoutUserInput
   roles?: Prisma.UserRoleUncheckedCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRegionInput = {
@@ -985,7 +984,6 @@ export type UserScalarWhereInput = {
   communityId?: Prisma.StringNullableFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
-  passwordChangedAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   passwordResetToken?: Prisma.StringNullableFilter<"User"> | string | null
   passwordResetExpires?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
 }
@@ -1003,13 +1001,13 @@ export type UserCreateWithoutDistrictInput = {
   profilePhotoUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  passwordChangedAt?: Date | string | null
   passwordResetToken?: string | null
   passwordResetExpires?: Date | string | null
   region?: Prisma.RegionCreateNestedOneWithoutUsersInput
   community?: Prisma.CommunityCreateNestedOneWithoutUsersInput
   householdMemberships?: Prisma.HouseholdMemberCreateNestedManyWithoutUserInput
   roles?: Prisma.UserRoleCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutDistrictInput = {
@@ -1027,11 +1025,11 @@ export type UserUncheckedCreateWithoutDistrictInput = {
   communityId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  passwordChangedAt?: Date | string | null
   passwordResetToken?: string | null
   passwordResetExpires?: Date | string | null
   householdMemberships?: Prisma.HouseholdMemberUncheckedCreateNestedManyWithoutUserInput
   roles?: Prisma.UserRoleUncheckedCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutDistrictInput = {
@@ -1073,13 +1071,13 @@ export type UserCreateWithoutCommunityInput = {
   profilePhotoUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  passwordChangedAt?: Date | string | null
   passwordResetToken?: string | null
   passwordResetExpires?: Date | string | null
   region?: Prisma.RegionCreateNestedOneWithoutUsersInput
   district?: Prisma.DistrictCreateNestedOneWithoutUsersInput
   householdMemberships?: Prisma.HouseholdMemberCreateNestedManyWithoutUserInput
   roles?: Prisma.UserRoleCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutCommunityInput = {
@@ -1097,11 +1095,11 @@ export type UserUncheckedCreateWithoutCommunityInput = {
   districtId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  passwordChangedAt?: Date | string | null
   passwordResetToken?: string | null
   passwordResetExpires?: Date | string | null
   householdMemberships?: Prisma.HouseholdMemberUncheckedCreateNestedManyWithoutUserInput
   roles?: Prisma.UserRoleUncheckedCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutCommunityInput = {
@@ -1143,13 +1141,13 @@ export type UserCreateWithoutHouseholdMembershipsInput = {
   profilePhotoUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  passwordChangedAt?: Date | string | null
   passwordResetToken?: string | null
   passwordResetExpires?: Date | string | null
   region?: Prisma.RegionCreateNestedOneWithoutUsersInput
   district?: Prisma.DistrictCreateNestedOneWithoutUsersInput
   community?: Prisma.CommunityCreateNestedOneWithoutUsersInput
   roles?: Prisma.UserRoleCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutHouseholdMembershipsInput = {
@@ -1168,10 +1166,10 @@ export type UserUncheckedCreateWithoutHouseholdMembershipsInput = {
   communityId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  passwordChangedAt?: Date | string | null
   passwordResetToken?: string | null
   passwordResetExpires?: Date | string | null
   roles?: Prisma.UserRoleUncheckedCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutHouseholdMembershipsInput = {
@@ -1203,13 +1201,13 @@ export type UserUpdateWithoutHouseholdMembershipsInput = {
   profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  passwordChangedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   passwordResetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordResetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   region?: Prisma.RegionUpdateOneWithoutUsersNestedInput
   district?: Prisma.DistrictUpdateOneWithoutUsersNestedInput
   community?: Prisma.CommunityUpdateOneWithoutUsersNestedInput
   roles?: Prisma.UserRoleUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutHouseholdMembershipsInput = {
@@ -1228,9 +1226,113 @@ export type UserUncheckedUpdateWithoutHouseholdMembershipsInput = {
   communityId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  passwordChangedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   passwordResetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordResetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  roles?: Prisma.UserRoleUncheckedUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutRefreshTokensInput = {
+  id?: string
+  firstName: string
+  lastName: string
+  phone: string
+  email?: string | null
+  passwordHash: string
+  gender?: $Enums.Gender | null
+  status?: $Enums.UserStatus
+  dateOfBirth?: Date | string | null
+  profilePhotoUrl?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  passwordResetToken?: string | null
+  passwordResetExpires?: Date | string | null
+  region?: Prisma.RegionCreateNestedOneWithoutUsersInput
+  district?: Prisma.DistrictCreateNestedOneWithoutUsersInput
+  community?: Prisma.CommunityCreateNestedOneWithoutUsersInput
+  householdMemberships?: Prisma.HouseholdMemberCreateNestedManyWithoutUserInput
+  roles?: Prisma.UserRoleCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutRefreshTokensInput = {
+  id?: string
+  firstName: string
+  lastName: string
+  phone: string
+  email?: string | null
+  passwordHash: string
+  gender?: $Enums.Gender | null
+  status?: $Enums.UserStatus
+  dateOfBirth?: Date | string | null
+  profilePhotoUrl?: string | null
+  regionId?: string | null
+  districtId?: string | null
+  communityId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  passwordResetToken?: string | null
+  passwordResetExpires?: Date | string | null
+  householdMemberships?: Prisma.HouseholdMemberUncheckedCreateNestedManyWithoutUserInput
+  roles?: Prisma.UserRoleUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutRefreshTokensInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutRefreshTokensInput, Prisma.UserUncheckedCreateWithoutRefreshTokensInput>
+}
+
+export type UserUpsertWithoutRefreshTokensInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutRefreshTokensInput, Prisma.UserUncheckedUpdateWithoutRefreshTokensInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutRefreshTokensInput, Prisma.UserUncheckedCreateWithoutRefreshTokensInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutRefreshTokensInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutRefreshTokensInput, Prisma.UserUncheckedUpdateWithoutRefreshTokensInput>
+}
+
+export type UserUpdateWithoutRefreshTokensInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  passwordResetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordResetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  region?: Prisma.RegionUpdateOneWithoutUsersNestedInput
+  district?: Prisma.DistrictUpdateOneWithoutUsersNestedInput
+  community?: Prisma.CommunityUpdateOneWithoutUsersNestedInput
+  householdMemberships?: Prisma.HouseholdMemberUpdateManyWithoutUserNestedInput
+  roles?: Prisma.UserRoleUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutRefreshTokensInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  regionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  districtId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  communityId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  passwordResetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordResetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  householdMemberships?: Prisma.HouseholdMemberUncheckedUpdateManyWithoutUserNestedInput
   roles?: Prisma.UserRoleUncheckedUpdateManyWithoutUserNestedInput
 }
 
@@ -1249,7 +1351,6 @@ export type UserCreateManyRegionInput = {
   communityId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  passwordChangedAt?: Date | string | null
   passwordResetToken?: string | null
   passwordResetExpires?: Date | string | null
 }
@@ -1267,13 +1368,13 @@ export type UserUpdateWithoutRegionInput = {
   profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  passwordChangedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   passwordResetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordResetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   district?: Prisma.DistrictUpdateOneWithoutUsersNestedInput
   community?: Prisma.CommunityUpdateOneWithoutUsersNestedInput
   householdMemberships?: Prisma.HouseholdMemberUpdateManyWithoutUserNestedInput
   roles?: Prisma.UserRoleUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRegionInput = {
@@ -1291,11 +1392,11 @@ export type UserUncheckedUpdateWithoutRegionInput = {
   communityId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  passwordChangedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   passwordResetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordResetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   householdMemberships?: Prisma.HouseholdMemberUncheckedUpdateManyWithoutUserNestedInput
   roles?: Prisma.UserRoleUncheckedUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutRegionInput = {
@@ -1313,7 +1414,6 @@ export type UserUncheckedUpdateManyWithoutRegionInput = {
   communityId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  passwordChangedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   passwordResetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordResetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
@@ -1333,7 +1433,6 @@ export type UserCreateManyDistrictInput = {
   communityId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  passwordChangedAt?: Date | string | null
   passwordResetToken?: string | null
   passwordResetExpires?: Date | string | null
 }
@@ -1351,13 +1450,13 @@ export type UserUpdateWithoutDistrictInput = {
   profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  passwordChangedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   passwordResetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordResetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   region?: Prisma.RegionUpdateOneWithoutUsersNestedInput
   community?: Prisma.CommunityUpdateOneWithoutUsersNestedInput
   householdMemberships?: Prisma.HouseholdMemberUpdateManyWithoutUserNestedInput
   roles?: Prisma.UserRoleUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutDistrictInput = {
@@ -1375,11 +1474,11 @@ export type UserUncheckedUpdateWithoutDistrictInput = {
   communityId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  passwordChangedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   passwordResetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordResetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   householdMemberships?: Prisma.HouseholdMemberUncheckedUpdateManyWithoutUserNestedInput
   roles?: Prisma.UserRoleUncheckedUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutDistrictInput = {
@@ -1397,7 +1496,6 @@ export type UserUncheckedUpdateManyWithoutDistrictInput = {
   communityId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  passwordChangedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   passwordResetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordResetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
@@ -1417,7 +1515,6 @@ export type UserCreateManyCommunityInput = {
   districtId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  passwordChangedAt?: Date | string | null
   passwordResetToken?: string | null
   passwordResetExpires?: Date | string | null
 }
@@ -1435,13 +1532,13 @@ export type UserUpdateWithoutCommunityInput = {
   profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  passwordChangedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   passwordResetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordResetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   region?: Prisma.RegionUpdateOneWithoutUsersNestedInput
   district?: Prisma.DistrictUpdateOneWithoutUsersNestedInput
   householdMemberships?: Prisma.HouseholdMemberUpdateManyWithoutUserNestedInput
   roles?: Prisma.UserRoleUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCommunityInput = {
@@ -1459,11 +1556,11 @@ export type UserUncheckedUpdateWithoutCommunityInput = {
   districtId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  passwordChangedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   passwordResetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordResetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   householdMemberships?: Prisma.HouseholdMemberUncheckedUpdateManyWithoutUserNestedInput
   roles?: Prisma.UserRoleUncheckedUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutCommunityInput = {
@@ -1481,7 +1578,6 @@ export type UserUncheckedUpdateManyWithoutCommunityInput = {
   districtId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  passwordChangedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   passwordResetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordResetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
@@ -1494,11 +1590,13 @@ export type UserUncheckedUpdateManyWithoutCommunityInput = {
 export type UserCountOutputType = {
   householdMemberships: number
   roles: number
+  refreshTokens: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   householdMemberships?: boolean | UserCountOutputTypeCountHouseholdMembershipsArgs
   roles?: boolean | UserCountOutputTypeCountRolesArgs
+  refreshTokens?: boolean | UserCountOutputTypeCountRefreshTokensArgs
 }
 
 /**
@@ -1525,6 +1623,13 @@ export type UserCountOutputTypeCountRolesArgs<ExtArgs extends runtime.Types.Exte
   where?: Prisma.UserRoleWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountRefreshTokensArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.RefreshTokenWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1542,7 +1647,6 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   communityId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  passwordChangedAt?: boolean
   passwordResetToken?: boolean
   passwordResetExpires?: boolean
   region?: boolean | Prisma.User$regionArgs<ExtArgs>
@@ -1550,6 +1654,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   community?: boolean | Prisma.User$communityArgs<ExtArgs>
   householdMemberships?: boolean | Prisma.User$householdMembershipsArgs<ExtArgs>
   roles?: boolean | Prisma.User$rolesArgs<ExtArgs>
+  refreshTokens?: boolean | Prisma.User$refreshTokensArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -1569,7 +1674,6 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   communityId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  passwordChangedAt?: boolean
   passwordResetToken?: boolean
   passwordResetExpires?: boolean
   region?: boolean | Prisma.User$regionArgs<ExtArgs>
@@ -1593,7 +1697,6 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   communityId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  passwordChangedAt?: boolean
   passwordResetToken?: boolean
   passwordResetExpires?: boolean
   region?: boolean | Prisma.User$regionArgs<ExtArgs>
@@ -1617,18 +1720,18 @@ export type UserSelectScalar = {
   communityId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  passwordChangedAt?: boolean
   passwordResetToken?: boolean
   passwordResetExpires?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "firstName" | "lastName" | "phone" | "email" | "passwordHash" | "gender" | "status" | "dateOfBirth" | "profilePhotoUrl" | "regionId" | "districtId" | "communityId" | "createdAt" | "updatedAt" | "passwordChangedAt" | "passwordResetToken" | "passwordResetExpires", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "firstName" | "lastName" | "phone" | "email" | "passwordHash" | "gender" | "status" | "dateOfBirth" | "profilePhotoUrl" | "regionId" | "districtId" | "communityId" | "createdAt" | "updatedAt" | "passwordResetToken" | "passwordResetExpires", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   region?: boolean | Prisma.User$regionArgs<ExtArgs>
   district?: boolean | Prisma.User$districtArgs<ExtArgs>
   community?: boolean | Prisma.User$communityArgs<ExtArgs>
   householdMemberships?: boolean | Prisma.User$householdMembershipsArgs<ExtArgs>
   roles?: boolean | Prisma.User$rolesArgs<ExtArgs>
+  refreshTokens?: boolean | Prisma.User$refreshTokensArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1650,6 +1753,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     community: Prisma.$CommunityPayload<ExtArgs> | null
     householdMemberships: Prisma.$HouseholdMemberPayload<ExtArgs>[]
     roles: Prisma.$UserRolePayload<ExtArgs>[]
+    refreshTokens: Prisma.$RefreshTokenPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1667,7 +1771,6 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     communityId: string | null
     createdAt: Date
     updatedAt: Date
-    passwordChangedAt: Date | null
     passwordResetToken: string | null
     passwordResetExpires: Date | null
   }, ExtArgs["result"]["user"]>
@@ -2069,6 +2172,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   community<T extends Prisma.User$communityArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$communityArgs<ExtArgs>>): Prisma.Prisma__CommunityClient<runtime.Types.Result.GetResult<Prisma.$CommunityPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   householdMemberships<T extends Prisma.User$householdMembershipsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$householdMembershipsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$HouseholdMemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   roles<T extends Prisma.User$rolesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$rolesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserRolePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  refreshTokens<T extends Prisma.User$refreshTokensArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$refreshTokensArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RefreshTokenPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2113,7 +2217,6 @@ export interface UserFieldRefs {
   readonly communityId: Prisma.FieldRef<"User", 'String'>
   readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"User", 'DateTime'>
-  readonly passwordChangedAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly passwordResetToken: Prisma.FieldRef<"User", 'String'>
   readonly passwordResetExpires: Prisma.FieldRef<"User", 'DateTime'>
 }
@@ -2619,6 +2722,30 @@ export type User$rolesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
   take?: number
   skip?: number
   distinct?: Prisma.UserRoleScalarFieldEnum | Prisma.UserRoleScalarFieldEnum[]
+}
+
+/**
+ * User.refreshTokens
+ */
+export type User$refreshTokensArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the RefreshToken
+   */
+  select?: Prisma.RefreshTokenSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the RefreshToken
+   */
+  omit?: Prisma.RefreshTokenOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RefreshTokenInclude<ExtArgs> | null
+  where?: Prisma.RefreshTokenWhereInput
+  orderBy?: Prisma.RefreshTokenOrderByWithRelationInput | Prisma.RefreshTokenOrderByWithRelationInput[]
+  cursor?: Prisma.RefreshTokenWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.RefreshTokenScalarFieldEnum | Prisma.RefreshTokenScalarFieldEnum[]
 }
 
 /**

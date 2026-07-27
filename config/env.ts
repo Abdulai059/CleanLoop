@@ -11,8 +11,8 @@ function required(key: string): string {
 }
 
 export const env = {
-  JWT_SECRET: required("JWT_SECRET"),
-  JWT_EXPIRES_IN: required("JWT_EXPIRES_IN") as SignOptions["expiresIn"],
+  JWT_REFRESH_SECRET: required("JWT_REFRESH_SECRET"),
+  JWT_REFRESH_EXPIRES_IN: required("JWT_REFRESH_EXPIRES_IN") as SignOptions["expiresIn"],
   JWT_COOKIE_EXPIRES_IN: Number(required("JWT_COOKIE_EXPIRES_IN")),
   DATABASE_URL: required("DATABASE_URL"),
   PORT: process.env.PORT || "3000",

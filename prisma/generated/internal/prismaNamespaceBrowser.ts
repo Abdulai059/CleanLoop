@@ -17,8 +17,8 @@
 
 import * as runtime from "@prisma/client/runtime/index-browser"
 
-export type * from '../models.ts'
-export type * from './prismaNamespace.ts'
+export type * from '../models'
+export type * from './prismaNamespace'
 
 export const Decimal = runtime.Decimal
 
@@ -60,7 +60,8 @@ export const ModelName = {
   District: 'District',
   Community: 'Community',
   Household: 'Household',
-  HouseholdMember: 'HouseholdMember'
+  HouseholdMember: 'HouseholdMember',
+  RefreshToken: 'RefreshToken'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -125,7 +126,6 @@ export const UserScalarFieldEnum = {
   communityId: 'communityId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  passwordChangedAt: 'passwordChangedAt',
   passwordResetToken: 'passwordResetToken',
   passwordResetExpires: 'passwordResetExpires'
 } as const
@@ -191,6 +191,18 @@ export const HouseholdMemberScalarFieldEnum = {
 } as const
 
 export type HouseholdMemberScalarFieldEnum = (typeof HouseholdMemberScalarFieldEnum)[keyof typeof HouseholdMemberScalarFieldEnum]
+
+
+export const RefreshTokenScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  tokenHash: 'tokenHash',
+  expiresAt: 'expiresAt',
+  revokedAt: 'revokedAt',
+  createdAt: 'createdAt'
+} as const
+
+export type RefreshTokenScalarFieldEnum = (typeof RefreshTokenScalarFieldEnum)[keyof typeof RefreshTokenScalarFieldEnum]
 
 
 export const SortOrder = {
