@@ -215,3 +215,65 @@ export const deleteUser = catchAsync(
     });
   },
 );
+
+// assign role to user
+export const assignRole = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const { userId, roleName } = req.body;
+
+    // Validate input
+    if (!userId || !roleName) {
+      return next(new AppError("userId and roleName are required", 400));
+    }
+
+    // Check if role exists
+    const role = await prisma.role.findUnique({
+      where: { name: roleName },
+    });
+
+    if (!role) {
+      return next(new AppError(`Role '${roleName}' not found`, 404));
+    }
+
+    // Check if user exists
+    const user = await prisma.user.findUnique({
+      where: { id: userId },
+    });
+
+    if (!user) {
+      return next(new AppError("User not found", 404));
+    }
+
+    // Check if user already has this role
+    const existingUserRole = await prisma.userRole.findUnique({
+      where: {
+        userId_roleId: {
+          userId,
+          roleId: role.id,
+        },
+      },
+    });
+
+    if (existingUserRole) {
+      return next(new AppError("User already has this role", 400));
+    }
+
+    // Assign role to user
+    const userRole = await prisma.userRole.create({
+      data: {
+        userId,
+        roleId: role.id,
+      },
+      include: {
+        role: true,
+      },
+    });
+
+    res.status(201).json({
+      status: "success",
+      data: {
+        userRole,
+      },
+    });
+  },
+);

@@ -83,7 +83,7 @@ export const singUp = catchAsync(
     // 1) Hash the incoming plaintext password
     const hashedPassword = await hashPassword(req.body.password);
 
-    // 2) Store the hashed string into your database
+    // 2) Store the hashed string into your database with default HOUSEHOLD role
     const newUser = await prisma.user.create({
       data: {
         firstName: req.body.firstName,
@@ -91,6 +91,20 @@ export const singUp = catchAsync(
         phone: req.body.phone,
         email: req.body.email,
         passwordHash: hashedPassword,
+        roles: {
+          create: {
+            role: {
+              connect: { name: "HOUSEHOLD" },
+            },
+          },
+        },
+      },
+      include: {
+        roles: {
+          include: {
+            role: true,
+          },
+        },
       },
     });
 
