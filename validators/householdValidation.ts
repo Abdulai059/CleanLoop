@@ -12,3 +12,12 @@ export const updateHouseholdSchema = z.object({
   latitude: z.number().optional(),
   longitude: z.number().optional(),
 });
+
+export const addMemberSchema = z.object({
+  phone: z.string().min(1),
+});
+
+
+export const userIdParamSchema = z.object({
+  userId: z.string().min(1),
+});
