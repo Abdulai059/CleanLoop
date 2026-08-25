@@ -5,6 +5,9 @@ import rateLimit from "express-rate-limit";
 import hpp from "hpp";
 
 import userRouter from "./routes/userRoutes";
+import locationRouter from "./routes/locationRouters";
+import householdRouter from "./routes/householdRoutes";
+
 import AppError from "./utils/AppError";
 import globalErrorHandler from "./controllers/errorController";
 import cookieParser from "cookie-parser";
@@ -40,6 +43,8 @@ app.use(hpp());
 
 // 3) ROUTES
 app.use("/api/v1/users", userRouter);
+app.use("/api/v1/locations", locationRouter);
+app.use("/api/v1/households", householdRouter);
 
 // Handle undefined routes
 app.all("*splat", (req: Request, res: Response, next: NextFunction) => {

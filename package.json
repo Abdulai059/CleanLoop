@@ -5,7 +5,11 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --exec tsx -r dotenv/config server.ts"
+    "start": "nodemon --exec tsx -r dotenv/config server.ts",
+    "seed": "tsx prisma/seed.ts"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
   },
   "keywords": [],
   "author": "Zisung",
@@ -23,7 +27,8 @@
     "hpp": "^0.2.3",
     "jsonwebtoken": "^9.0.3",
     "morgan": "^1.11.0",
-    "pg": "^8.22.0"
+    "pg": "^8.22.0",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",

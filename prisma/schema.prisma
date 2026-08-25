@@ -38,6 +38,17 @@ model Permission {
 }
 
 
+model RefreshToken {
+  id        String    @id @default(cuid())
+  userId    String
+  tokenHash String    @unique
+  expiresAt DateTime
+  revokedAt DateTime?
+  createdAt DateTime  @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
 model Role {
   id          String   @id @default(cuid())
   name        String   @unique
@@ -191,14 +202,3 @@ model HouseholdMember {
   @@id([householdId, userId])
 }
 
-
-model RefreshToken {
-  id        String    @id @default(cuid())
-  userId    String
-  tokenHash String    @unique
-  expiresAt DateTime
-  revokedAt DateTime?
-  createdAt DateTime  @default(now())
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-}
