@@ -9,8 +9,8 @@
  * 🟢 You can import this file directly.
  */
 import type * as runtime from "@prisma/client/runtime/client"
-import type * as $Enums from "../enums"
-import type * as Prisma from "../internal/prismaNamespace"
+import type * as $Enums from "../enums.js"
+import type * as Prisma from "../internal/prismaNamespace.js"
 
 /**
  * Model RefreshToken
@@ -302,16 +302,6 @@ export type RefreshTokenUncheckedUpdateManyInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type RefreshTokenListRelationFilter = {
-  every?: Prisma.RefreshTokenWhereInput
-  some?: Prisma.RefreshTokenWhereInput
-  none?: Prisma.RefreshTokenWhereInput
-}
-
-export type RefreshTokenOrderByRelationAggregateInput = {
-  _count?: Prisma.SortOrder
-}
-
 export type RefreshTokenCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
@@ -337,6 +327,20 @@ export type RefreshTokenMinOrderByAggregateInput = {
   expiresAt?: Prisma.SortOrder
   revokedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+}
+
+export type RefreshTokenListRelationFilter = {
+  every?: Prisma.RefreshTokenWhereInput
+  some?: Prisma.RefreshTokenWhereInput
+  none?: Prisma.RefreshTokenWhereInput
+}
+
+export type RefreshTokenOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
+}
+
+export type NullableDateTimeFieldUpdateOperationsInput = {
+  set?: Date | string | null
 }
 
 export type RefreshTokenCreateNestedManyWithoutUserInput = {

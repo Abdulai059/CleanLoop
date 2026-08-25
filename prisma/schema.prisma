@@ -26,6 +26,11 @@ enum HouseholdRole {
   MEMBER
 }
 
+enum RecoveryStatus {
+  VERIFIED
+  VOIDED
+}
+
 model Permission {
   id          String   @id @default(cuid())
   name        String   @unique
@@ -102,6 +107,8 @@ model User {
 
   roles UserRole[]
 
+  recordedRecoveries Recovery[] @relation("RecoveryRecordedBy")
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -110,6 +117,7 @@ model User {
   passwordResetToken  String?
   passwordResetExpires DateTime?
 }
+
 
 model UserRole {
   userId String
@@ -181,6 +189,8 @@ model Household {
   latitude Decimal? @db.Decimal(10,7)
   longitude Decimal? @db.Decimal(10,7)
 
+  recoveries Recovery[]
+
   members HouseholdMember[]
 
   createdAt DateTime @default(now())
@@ -202,3 +212,60 @@ model HouseholdMember {
   @@id([householdId, userId])
 }
 
+
+
+model MaterialType {
+  id          String  @id @default(cuid())
+  name        String  @unique
+  description String?
+  isActive    Boolean @default(true)
+
+  recoveryItems RecoveryItem[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+
+model Recovery {
+  id String @id @default(cuid())
+
+  householdId  String
+  recordedById String
+
+  status RecoveryStatus @default(VERIFIED)
+
+  totalWeight Decimal @db.Decimal(10, 2)
+  totalPoints Int @default(0)
+
+  household Household @relation(fields: [householdId], references: [id])
+  recordedBy User @relation("RecoveryRecordedBy", fields: [recordedById], references: [id])
+
+  items RecoveryItem[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([householdId])
+  @@index([recordedById])
+  @@index([status])
+  @@index([createdAt])
+}
+
+
+model RecoveryItem {
+  id String @id @default(cuid())
+
+  recoveryId     String
+  materialTypeId String
+
+  weight Decimal @db.Decimal(10, 2)
+
+  recovery Recovery @relation(fields: [recoveryId], references: [id], onDelete: Cascade)
+  materialType MaterialType @relation(fields: [materialTypeId], references: [id])
+
+  createdAt DateTime @default(now())
+
+  @@index([recoveryId])
+  @@index([materialTypeId])
+}

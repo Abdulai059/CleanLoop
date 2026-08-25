@@ -17,8 +17,8 @@
 
 import * as runtime from "@prisma/client/runtime/index-browser"
 
-export type * from '../models'
-export type * from './prismaNamespace'
+export type * from '../models.js'
+export type * from './prismaNamespace.js'
 
 export const Decimal = runtime.Decimal
 
@@ -52,6 +52,7 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   Permission: 'Permission',
+  RefreshToken: 'RefreshToken',
   Role: 'Role',
   RolePermission: 'RolePermission',
   User: 'User',
@@ -61,7 +62,9 @@ export const ModelName = {
   Community: 'Community',
   Household: 'Household',
   HouseholdMember: 'HouseholdMember',
-  RefreshToken: 'RefreshToken'
+  MaterialType: 'MaterialType',
+  Recovery: 'Recovery',
+  RecoveryItem: 'RecoveryItem'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -89,6 +92,18 @@ export const PermissionScalarFieldEnum = {
 } as const
 
 export type PermissionScalarFieldEnum = (typeof PermissionScalarFieldEnum)[keyof typeof PermissionScalarFieldEnum]
+
+
+export const RefreshTokenScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  tokenHash: 'tokenHash',
+  expiresAt: 'expiresAt',
+  revokedAt: 'revokedAt',
+  createdAt: 'createdAt'
+} as const
+
+export type RefreshTokenScalarFieldEnum = (typeof RefreshTokenScalarFieldEnum)[keyof typeof RefreshTokenScalarFieldEnum]
 
 
 export const RoleScalarFieldEnum = {
@@ -193,16 +208,41 @@ export const HouseholdMemberScalarFieldEnum = {
 export type HouseholdMemberScalarFieldEnum = (typeof HouseholdMemberScalarFieldEnum)[keyof typeof HouseholdMemberScalarFieldEnum]
 
 
-export const RefreshTokenScalarFieldEnum = {
+export const MaterialTypeScalarFieldEnum = {
   id: 'id',
-  userId: 'userId',
-  tokenHash: 'tokenHash',
-  expiresAt: 'expiresAt',
-  revokedAt: 'revokedAt',
+  name: 'name',
+  description: 'description',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type MaterialTypeScalarFieldEnum = (typeof MaterialTypeScalarFieldEnum)[keyof typeof MaterialTypeScalarFieldEnum]
+
+
+export const RecoveryScalarFieldEnum = {
+  id: 'id',
+  householdId: 'householdId',
+  recordedById: 'recordedById',
+  status: 'status',
+  totalWeight: 'totalWeight',
+  totalPoints: 'totalPoints',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type RecoveryScalarFieldEnum = (typeof RecoveryScalarFieldEnum)[keyof typeof RecoveryScalarFieldEnum]
+
+
+export const RecoveryItemScalarFieldEnum = {
+  id: 'id',
+  recoveryId: 'recoveryId',
+  materialTypeId: 'materialTypeId',
+  weight: 'weight',
   createdAt: 'createdAt'
 } as const
 
-export type RefreshTokenScalarFieldEnum = (typeof RefreshTokenScalarFieldEnum)[keyof typeof RefreshTokenScalarFieldEnum]
+export type RecoveryItemScalarFieldEnum = (typeof RecoveryItemScalarFieldEnum)[keyof typeof RecoveryItemScalarFieldEnum]
 
 
 export const SortOrder = {

@@ -41,11 +41,32 @@ async function main() {
   }
 
   console.log("✅ Roles seeded successfully");
+
+  const materials = [
+    { name: "PET Bottles", description: "Plastic bottles" },
+    { name: "Plastic Sachets", description: "Used water sachets" },
+    {
+      name: "HDPE Plastics",
+      description: "Hard plastic containers, e.g. jerry cans",
+    },
+    { name: "Plastic Containers", description: "General plastic containers" },
+    { name: "Other Plastics", description: "Miscellaneous plastic waste" },
+  ];
+
+  for (const material of materials) {
+    await prisma.materialType.upsert({
+      where: { name: material.name },
+      update: {},
+      create: material,
+    });
+  }
+
+  console.log("✅ Material types seeded successfully");
 }
 
 main()
   .catch((e) => {
-    console.error("❌ Error seeding roles:", e);
+    console.error("❌ Error seeding:", e);
     process.exit(1);
   })
   .finally(() => prisma.$disconnect());

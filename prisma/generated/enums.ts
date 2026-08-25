@@ -34,3 +34,11 @@ export const HouseholdRole = {
 } as const
 
 export type HouseholdRole = (typeof HouseholdRole)[keyof typeof HouseholdRole]
+
+
+export const RecoveryStatus = {
+  VERIFIED: 'VERIFIED',
+  VOIDED: 'VOIDED'
+} as const
+
+export type RecoveryStatus = (typeof RecoveryStatus)[keyof typeof RecoveryStatus]
