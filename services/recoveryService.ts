@@ -70,3 +70,95 @@ export const createRecovery = async (
     });
   });
 };
+
+export const getMyRecoveries = async (userId: string) => {
+  // Find the household this user belongs to
+  const membership = await prisma.householdMember.findFirst({
+    where: { userId },
+  });
+
+  if (!membership) {
+    throw new AppError("You do not belong to a household", 404);
+  }
+
+  return prisma.recovery.findMany({
+    where: { householdId: membership.householdId },
+    orderBy: { createdAt: "desc" },
+    select: {
+      id: true,
+      status: true,
+      totalWeight: true,
+      totalPoints: true,
+      createdAt: true,
+    },
+  });
+};
+
+export const getRecoveryById = async (userId: string, recoveryId: string) => {
+  const recovery = await prisma.recovery.findUnique({
+    where: { id: recoveryId },
+    include: {
+      items: {
+        include: { materialType: true },
+      },
+    },
+  });
+
+  if (!recovery) {
+    throw new AppError("Recovery not found", 404);
+  }
+
+  // Authorization: allow if user recorded it, OR belongs to the household it's for
+  const isRecordingAgent = recovery.recordedById === userId;
+
+  const membership = await prisma.householdMember.findUnique({
+    where: {
+      householdId_userId: {
+        householdId: recovery.householdId,
+        userId,
+      },
+    },
+  });
+
+  const isHouseholdMember = !!membership;
+
+  if (!isRecordingAgent && !isHouseholdMember) {
+    throw new AppError("You do not have permission to view this recovery", 403);
+  }
+
+  return recovery;
+};
+
+export const getMyRecordedRecoveries = async (recordedById: string) => {
+  return prisma.recovery.findMany({
+    where: { recordedById },
+    orderBy: { createdAt: "desc" },
+    select: {
+      id: true,
+      householdId: true,
+      status: true,
+      totalWeight: true,
+      totalPoints: true,
+      createdAt: true,
+    },
+  });
+};
+
+export const voidRecovery = async (recoveryId: string, reason: string) => {
+  const recovery = await prisma.recovery.findUnique({
+    where: { id: recoveryId },
+  });
+
+  if (!recovery) {
+    throw new AppError("Recovery not found", 404);
+  }
+
+  if (recovery.status === "VOIDED") {
+    throw new AppError("This recovery is already voided", 400);
+  }
+
+  return prisma.recovery.update({
+    where: { id: recoveryId },
+    data: { status: "VOIDED" },
+  });
+};

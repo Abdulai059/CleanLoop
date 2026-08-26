@@ -15,3 +15,7 @@ export const createRecoverySchema = z.object({
 export const recoveryIdParamSchema = z.object({
   recoveryId: z.string().min(1),
 });
+
+export const voidRecoverySchema = z.object({
+  reason: z.string().min(1),
+});
