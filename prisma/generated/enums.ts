@@ -42,3 +42,13 @@ export const RecoveryStatus = {
 } as const
 
 export type RecoveryStatus = (typeof RecoveryStatus)[keyof typeof RecoveryStatus]
+
+
+export const WalletTransactionType = {
+  EARN: 'EARN',
+  REDEEM: 'REDEEM',
+  ADJUSTMENT: 'ADJUSTMENT',
+  REVERSAL: 'REVERSAL'
+} as const
+
+export type WalletTransactionType = (typeof WalletTransactionType)[keyof typeof WalletTransactionType]

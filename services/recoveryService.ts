@@ -38,17 +38,48 @@ export const createRecovery = async (
     );
   }
 
-  // 3) Calculate total weight
-  const totalWeight = data.items.reduce((sum, item) => sum + item.weight, 0);
+  // 3) Fetch active point rules for these materials
+  const pointRules = await prisma.pointRule.findMany({
+    where: {
+      materialTypeId: { in: materialTypeIds },
+      isActive: true,
+    },
+  });
 
-  // 4) Create Recovery + RecoveryItems in one transaction
+  const pointRuleMap = new Map(
+    pointRules.map((rule) => [rule.materialTypeId, Number(rule.pointsPerKg)]),
+  );
+
+  // 4) Find who receives the points — the household HEAD
+  const headMembership = await prisma.householdMember.findFirst({
+    where: { householdId: data.householdId, role: "HEAD" },
+  });
+
+  if (!headMembership) {
+    throw new AppError("This household has no head assigned", 400);
+  }
+
+  // 5) Calculate total weight and total points
+  let totalWeight = 0;
+  let totalPoints = 0;
+
+  for (const item of data.items) {
+    totalWeight += item.weight;
+
+    const pointsPerKg = pointRuleMap.get(item.materialTypeId) ?? 0;
+    totalPoints += item.weight * pointsPerKg;
+  }
+
+  totalPoints = Math.round(totalPoints);
+
+  // 6) One transaction: Recovery + RecoveryItems + Wallet + WalletTransaction
   return prisma.$transaction(async (tx) => {
     const recovery = await tx.recovery.create({
       data: {
         householdId: data.householdId,
         recordedById,
         totalWeight,
-        totalPoints: 0, // Wallet/PointRule module will populate this later
+        totalPoints,
       },
     });
 
@@ -58,6 +89,35 @@ export const createRecovery = async (
         materialTypeId: item.materialTypeId,
         weight: item.weight,
       })),
+    });
+
+    // Get or create the household head's wallet
+    let wallet = await tx.wallet.findUnique({
+      where: { userId: headMembership.userId },
+    });
+
+    if (!wallet) {
+      wallet = await tx.wallet.create({
+        data: { userId: headMembership.userId },
+      });
+    }
+
+    const newBalance = Number(wallet.balance) + totalPoints;
+
+    await tx.wallet.update({
+      where: { id: wallet.id },
+      data: { balance: newBalance },
+    });
+
+    await tx.walletTransaction.create({
+      data: {
+        walletId: wallet.id,
+        type: "EARN",
+        amount: totalPoints,
+        balanceAfter: newBalance,
+        referenceId: recovery.id,
+        description: "Plastic recovery",
+      },
     });
 
     return tx.recovery.findUnique({

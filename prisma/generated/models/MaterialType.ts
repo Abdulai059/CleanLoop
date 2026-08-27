@@ -191,6 +191,7 @@ export type MaterialTypeWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"MaterialType"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"MaterialType"> | Date | string
   recoveryItems?: Prisma.RecoveryItemListRelationFilter
+  pointRules?: Prisma.PointRuleListRelationFilter
 }
 
 export type MaterialTypeOrderByWithRelationInput = {
@@ -201,6 +202,7 @@ export type MaterialTypeOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   recoveryItems?: Prisma.RecoveryItemOrderByRelationAggregateInput
+  pointRules?: Prisma.PointRuleOrderByRelationAggregateInput
 }
 
 export type MaterialTypeWhereUniqueInput = Prisma.AtLeast<{
@@ -214,6 +216,7 @@ export type MaterialTypeWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"MaterialType"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"MaterialType"> | Date | string
   recoveryItems?: Prisma.RecoveryItemListRelationFilter
+  pointRules?: Prisma.PointRuleListRelationFilter
 }, "id" | "name">
 
 export type MaterialTypeOrderByWithAggregationInput = {
@@ -248,6 +251,7 @@ export type MaterialTypeCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   recoveryItems?: Prisma.RecoveryItemCreateNestedManyWithoutMaterialTypeInput
+  pointRules?: Prisma.PointRuleCreateNestedManyWithoutMaterialTypeInput
 }
 
 export type MaterialTypeUncheckedCreateInput = {
@@ -258,6 +262,7 @@ export type MaterialTypeUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   recoveryItems?: Prisma.RecoveryItemUncheckedCreateNestedManyWithoutMaterialTypeInput
+  pointRules?: Prisma.PointRuleUncheckedCreateNestedManyWithoutMaterialTypeInput
 }
 
 export type MaterialTypeUpdateInput = {
@@ -268,6 +273,7 @@ export type MaterialTypeUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   recoveryItems?: Prisma.RecoveryItemUpdateManyWithoutMaterialTypeNestedInput
+  pointRules?: Prisma.PointRuleUpdateManyWithoutMaterialTypeNestedInput
 }
 
 export type MaterialTypeUncheckedUpdateInput = {
@@ -278,6 +284,7 @@ export type MaterialTypeUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   recoveryItems?: Prisma.RecoveryItemUncheckedUpdateManyWithoutMaterialTypeNestedInput
+  pointRules?: Prisma.PointRuleUncheckedUpdateManyWithoutMaterialTypeNestedInput
 }
 
 export type MaterialTypeCreateManyInput = {
@@ -357,6 +364,20 @@ export type MaterialTypeUpdateOneRequiredWithoutRecoveryItemsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.MaterialTypeUpdateToOneWithWhereWithoutRecoveryItemsInput, Prisma.MaterialTypeUpdateWithoutRecoveryItemsInput>, Prisma.MaterialTypeUncheckedUpdateWithoutRecoveryItemsInput>
 }
 
+export type MaterialTypeCreateNestedOneWithoutPointRulesInput = {
+  create?: Prisma.XOR<Prisma.MaterialTypeCreateWithoutPointRulesInput, Prisma.MaterialTypeUncheckedCreateWithoutPointRulesInput>
+  connectOrCreate?: Prisma.MaterialTypeCreateOrConnectWithoutPointRulesInput
+  connect?: Prisma.MaterialTypeWhereUniqueInput
+}
+
+export type MaterialTypeUpdateOneRequiredWithoutPointRulesNestedInput = {
+  create?: Prisma.XOR<Prisma.MaterialTypeCreateWithoutPointRulesInput, Prisma.MaterialTypeUncheckedCreateWithoutPointRulesInput>
+  connectOrCreate?: Prisma.MaterialTypeCreateOrConnectWithoutPointRulesInput
+  upsert?: Prisma.MaterialTypeUpsertWithoutPointRulesInput
+  connect?: Prisma.MaterialTypeWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.MaterialTypeUpdateToOneWithWhereWithoutPointRulesInput, Prisma.MaterialTypeUpdateWithoutPointRulesInput>, Prisma.MaterialTypeUncheckedUpdateWithoutPointRulesInput>
+}
+
 export type MaterialTypeCreateWithoutRecoveryItemsInput = {
   id?: string
   name: string
@@ -364,6 +385,7 @@ export type MaterialTypeCreateWithoutRecoveryItemsInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  pointRules?: Prisma.PointRuleCreateNestedManyWithoutMaterialTypeInput
 }
 
 export type MaterialTypeUncheckedCreateWithoutRecoveryItemsInput = {
@@ -373,6 +395,7 @@ export type MaterialTypeUncheckedCreateWithoutRecoveryItemsInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  pointRules?: Prisma.PointRuleUncheckedCreateNestedManyWithoutMaterialTypeInput
 }
 
 export type MaterialTypeCreateOrConnectWithoutRecoveryItemsInput = {
@@ -398,6 +421,7 @@ export type MaterialTypeUpdateWithoutRecoveryItemsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  pointRules?: Prisma.PointRuleUpdateManyWithoutMaterialTypeNestedInput
 }
 
 export type MaterialTypeUncheckedUpdateWithoutRecoveryItemsInput = {
@@ -407,6 +431,63 @@ export type MaterialTypeUncheckedUpdateWithoutRecoveryItemsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  pointRules?: Prisma.PointRuleUncheckedUpdateManyWithoutMaterialTypeNestedInput
+}
+
+export type MaterialTypeCreateWithoutPointRulesInput = {
+  id?: string
+  name: string
+  description?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  recoveryItems?: Prisma.RecoveryItemCreateNestedManyWithoutMaterialTypeInput
+}
+
+export type MaterialTypeUncheckedCreateWithoutPointRulesInput = {
+  id?: string
+  name: string
+  description?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  recoveryItems?: Prisma.RecoveryItemUncheckedCreateNestedManyWithoutMaterialTypeInput
+}
+
+export type MaterialTypeCreateOrConnectWithoutPointRulesInput = {
+  where: Prisma.MaterialTypeWhereUniqueInput
+  create: Prisma.XOR<Prisma.MaterialTypeCreateWithoutPointRulesInput, Prisma.MaterialTypeUncheckedCreateWithoutPointRulesInput>
+}
+
+export type MaterialTypeUpsertWithoutPointRulesInput = {
+  update: Prisma.XOR<Prisma.MaterialTypeUpdateWithoutPointRulesInput, Prisma.MaterialTypeUncheckedUpdateWithoutPointRulesInput>
+  create: Prisma.XOR<Prisma.MaterialTypeCreateWithoutPointRulesInput, Prisma.MaterialTypeUncheckedCreateWithoutPointRulesInput>
+  where?: Prisma.MaterialTypeWhereInput
+}
+
+export type MaterialTypeUpdateToOneWithWhereWithoutPointRulesInput = {
+  where?: Prisma.MaterialTypeWhereInput
+  data: Prisma.XOR<Prisma.MaterialTypeUpdateWithoutPointRulesInput, Prisma.MaterialTypeUncheckedUpdateWithoutPointRulesInput>
+}
+
+export type MaterialTypeUpdateWithoutPointRulesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  recoveryItems?: Prisma.RecoveryItemUpdateManyWithoutMaterialTypeNestedInput
+}
+
+export type MaterialTypeUncheckedUpdateWithoutPointRulesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  recoveryItems?: Prisma.RecoveryItemUncheckedUpdateManyWithoutMaterialTypeNestedInput
 }
 
 
@@ -416,10 +497,12 @@ export type MaterialTypeUncheckedUpdateWithoutRecoveryItemsInput = {
 
 export type MaterialTypeCountOutputType = {
   recoveryItems: number
+  pointRules: number
 }
 
 export type MaterialTypeCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   recoveryItems?: boolean | MaterialTypeCountOutputTypeCountRecoveryItemsArgs
+  pointRules?: boolean | MaterialTypeCountOutputTypeCountPointRulesArgs
 }
 
 /**
@@ -439,6 +522,13 @@ export type MaterialTypeCountOutputTypeCountRecoveryItemsArgs<ExtArgs extends ru
   where?: Prisma.RecoveryItemWhereInput
 }
 
+/**
+ * MaterialTypeCountOutputType without action
+ */
+export type MaterialTypeCountOutputTypeCountPointRulesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PointRuleWhereInput
+}
+
 
 export type MaterialTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -448,6 +538,7 @@ export type MaterialTypeSelect<ExtArgs extends runtime.Types.Extensions.Internal
   createdAt?: boolean
   updatedAt?: boolean
   recoveryItems?: boolean | Prisma.MaterialType$recoveryItemsArgs<ExtArgs>
+  pointRules?: boolean | Prisma.MaterialType$pointRulesArgs<ExtArgs>
   _count?: boolean | Prisma.MaterialTypeCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["materialType"]>
 
@@ -481,6 +572,7 @@ export type MaterialTypeSelectScalar = {
 export type MaterialTypeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "description" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["materialType"]>
 export type MaterialTypeInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   recoveryItems?: boolean | Prisma.MaterialType$recoveryItemsArgs<ExtArgs>
+  pointRules?: boolean | Prisma.MaterialType$pointRulesArgs<ExtArgs>
   _count?: boolean | Prisma.MaterialTypeCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type MaterialTypeIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -490,6 +582,7 @@ export type $MaterialTypePayload<ExtArgs extends runtime.Types.Extensions.Intern
   name: "MaterialType"
   objects: {
     recoveryItems: Prisma.$RecoveryItemPayload<ExtArgs>[]
+    pointRules: Prisma.$PointRulePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -893,6 +986,7 @@ readonly fields: MaterialTypeFieldRefs;
 export interface Prisma__MaterialTypeClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   recoveryItems<T extends Prisma.MaterialType$recoveryItemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MaterialType$recoveryItemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RecoveryItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  pointRules<T extends Prisma.MaterialType$pointRulesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MaterialType$pointRulesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PointRulePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1342,6 +1436,30 @@ export type MaterialType$recoveryItemsArgs<ExtArgs extends runtime.Types.Extensi
   take?: number
   skip?: number
   distinct?: Prisma.RecoveryItemScalarFieldEnum | Prisma.RecoveryItemScalarFieldEnum[]
+}
+
+/**
+ * MaterialType.pointRules
+ */
+export type MaterialType$pointRulesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PointRule
+   */
+  select?: Prisma.PointRuleSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PointRule
+   */
+  omit?: Prisma.PointRuleOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PointRuleInclude<ExtArgs> | null
+  where?: Prisma.PointRuleWhereInput
+  orderBy?: Prisma.PointRuleOrderByWithRelationInput | Prisma.PointRuleOrderByWithRelationInput[]
+  cursor?: Prisma.PointRuleWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PointRuleScalarFieldEnum | Prisma.PointRuleScalarFieldEnum[]
 }
 
 /**

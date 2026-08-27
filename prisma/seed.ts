@@ -62,6 +62,44 @@ async function main() {
   }
 
   console.log("✅ Material types seeded successfully");
+
+  const pointRules = [
+    { materialName: "PET Bottles", pointsPerKg: 120 },
+    { materialName: "HDPE Plastics", pointsPerKg: 100 },
+    { materialName: "Plastic Containers", pointsPerKg: 80 },
+    { materialName: "Plastic Sachets", pointsPerKg: 40 },
+    { materialName: "Other Plastics", pointsPerKg: 25 },
+  ];
+
+  for (const rule of pointRules) {
+    const material = await prisma.materialType.findUnique({
+      where: { name: rule.materialName },
+    });
+
+    if (!material) {
+      console.warn(
+        `⚠️ Material "${rule.materialName}" not found, skipping point rule`,
+      );
+      continue;
+    }
+
+    const existingRule = await prisma.pointRule.findFirst({
+      where: { materialTypeId: material.id },
+    });
+
+    if (existingRule) {
+      continue; // already seeded
+    }
+
+    await prisma.pointRule.create({
+      data: {
+        materialTypeId: material.id,
+        pointsPerKg: rule.pointsPerKg,
+      },
+    });
+  }
+
+  console.log("✅ Point rules seeded successfully");
 }
 
 main()

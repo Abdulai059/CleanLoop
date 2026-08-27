@@ -111,3 +111,18 @@ export type Recovery = Prisma.RecoveryModel
  * 
  */
 export type RecoveryItem = Prisma.RecoveryItemModel
+/**
+ * Model PointRule
+ * 
+ */
+export type PointRule = Prisma.PointRuleModel
+/**
+ * Model Wallet
+ * 
+ */
+export type Wallet = Prisma.WalletModel
+/**
+ * Model WalletTransaction
+ * 
+ */
+export type WalletTransaction = Prisma.WalletTransactionModel
