@@ -9,8 +9,8 @@
  * 🟢 You can import this file directly.
  */
 import type * as runtime from "@prisma/client/runtime/client"
-import type * as $Enums from "../enums"
-import type * as Prisma from "../internal/prismaNamespace"
+import type * as $Enums from "../enums.js"
+import type * as Prisma from "../internal/prismaNamespace.js"
 
 /**
  * Model User
@@ -283,6 +283,9 @@ export type UserWhereInput = {
   community?: Prisma.XOR<Prisma.CommunityNullableScalarRelationFilter, Prisma.CommunityWhereInput> | null
   householdMemberships?: Prisma.HouseholdMemberListRelationFilter
   roles?: Prisma.UserRoleListRelationFilter
+  recordedRecoveries?: Prisma.RecoveryListRelationFilter
+  redemptions?: Prisma.RedemptionListRelationFilter
+  wallet?: Prisma.XOR<Prisma.WalletNullableScalarRelationFilter, Prisma.WalletWhereInput> | null
   refreshTokens?: Prisma.RefreshTokenListRelationFilter
 }
 
@@ -309,6 +312,9 @@ export type UserOrderByWithRelationInput = {
   community?: Prisma.CommunityOrderByWithRelationInput
   householdMemberships?: Prisma.HouseholdMemberOrderByRelationAggregateInput
   roles?: Prisma.UserRoleOrderByRelationAggregateInput
+  recordedRecoveries?: Prisma.RecoveryOrderByRelationAggregateInput
+  redemptions?: Prisma.RedemptionOrderByRelationAggregateInput
+  wallet?: Prisma.WalletOrderByWithRelationInput
   refreshTokens?: Prisma.RefreshTokenOrderByRelationAggregateInput
 }
 
@@ -338,6 +344,9 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   community?: Prisma.XOR<Prisma.CommunityNullableScalarRelationFilter, Prisma.CommunityWhereInput> | null
   householdMemberships?: Prisma.HouseholdMemberListRelationFilter
   roles?: Prisma.UserRoleListRelationFilter
+  recordedRecoveries?: Prisma.RecoveryListRelationFilter
+  redemptions?: Prisma.RedemptionListRelationFilter
+  wallet?: Prisma.XOR<Prisma.WalletNullableScalarRelationFilter, Prisma.WalletWhereInput> | null
   refreshTokens?: Prisma.RefreshTokenListRelationFilter
 }, "id" | "phone" | "email">
 
@@ -407,6 +416,9 @@ export type UserCreateInput = {
   community?: Prisma.CommunityCreateNestedOneWithoutUsersInput
   householdMemberships?: Prisma.HouseholdMemberCreateNestedManyWithoutUserInput
   roles?: Prisma.UserRoleCreateNestedManyWithoutUserInput
+  recordedRecoveries?: Prisma.RecoveryCreateNestedManyWithoutRecordedByInput
+  redemptions?: Prisma.RedemptionCreateNestedManyWithoutUserInput
+  wallet?: Prisma.WalletCreateNestedOneWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
 }
 
@@ -430,6 +442,9 @@ export type UserUncheckedCreateInput = {
   passwordResetExpires?: Date | string | null
   householdMemberships?: Prisma.HouseholdMemberUncheckedCreateNestedManyWithoutUserInput
   roles?: Prisma.UserRoleUncheckedCreateNestedManyWithoutUserInput
+  recordedRecoveries?: Prisma.RecoveryUncheckedCreateNestedManyWithoutRecordedByInput
+  redemptions?: Prisma.RedemptionUncheckedCreateNestedManyWithoutUserInput
+  wallet?: Prisma.WalletUncheckedCreateNestedOneWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
@@ -453,6 +468,9 @@ export type UserUpdateInput = {
   community?: Prisma.CommunityUpdateOneWithoutUsersNestedInput
   householdMemberships?: Prisma.HouseholdMemberUpdateManyWithoutUserNestedInput
   roles?: Prisma.UserRoleUpdateManyWithoutUserNestedInput
+  recordedRecoveries?: Prisma.RecoveryUpdateManyWithoutRecordedByNestedInput
+  redemptions?: Prisma.RedemptionUpdateManyWithoutUserNestedInput
+  wallet?: Prisma.WalletUpdateOneWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
 }
 
@@ -476,6 +494,9 @@ export type UserUncheckedUpdateInput = {
   passwordResetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   householdMemberships?: Prisma.HouseholdMemberUncheckedUpdateManyWithoutUserNestedInput
   roles?: Prisma.UserRoleUncheckedUpdateManyWithoutUserNestedInput
+  recordedRecoveries?: Prisma.RecoveryUncheckedUpdateManyWithoutRecordedByNestedInput
+  redemptions?: Prisma.RedemptionUncheckedUpdateManyWithoutUserNestedInput
+  wallet?: Prisma.WalletUncheckedUpdateOneWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
@@ -534,6 +555,11 @@ export type UserUncheckedUpdateManyInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   passwordResetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordResetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+}
+
+export type UserScalarRelationFilter = {
+  is?: Prisma.UserWhereInput
+  isNot?: Prisma.UserWhereInput
 }
 
 export type UserCountOrderByAggregateInput = {
@@ -596,11 +622,6 @@ export type UserMinOrderByAggregateInput = {
   passwordResetExpires?: Prisma.SortOrder
 }
 
-export type UserScalarRelationFilter = {
-  is?: Prisma.UserWhereInput
-  isNot?: Prisma.UserWhereInput
-}
-
 export type UserListRelationFilter = {
   every?: Prisma.UserWhereInput
   some?: Prisma.UserWhereInput
@@ -611,16 +632,26 @@ export type UserOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
+export type UserCreateNestedOneWithoutRefreshTokensInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRefreshTokensInput, Prisma.UserUncheckedCreateWithoutRefreshTokensInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRefreshTokensInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutRefreshTokensNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRefreshTokensInput, Prisma.UserUncheckedCreateWithoutRefreshTokensInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRefreshTokensInput
+  upsert?: Prisma.UserUpsertWithoutRefreshTokensInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutRefreshTokensInput, Prisma.UserUpdateWithoutRefreshTokensInput>, Prisma.UserUncheckedUpdateWithoutRefreshTokensInput>
+}
+
 export type NullableEnumGenderFieldUpdateOperationsInput = {
   set?: $Enums.Gender | null
 }
 
 export type EnumUserStatusFieldUpdateOperationsInput = {
   set?: $Enums.UserStatus
-}
-
-export type NullableDateTimeFieldUpdateOperationsInput = {
-  set?: Date | string | null
 }
 
 export type UserCreateNestedOneWithoutRolesInput = {
@@ -777,18 +808,162 @@ export type UserUpdateOneRequiredWithoutHouseholdMembershipsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutHouseholdMembershipsInput, Prisma.UserUpdateWithoutHouseholdMembershipsInput>, Prisma.UserUncheckedUpdateWithoutHouseholdMembershipsInput>
 }
 
-export type UserCreateNestedOneWithoutRefreshTokensInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutRefreshTokensInput, Prisma.UserUncheckedCreateWithoutRefreshTokensInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRefreshTokensInput
+export type UserCreateNestedOneWithoutRecordedRecoveriesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRecordedRecoveriesInput, Prisma.UserUncheckedCreateWithoutRecordedRecoveriesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRecordedRecoveriesInput
   connect?: Prisma.UserWhereUniqueInput
 }
 
-export type UserUpdateOneRequiredWithoutRefreshTokensNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutRefreshTokensInput, Prisma.UserUncheckedCreateWithoutRefreshTokensInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRefreshTokensInput
-  upsert?: Prisma.UserUpsertWithoutRefreshTokensInput
+export type UserUpdateOneRequiredWithoutRecordedRecoveriesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRecordedRecoveriesInput, Prisma.UserUncheckedCreateWithoutRecordedRecoveriesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRecordedRecoveriesInput
+  upsert?: Prisma.UserUpsertWithoutRecordedRecoveriesInput
   connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutRefreshTokensInput, Prisma.UserUpdateWithoutRefreshTokensInput>, Prisma.UserUncheckedUpdateWithoutRefreshTokensInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutRecordedRecoveriesInput, Prisma.UserUpdateWithoutRecordedRecoveriesInput>, Prisma.UserUncheckedUpdateWithoutRecordedRecoveriesInput>
+}
+
+export type UserCreateNestedOneWithoutWalletInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutWalletInput, Prisma.UserUncheckedCreateWithoutWalletInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutWalletInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutWalletNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutWalletInput, Prisma.UserUncheckedCreateWithoutWalletInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutWalletInput
+  upsert?: Prisma.UserUpsertWithoutWalletInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutWalletInput, Prisma.UserUpdateWithoutWalletInput>, Prisma.UserUncheckedUpdateWithoutWalletInput>
+}
+
+export type UserCreateNestedOneWithoutRedemptionsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRedemptionsInput, Prisma.UserUncheckedCreateWithoutRedemptionsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRedemptionsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutRedemptionsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRedemptionsInput, Prisma.UserUncheckedCreateWithoutRedemptionsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRedemptionsInput
+  upsert?: Prisma.UserUpsertWithoutRedemptionsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutRedemptionsInput, Prisma.UserUpdateWithoutRedemptionsInput>, Prisma.UserUncheckedUpdateWithoutRedemptionsInput>
+}
+
+export type UserCreateWithoutRefreshTokensInput = {
+  id?: string
+  firstName: string
+  lastName: string
+  phone: string
+  email?: string | null
+  passwordHash: string
+  gender?: $Enums.Gender | null
+  status?: $Enums.UserStatus
+  dateOfBirth?: Date | string | null
+  profilePhotoUrl?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  passwordResetToken?: string | null
+  passwordResetExpires?: Date | string | null
+  region?: Prisma.RegionCreateNestedOneWithoutUsersInput
+  district?: Prisma.DistrictCreateNestedOneWithoutUsersInput
+  community?: Prisma.CommunityCreateNestedOneWithoutUsersInput
+  householdMemberships?: Prisma.HouseholdMemberCreateNestedManyWithoutUserInput
+  roles?: Prisma.UserRoleCreateNestedManyWithoutUserInput
+  recordedRecoveries?: Prisma.RecoveryCreateNestedManyWithoutRecordedByInput
+  redemptions?: Prisma.RedemptionCreateNestedManyWithoutUserInput
+  wallet?: Prisma.WalletCreateNestedOneWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutRefreshTokensInput = {
+  id?: string
+  firstName: string
+  lastName: string
+  phone: string
+  email?: string | null
+  passwordHash: string
+  gender?: $Enums.Gender | null
+  status?: $Enums.UserStatus
+  dateOfBirth?: Date | string | null
+  profilePhotoUrl?: string | null
+  regionId?: string | null
+  districtId?: string | null
+  communityId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  passwordResetToken?: string | null
+  passwordResetExpires?: Date | string | null
+  householdMemberships?: Prisma.HouseholdMemberUncheckedCreateNestedManyWithoutUserInput
+  roles?: Prisma.UserRoleUncheckedCreateNestedManyWithoutUserInput
+  recordedRecoveries?: Prisma.RecoveryUncheckedCreateNestedManyWithoutRecordedByInput
+  redemptions?: Prisma.RedemptionUncheckedCreateNestedManyWithoutUserInput
+  wallet?: Prisma.WalletUncheckedCreateNestedOneWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutRefreshTokensInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutRefreshTokensInput, Prisma.UserUncheckedCreateWithoutRefreshTokensInput>
+}
+
+export type UserUpsertWithoutRefreshTokensInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutRefreshTokensInput, Prisma.UserUncheckedUpdateWithoutRefreshTokensInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutRefreshTokensInput, Prisma.UserUncheckedCreateWithoutRefreshTokensInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutRefreshTokensInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutRefreshTokensInput, Prisma.UserUncheckedUpdateWithoutRefreshTokensInput>
+}
+
+export type UserUpdateWithoutRefreshTokensInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  passwordResetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordResetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  region?: Prisma.RegionUpdateOneWithoutUsersNestedInput
+  district?: Prisma.DistrictUpdateOneWithoutUsersNestedInput
+  community?: Prisma.CommunityUpdateOneWithoutUsersNestedInput
+  householdMemberships?: Prisma.HouseholdMemberUpdateManyWithoutUserNestedInput
+  roles?: Prisma.UserRoleUpdateManyWithoutUserNestedInput
+  recordedRecoveries?: Prisma.RecoveryUpdateManyWithoutRecordedByNestedInput
+  redemptions?: Prisma.RedemptionUpdateManyWithoutUserNestedInput
+  wallet?: Prisma.WalletUpdateOneWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutRefreshTokensInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  regionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  districtId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  communityId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  passwordResetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordResetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  householdMemberships?: Prisma.HouseholdMemberUncheckedUpdateManyWithoutUserNestedInput
+  roles?: Prisma.UserRoleUncheckedUpdateManyWithoutUserNestedInput
+  recordedRecoveries?: Prisma.RecoveryUncheckedUpdateManyWithoutRecordedByNestedInput
+  redemptions?: Prisma.RedemptionUncheckedUpdateManyWithoutUserNestedInput
+  wallet?: Prisma.WalletUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutRolesInput = {
@@ -810,6 +985,9 @@ export type UserCreateWithoutRolesInput = {
   district?: Prisma.DistrictCreateNestedOneWithoutUsersInput
   community?: Prisma.CommunityCreateNestedOneWithoutUsersInput
   householdMemberships?: Prisma.HouseholdMemberCreateNestedManyWithoutUserInput
+  recordedRecoveries?: Prisma.RecoveryCreateNestedManyWithoutRecordedByInput
+  redemptions?: Prisma.RedemptionCreateNestedManyWithoutUserInput
+  wallet?: Prisma.WalletCreateNestedOneWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
 }
 
@@ -832,6 +1010,9 @@ export type UserUncheckedCreateWithoutRolesInput = {
   passwordResetToken?: string | null
   passwordResetExpires?: Date | string | null
   householdMemberships?: Prisma.HouseholdMemberUncheckedCreateNestedManyWithoutUserInput
+  recordedRecoveries?: Prisma.RecoveryUncheckedCreateNestedManyWithoutRecordedByInput
+  redemptions?: Prisma.RedemptionUncheckedCreateNestedManyWithoutUserInput
+  wallet?: Prisma.WalletUncheckedCreateNestedOneWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
@@ -870,6 +1051,9 @@ export type UserUpdateWithoutRolesInput = {
   district?: Prisma.DistrictUpdateOneWithoutUsersNestedInput
   community?: Prisma.CommunityUpdateOneWithoutUsersNestedInput
   householdMemberships?: Prisma.HouseholdMemberUpdateManyWithoutUserNestedInput
+  recordedRecoveries?: Prisma.RecoveryUpdateManyWithoutRecordedByNestedInput
+  redemptions?: Prisma.RedemptionUpdateManyWithoutUserNestedInput
+  wallet?: Prisma.WalletUpdateOneWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
 }
 
@@ -892,6 +1076,9 @@ export type UserUncheckedUpdateWithoutRolesInput = {
   passwordResetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordResetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   householdMemberships?: Prisma.HouseholdMemberUncheckedUpdateManyWithoutUserNestedInput
+  recordedRecoveries?: Prisma.RecoveryUncheckedUpdateManyWithoutRecordedByNestedInput
+  redemptions?: Prisma.RedemptionUncheckedUpdateManyWithoutUserNestedInput
+  wallet?: Prisma.WalletUncheckedUpdateOneWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
@@ -914,6 +1101,9 @@ export type UserCreateWithoutRegionInput = {
   community?: Prisma.CommunityCreateNestedOneWithoutUsersInput
   householdMemberships?: Prisma.HouseholdMemberCreateNestedManyWithoutUserInput
   roles?: Prisma.UserRoleCreateNestedManyWithoutUserInput
+  recordedRecoveries?: Prisma.RecoveryCreateNestedManyWithoutRecordedByInput
+  redemptions?: Prisma.RedemptionCreateNestedManyWithoutUserInput
+  wallet?: Prisma.WalletCreateNestedOneWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
 }
 
@@ -936,6 +1126,9 @@ export type UserUncheckedCreateWithoutRegionInput = {
   passwordResetExpires?: Date | string | null
   householdMemberships?: Prisma.HouseholdMemberUncheckedCreateNestedManyWithoutUserInput
   roles?: Prisma.UserRoleUncheckedCreateNestedManyWithoutUserInput
+  recordedRecoveries?: Prisma.RecoveryUncheckedCreateNestedManyWithoutRecordedByInput
+  redemptions?: Prisma.RedemptionUncheckedCreateNestedManyWithoutUserInput
+  wallet?: Prisma.WalletUncheckedCreateNestedOneWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
@@ -1007,6 +1200,9 @@ export type UserCreateWithoutDistrictInput = {
   community?: Prisma.CommunityCreateNestedOneWithoutUsersInput
   householdMemberships?: Prisma.HouseholdMemberCreateNestedManyWithoutUserInput
   roles?: Prisma.UserRoleCreateNestedManyWithoutUserInput
+  recordedRecoveries?: Prisma.RecoveryCreateNestedManyWithoutRecordedByInput
+  redemptions?: Prisma.RedemptionCreateNestedManyWithoutUserInput
+  wallet?: Prisma.WalletCreateNestedOneWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
 }
 
@@ -1029,6 +1225,9 @@ export type UserUncheckedCreateWithoutDistrictInput = {
   passwordResetExpires?: Date | string | null
   householdMemberships?: Prisma.HouseholdMemberUncheckedCreateNestedManyWithoutUserInput
   roles?: Prisma.UserRoleUncheckedCreateNestedManyWithoutUserInput
+  recordedRecoveries?: Prisma.RecoveryUncheckedCreateNestedManyWithoutRecordedByInput
+  redemptions?: Prisma.RedemptionUncheckedCreateNestedManyWithoutUserInput
+  wallet?: Prisma.WalletUncheckedCreateNestedOneWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
@@ -1077,6 +1276,9 @@ export type UserCreateWithoutCommunityInput = {
   district?: Prisma.DistrictCreateNestedOneWithoutUsersInput
   householdMemberships?: Prisma.HouseholdMemberCreateNestedManyWithoutUserInput
   roles?: Prisma.UserRoleCreateNestedManyWithoutUserInput
+  recordedRecoveries?: Prisma.RecoveryCreateNestedManyWithoutRecordedByInput
+  redemptions?: Prisma.RedemptionCreateNestedManyWithoutUserInput
+  wallet?: Prisma.WalletCreateNestedOneWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
 }
 
@@ -1099,6 +1301,9 @@ export type UserUncheckedCreateWithoutCommunityInput = {
   passwordResetExpires?: Date | string | null
   householdMemberships?: Prisma.HouseholdMemberUncheckedCreateNestedManyWithoutUserInput
   roles?: Prisma.UserRoleUncheckedCreateNestedManyWithoutUserInput
+  recordedRecoveries?: Prisma.RecoveryUncheckedCreateNestedManyWithoutRecordedByInput
+  redemptions?: Prisma.RedemptionUncheckedCreateNestedManyWithoutUserInput
+  wallet?: Prisma.WalletUncheckedCreateNestedOneWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
@@ -1147,6 +1352,9 @@ export type UserCreateWithoutHouseholdMembershipsInput = {
   district?: Prisma.DistrictCreateNestedOneWithoutUsersInput
   community?: Prisma.CommunityCreateNestedOneWithoutUsersInput
   roles?: Prisma.UserRoleCreateNestedManyWithoutUserInput
+  recordedRecoveries?: Prisma.RecoveryCreateNestedManyWithoutRecordedByInput
+  redemptions?: Prisma.RedemptionCreateNestedManyWithoutUserInput
+  wallet?: Prisma.WalletCreateNestedOneWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
 }
 
@@ -1169,6 +1377,9 @@ export type UserUncheckedCreateWithoutHouseholdMembershipsInput = {
   passwordResetToken?: string | null
   passwordResetExpires?: Date | string | null
   roles?: Prisma.UserRoleUncheckedCreateNestedManyWithoutUserInput
+  recordedRecoveries?: Prisma.RecoveryUncheckedCreateNestedManyWithoutRecordedByInput
+  redemptions?: Prisma.RedemptionUncheckedCreateNestedManyWithoutUserInput
+  wallet?: Prisma.WalletUncheckedCreateNestedOneWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
@@ -1207,6 +1418,9 @@ export type UserUpdateWithoutHouseholdMembershipsInput = {
   district?: Prisma.DistrictUpdateOneWithoutUsersNestedInput
   community?: Prisma.CommunityUpdateOneWithoutUsersNestedInput
   roles?: Prisma.UserRoleUpdateManyWithoutUserNestedInput
+  recordedRecoveries?: Prisma.RecoveryUpdateManyWithoutRecordedByNestedInput
+  redemptions?: Prisma.RedemptionUpdateManyWithoutUserNestedInput
+  wallet?: Prisma.WalletUpdateOneWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
 }
 
@@ -1229,10 +1443,13 @@ export type UserUncheckedUpdateWithoutHouseholdMembershipsInput = {
   passwordResetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   passwordResetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   roles?: Prisma.UserRoleUncheckedUpdateManyWithoutUserNestedInput
+  recordedRecoveries?: Prisma.RecoveryUncheckedUpdateManyWithoutRecordedByNestedInput
+  redemptions?: Prisma.RedemptionUncheckedUpdateManyWithoutUserNestedInput
+  wallet?: Prisma.WalletUncheckedUpdateOneWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
-export type UserCreateWithoutRefreshTokensInput = {
+export type UserCreateWithoutRecordedRecoveriesInput = {
   id?: string
   firstName: string
   lastName: string
@@ -1252,9 +1469,12 @@ export type UserCreateWithoutRefreshTokensInput = {
   community?: Prisma.CommunityCreateNestedOneWithoutUsersInput
   householdMemberships?: Prisma.HouseholdMemberCreateNestedManyWithoutUserInput
   roles?: Prisma.UserRoleCreateNestedManyWithoutUserInput
+  redemptions?: Prisma.RedemptionCreateNestedManyWithoutUserInput
+  wallet?: Prisma.WalletCreateNestedOneWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
 }
 
-export type UserUncheckedCreateWithoutRefreshTokensInput = {
+export type UserUncheckedCreateWithoutRecordedRecoveriesInput = {
   id?: string
   firstName: string
   lastName: string
@@ -1274,25 +1494,28 @@ export type UserUncheckedCreateWithoutRefreshTokensInput = {
   passwordResetExpires?: Date | string | null
   householdMemberships?: Prisma.HouseholdMemberUncheckedCreateNestedManyWithoutUserInput
   roles?: Prisma.UserRoleUncheckedCreateNestedManyWithoutUserInput
+  redemptions?: Prisma.RedemptionUncheckedCreateNestedManyWithoutUserInput
+  wallet?: Prisma.WalletUncheckedCreateNestedOneWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
-export type UserCreateOrConnectWithoutRefreshTokensInput = {
+export type UserCreateOrConnectWithoutRecordedRecoveriesInput = {
   where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutRefreshTokensInput, Prisma.UserUncheckedCreateWithoutRefreshTokensInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutRecordedRecoveriesInput, Prisma.UserUncheckedCreateWithoutRecordedRecoveriesInput>
 }
 
-export type UserUpsertWithoutRefreshTokensInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutRefreshTokensInput, Prisma.UserUncheckedUpdateWithoutRefreshTokensInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutRefreshTokensInput, Prisma.UserUncheckedCreateWithoutRefreshTokensInput>
+export type UserUpsertWithoutRecordedRecoveriesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutRecordedRecoveriesInput, Prisma.UserUncheckedUpdateWithoutRecordedRecoveriesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutRecordedRecoveriesInput, Prisma.UserUncheckedCreateWithoutRecordedRecoveriesInput>
   where?: Prisma.UserWhereInput
 }
 
-export type UserUpdateToOneWithWhereWithoutRefreshTokensInput = {
+export type UserUpdateToOneWithWhereWithoutRecordedRecoveriesInput = {
   where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutRefreshTokensInput, Prisma.UserUncheckedUpdateWithoutRefreshTokensInput>
+  data: Prisma.XOR<Prisma.UserUpdateWithoutRecordedRecoveriesInput, Prisma.UserUncheckedUpdateWithoutRecordedRecoveriesInput>
 }
 
-export type UserUpdateWithoutRefreshTokensInput = {
+export type UserUpdateWithoutRecordedRecoveriesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1312,9 +1535,12 @@ export type UserUpdateWithoutRefreshTokensInput = {
   community?: Prisma.CommunityUpdateOneWithoutUsersNestedInput
   householdMemberships?: Prisma.HouseholdMemberUpdateManyWithoutUserNestedInput
   roles?: Prisma.UserRoleUpdateManyWithoutUserNestedInput
+  redemptions?: Prisma.RedemptionUpdateManyWithoutUserNestedInput
+  wallet?: Prisma.WalletUpdateOneWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
 }
 
-export type UserUncheckedUpdateWithoutRefreshTokensInput = {
+export type UserUncheckedUpdateWithoutRecordedRecoveriesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1334,6 +1560,241 @@ export type UserUncheckedUpdateWithoutRefreshTokensInput = {
   passwordResetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   householdMemberships?: Prisma.HouseholdMemberUncheckedUpdateManyWithoutUserNestedInput
   roles?: Prisma.UserRoleUncheckedUpdateManyWithoutUserNestedInput
+  redemptions?: Prisma.RedemptionUncheckedUpdateManyWithoutUserNestedInput
+  wallet?: Prisma.WalletUncheckedUpdateOneWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutWalletInput = {
+  id?: string
+  firstName: string
+  lastName: string
+  phone: string
+  email?: string | null
+  passwordHash: string
+  gender?: $Enums.Gender | null
+  status?: $Enums.UserStatus
+  dateOfBirth?: Date | string | null
+  profilePhotoUrl?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  passwordResetToken?: string | null
+  passwordResetExpires?: Date | string | null
+  region?: Prisma.RegionCreateNestedOneWithoutUsersInput
+  district?: Prisma.DistrictCreateNestedOneWithoutUsersInput
+  community?: Prisma.CommunityCreateNestedOneWithoutUsersInput
+  householdMemberships?: Prisma.HouseholdMemberCreateNestedManyWithoutUserInput
+  roles?: Prisma.UserRoleCreateNestedManyWithoutUserInput
+  recordedRecoveries?: Prisma.RecoveryCreateNestedManyWithoutRecordedByInput
+  redemptions?: Prisma.RedemptionCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutWalletInput = {
+  id?: string
+  firstName: string
+  lastName: string
+  phone: string
+  email?: string | null
+  passwordHash: string
+  gender?: $Enums.Gender | null
+  status?: $Enums.UserStatus
+  dateOfBirth?: Date | string | null
+  profilePhotoUrl?: string | null
+  regionId?: string | null
+  districtId?: string | null
+  communityId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  passwordResetToken?: string | null
+  passwordResetExpires?: Date | string | null
+  householdMemberships?: Prisma.HouseholdMemberUncheckedCreateNestedManyWithoutUserInput
+  roles?: Prisma.UserRoleUncheckedCreateNestedManyWithoutUserInput
+  recordedRecoveries?: Prisma.RecoveryUncheckedCreateNestedManyWithoutRecordedByInput
+  redemptions?: Prisma.RedemptionUncheckedCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutWalletInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutWalletInput, Prisma.UserUncheckedCreateWithoutWalletInput>
+}
+
+export type UserUpsertWithoutWalletInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutWalletInput, Prisma.UserUncheckedUpdateWithoutWalletInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutWalletInput, Prisma.UserUncheckedCreateWithoutWalletInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutWalletInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutWalletInput, Prisma.UserUncheckedUpdateWithoutWalletInput>
+}
+
+export type UserUpdateWithoutWalletInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  passwordResetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordResetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  region?: Prisma.RegionUpdateOneWithoutUsersNestedInput
+  district?: Prisma.DistrictUpdateOneWithoutUsersNestedInput
+  community?: Prisma.CommunityUpdateOneWithoutUsersNestedInput
+  householdMemberships?: Prisma.HouseholdMemberUpdateManyWithoutUserNestedInput
+  roles?: Prisma.UserRoleUpdateManyWithoutUserNestedInput
+  recordedRecoveries?: Prisma.RecoveryUpdateManyWithoutRecordedByNestedInput
+  redemptions?: Prisma.RedemptionUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutWalletInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  regionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  districtId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  communityId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  passwordResetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordResetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  householdMemberships?: Prisma.HouseholdMemberUncheckedUpdateManyWithoutUserNestedInput
+  roles?: Prisma.UserRoleUncheckedUpdateManyWithoutUserNestedInput
+  recordedRecoveries?: Prisma.RecoveryUncheckedUpdateManyWithoutRecordedByNestedInput
+  redemptions?: Prisma.RedemptionUncheckedUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutRedemptionsInput = {
+  id?: string
+  firstName: string
+  lastName: string
+  phone: string
+  email?: string | null
+  passwordHash: string
+  gender?: $Enums.Gender | null
+  status?: $Enums.UserStatus
+  dateOfBirth?: Date | string | null
+  profilePhotoUrl?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  passwordResetToken?: string | null
+  passwordResetExpires?: Date | string | null
+  region?: Prisma.RegionCreateNestedOneWithoutUsersInput
+  district?: Prisma.DistrictCreateNestedOneWithoutUsersInput
+  community?: Prisma.CommunityCreateNestedOneWithoutUsersInput
+  householdMemberships?: Prisma.HouseholdMemberCreateNestedManyWithoutUserInput
+  roles?: Prisma.UserRoleCreateNestedManyWithoutUserInput
+  recordedRecoveries?: Prisma.RecoveryCreateNestedManyWithoutRecordedByInput
+  wallet?: Prisma.WalletCreateNestedOneWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutRedemptionsInput = {
+  id?: string
+  firstName: string
+  lastName: string
+  phone: string
+  email?: string | null
+  passwordHash: string
+  gender?: $Enums.Gender | null
+  status?: $Enums.UserStatus
+  dateOfBirth?: Date | string | null
+  profilePhotoUrl?: string | null
+  regionId?: string | null
+  districtId?: string | null
+  communityId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  passwordResetToken?: string | null
+  passwordResetExpires?: Date | string | null
+  householdMemberships?: Prisma.HouseholdMemberUncheckedCreateNestedManyWithoutUserInput
+  roles?: Prisma.UserRoleUncheckedCreateNestedManyWithoutUserInput
+  recordedRecoveries?: Prisma.RecoveryUncheckedCreateNestedManyWithoutRecordedByInput
+  wallet?: Prisma.WalletUncheckedCreateNestedOneWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutRedemptionsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutRedemptionsInput, Prisma.UserUncheckedCreateWithoutRedemptionsInput>
+}
+
+export type UserUpsertWithoutRedemptionsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutRedemptionsInput, Prisma.UserUncheckedUpdateWithoutRedemptionsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutRedemptionsInput, Prisma.UserUncheckedCreateWithoutRedemptionsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutRedemptionsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutRedemptionsInput, Prisma.UserUncheckedUpdateWithoutRedemptionsInput>
+}
+
+export type UserUpdateWithoutRedemptionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  passwordResetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordResetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  region?: Prisma.RegionUpdateOneWithoutUsersNestedInput
+  district?: Prisma.DistrictUpdateOneWithoutUsersNestedInput
+  community?: Prisma.CommunityUpdateOneWithoutUsersNestedInput
+  householdMemberships?: Prisma.HouseholdMemberUpdateManyWithoutUserNestedInput
+  roles?: Prisma.UserRoleUpdateManyWithoutUserNestedInput
+  recordedRecoveries?: Prisma.RecoveryUpdateManyWithoutRecordedByNestedInput
+  wallet?: Prisma.WalletUpdateOneWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutRedemptionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  regionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  districtId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  communityId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  passwordResetToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordResetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  householdMemberships?: Prisma.HouseholdMemberUncheckedUpdateManyWithoutUserNestedInput
+  roles?: Prisma.UserRoleUncheckedUpdateManyWithoutUserNestedInput
+  recordedRecoveries?: Prisma.RecoveryUncheckedUpdateManyWithoutRecordedByNestedInput
+  wallet?: Prisma.WalletUncheckedUpdateOneWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyRegionInput = {
@@ -1374,6 +1835,9 @@ export type UserUpdateWithoutRegionInput = {
   community?: Prisma.CommunityUpdateOneWithoutUsersNestedInput
   householdMemberships?: Prisma.HouseholdMemberUpdateManyWithoutUserNestedInput
   roles?: Prisma.UserRoleUpdateManyWithoutUserNestedInput
+  recordedRecoveries?: Prisma.RecoveryUpdateManyWithoutRecordedByNestedInput
+  redemptions?: Prisma.RedemptionUpdateManyWithoutUserNestedInput
+  wallet?: Prisma.WalletUpdateOneWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
 }
 
@@ -1396,6 +1860,9 @@ export type UserUncheckedUpdateWithoutRegionInput = {
   passwordResetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   householdMemberships?: Prisma.HouseholdMemberUncheckedUpdateManyWithoutUserNestedInput
   roles?: Prisma.UserRoleUncheckedUpdateManyWithoutUserNestedInput
+  recordedRecoveries?: Prisma.RecoveryUncheckedUpdateManyWithoutRecordedByNestedInput
+  redemptions?: Prisma.RedemptionUncheckedUpdateManyWithoutUserNestedInput
+  wallet?: Prisma.WalletUncheckedUpdateOneWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
@@ -1456,6 +1923,9 @@ export type UserUpdateWithoutDistrictInput = {
   community?: Prisma.CommunityUpdateOneWithoutUsersNestedInput
   householdMemberships?: Prisma.HouseholdMemberUpdateManyWithoutUserNestedInput
   roles?: Prisma.UserRoleUpdateManyWithoutUserNestedInput
+  recordedRecoveries?: Prisma.RecoveryUpdateManyWithoutRecordedByNestedInput
+  redemptions?: Prisma.RedemptionUpdateManyWithoutUserNestedInput
+  wallet?: Prisma.WalletUpdateOneWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
 }
 
@@ -1478,6 +1948,9 @@ export type UserUncheckedUpdateWithoutDistrictInput = {
   passwordResetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   householdMemberships?: Prisma.HouseholdMemberUncheckedUpdateManyWithoutUserNestedInput
   roles?: Prisma.UserRoleUncheckedUpdateManyWithoutUserNestedInput
+  recordedRecoveries?: Prisma.RecoveryUncheckedUpdateManyWithoutRecordedByNestedInput
+  redemptions?: Prisma.RedemptionUncheckedUpdateManyWithoutUserNestedInput
+  wallet?: Prisma.WalletUncheckedUpdateOneWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
@@ -1538,6 +2011,9 @@ export type UserUpdateWithoutCommunityInput = {
   district?: Prisma.DistrictUpdateOneWithoutUsersNestedInput
   householdMemberships?: Prisma.HouseholdMemberUpdateManyWithoutUserNestedInput
   roles?: Prisma.UserRoleUpdateManyWithoutUserNestedInput
+  recordedRecoveries?: Prisma.RecoveryUpdateManyWithoutRecordedByNestedInput
+  redemptions?: Prisma.RedemptionUpdateManyWithoutUserNestedInput
+  wallet?: Prisma.WalletUpdateOneWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
 }
 
@@ -1560,6 +2036,9 @@ export type UserUncheckedUpdateWithoutCommunityInput = {
   passwordResetExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   householdMemberships?: Prisma.HouseholdMemberUncheckedUpdateManyWithoutUserNestedInput
   roles?: Prisma.UserRoleUncheckedUpdateManyWithoutUserNestedInput
+  recordedRecoveries?: Prisma.RecoveryUncheckedUpdateManyWithoutRecordedByNestedInput
+  redemptions?: Prisma.RedemptionUncheckedUpdateManyWithoutUserNestedInput
+  wallet?: Prisma.WalletUncheckedUpdateOneWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
@@ -1590,12 +2069,16 @@ export type UserUncheckedUpdateManyWithoutCommunityInput = {
 export type UserCountOutputType = {
   householdMemberships: number
   roles: number
+  recordedRecoveries: number
+  redemptions: number
   refreshTokens: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   householdMemberships?: boolean | UserCountOutputTypeCountHouseholdMembershipsArgs
   roles?: boolean | UserCountOutputTypeCountRolesArgs
+  recordedRecoveries?: boolean | UserCountOutputTypeCountRecordedRecoveriesArgs
+  redemptions?: boolean | UserCountOutputTypeCountRedemptionsArgs
   refreshTokens?: boolean | UserCountOutputTypeCountRefreshTokensArgs
 }
 
@@ -1621,6 +2104,20 @@ export type UserCountOutputTypeCountHouseholdMembershipsArgs<ExtArgs extends run
  */
 export type UserCountOutputTypeCountRolesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.UserRoleWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountRecordedRecoveriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.RecoveryWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountRedemptionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.RedemptionWhereInput
 }
 
 /**
@@ -1654,6 +2151,9 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   community?: boolean | Prisma.User$communityArgs<ExtArgs>
   householdMemberships?: boolean | Prisma.User$householdMembershipsArgs<ExtArgs>
   roles?: boolean | Prisma.User$rolesArgs<ExtArgs>
+  recordedRecoveries?: boolean | Prisma.User$recordedRecoveriesArgs<ExtArgs>
+  redemptions?: boolean | Prisma.User$redemptionsArgs<ExtArgs>
+  wallet?: boolean | Prisma.User$walletArgs<ExtArgs>
   refreshTokens?: boolean | Prisma.User$refreshTokensArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
@@ -1731,6 +2231,9 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   community?: boolean | Prisma.User$communityArgs<ExtArgs>
   householdMemberships?: boolean | Prisma.User$householdMembershipsArgs<ExtArgs>
   roles?: boolean | Prisma.User$rolesArgs<ExtArgs>
+  recordedRecoveries?: boolean | Prisma.User$recordedRecoveriesArgs<ExtArgs>
+  redemptions?: boolean | Prisma.User$redemptionsArgs<ExtArgs>
+  wallet?: boolean | Prisma.User$walletArgs<ExtArgs>
   refreshTokens?: boolean | Prisma.User$refreshTokensArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
@@ -1753,6 +2256,9 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     community: Prisma.$CommunityPayload<ExtArgs> | null
     householdMemberships: Prisma.$HouseholdMemberPayload<ExtArgs>[]
     roles: Prisma.$UserRolePayload<ExtArgs>[]
+    recordedRecoveries: Prisma.$RecoveryPayload<ExtArgs>[]
+    redemptions: Prisma.$RedemptionPayload<ExtArgs>[]
+    wallet: Prisma.$WalletPayload<ExtArgs> | null
     refreshTokens: Prisma.$RefreshTokenPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
@@ -2172,6 +2678,9 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   community<T extends Prisma.User$communityArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$communityArgs<ExtArgs>>): Prisma.Prisma__CommunityClient<runtime.Types.Result.GetResult<Prisma.$CommunityPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   householdMemberships<T extends Prisma.User$householdMembershipsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$householdMembershipsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$HouseholdMemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   roles<T extends Prisma.User$rolesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$rolesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserRolePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  recordedRecoveries<T extends Prisma.User$recordedRecoveriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$recordedRecoveriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RecoveryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  redemptions<T extends Prisma.User$redemptionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$redemptionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RedemptionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  wallet<T extends Prisma.User$walletArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$walletArgs<ExtArgs>>): Prisma.Prisma__WalletClient<runtime.Types.Result.GetResult<Prisma.$WalletPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   refreshTokens<T extends Prisma.User$refreshTokensArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$refreshTokensArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RefreshTokenPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -2722,6 +3231,73 @@ export type User$rolesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
   take?: number
   skip?: number
   distinct?: Prisma.UserRoleScalarFieldEnum | Prisma.UserRoleScalarFieldEnum[]
+}
+
+/**
+ * User.recordedRecoveries
+ */
+export type User$recordedRecoveriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Recovery
+   */
+  select?: Prisma.RecoverySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Recovery
+   */
+  omit?: Prisma.RecoveryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RecoveryInclude<ExtArgs> | null
+  where?: Prisma.RecoveryWhereInput
+  orderBy?: Prisma.RecoveryOrderByWithRelationInput | Prisma.RecoveryOrderByWithRelationInput[]
+  cursor?: Prisma.RecoveryWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.RecoveryScalarFieldEnum | Prisma.RecoveryScalarFieldEnum[]
+}
+
+/**
+ * User.redemptions
+ */
+export type User$redemptionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Redemption
+   */
+  select?: Prisma.RedemptionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Redemption
+   */
+  omit?: Prisma.RedemptionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RedemptionInclude<ExtArgs> | null
+  where?: Prisma.RedemptionWhereInput
+  orderBy?: Prisma.RedemptionOrderByWithRelationInput | Prisma.RedemptionOrderByWithRelationInput[]
+  cursor?: Prisma.RedemptionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.RedemptionScalarFieldEnum | Prisma.RedemptionScalarFieldEnum[]
+}
+
+/**
+ * User.wallet
+ */
+export type User$walletArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Wallet
+   */
+  select?: Prisma.WalletSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Wallet
+   */
+  omit?: Prisma.WalletOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.WalletInclude<ExtArgs> | null
+  where?: Prisma.WalletWhereInput
 }
 
 /**

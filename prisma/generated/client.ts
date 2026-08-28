@@ -12,14 +12,16 @@
 
 import * as process from 'node:process'
 import * as path from 'node:path'
+import { fileURLToPath } from 'node:url'
+globalThis['__dirname'] = path.dirname(fileURLToPath(import.meta.url))
 
 import * as runtime from "@prisma/client/runtime/client"
-import * as $Enums from "./enums"
-import * as $Class from "./internal/class"
-import * as Prisma from "./internal/prismaNamespace"
+import * as $Enums from "./enums.js"
+import * as $Class from "./internal/class.js"
+import * as Prisma from "./internal/prismaNamespace.js"
 
-export * as $Enums from './enums'
-export * from "./enums"
+export * as $Enums from './enums.js'
+export * from "./enums.js"
 /**
  * ## Prisma Client
  * 
@@ -44,6 +46,11 @@ export { Prisma }
  * 
  */
 export type Permission = Prisma.PermissionModel
+/**
+ * Model RefreshToken
+ * 
+ */
+export type RefreshToken = Prisma.RefreshTokenModel
 /**
  * Model Role
  * 
@@ -90,7 +97,42 @@ export type Household = Prisma.HouseholdModel
  */
 export type HouseholdMember = Prisma.HouseholdMemberModel
 /**
- * Model RefreshToken
+ * Model MaterialType
  * 
  */
-export type RefreshToken = Prisma.RefreshTokenModel
+export type MaterialType = Prisma.MaterialTypeModel
+/**
+ * Model Recovery
+ * 
+ */
+export type Recovery = Prisma.RecoveryModel
+/**
+ * Model RecoveryItem
+ * 
+ */
+export type RecoveryItem = Prisma.RecoveryItemModel
+/**
+ * Model PointRule
+ * 
+ */
+export type PointRule = Prisma.PointRuleModel
+/**
+ * Model Wallet
+ * 
+ */
+export type Wallet = Prisma.WalletModel
+/**
+ * Model WalletTransaction
+ * 
+ */
+export type WalletTransaction = Prisma.WalletTransactionModel
+/**
+ * Model Reward
+ * 
+ */
+export type Reward = Prisma.RewardModel
+/**
+ * Model Redemption
+ * 
+ */
+export type Redemption = Prisma.RedemptionModel

@@ -9,8 +9,8 @@
  * 🟢 You can import this file directly.
  */
 import type * as runtime from "@prisma/client/runtime/client"
-import type * as $Enums from "../enums"
-import type * as Prisma from "../internal/prismaNamespace"
+import type * as $Enums from "../enums.js"
+import type * as Prisma from "../internal/prismaNamespace.js"
 
 /**
  * Model Household
@@ -237,6 +237,7 @@ export type HouseholdWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"Household"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Household"> | Date | string
   community?: Prisma.XOR<Prisma.CommunityScalarRelationFilter, Prisma.CommunityWhereInput>
+  recoveries?: Prisma.RecoveryListRelationFilter
   members?: Prisma.HouseholdMemberListRelationFilter
 }
 
@@ -249,6 +250,7 @@ export type HouseholdOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   community?: Prisma.CommunityOrderByWithRelationInput
+  recoveries?: Prisma.RecoveryOrderByRelationAggregateInput
   members?: Prisma.HouseholdMemberOrderByRelationAggregateInput
 }
 
@@ -264,6 +266,7 @@ export type HouseholdWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"Household"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Household"> | Date | string
   community?: Prisma.XOR<Prisma.CommunityScalarRelationFilter, Prisma.CommunityWhereInput>
+  recoveries?: Prisma.RecoveryListRelationFilter
   members?: Prisma.HouseholdMemberListRelationFilter
 }, "id">
 
@@ -303,6 +306,7 @@ export type HouseholdCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   community: Prisma.CommunityCreateNestedOneWithoutHouseholdsInput
+  recoveries?: Prisma.RecoveryCreateNestedManyWithoutHouseholdInput
   members?: Prisma.HouseholdMemberCreateNestedManyWithoutHouseholdInput
 }
 
@@ -314,6 +318,7 @@ export type HouseholdUncheckedCreateInput = {
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  recoveries?: Prisma.RecoveryUncheckedCreateNestedManyWithoutHouseholdInput
   members?: Prisma.HouseholdMemberUncheckedCreateNestedManyWithoutHouseholdInput
 }
 
@@ -325,6 +330,7 @@ export type HouseholdUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   community?: Prisma.CommunityUpdateOneRequiredWithoutHouseholdsNestedInput
+  recoveries?: Prisma.RecoveryUpdateManyWithoutHouseholdNestedInput
   members?: Prisma.HouseholdMemberUpdateManyWithoutHouseholdNestedInput
 }
 
@@ -336,6 +342,7 @@ export type HouseholdUncheckedUpdateInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  recoveries?: Prisma.RecoveryUncheckedUpdateManyWithoutHouseholdNestedInput
   members?: Prisma.HouseholdMemberUncheckedUpdateManyWithoutHouseholdNestedInput
 }
 
@@ -487,6 +494,20 @@ export type HouseholdUpdateOneRequiredWithoutMembersNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.HouseholdUpdateToOneWithWhereWithoutMembersInput, Prisma.HouseholdUpdateWithoutMembersInput>, Prisma.HouseholdUncheckedUpdateWithoutMembersInput>
 }
 
+export type HouseholdCreateNestedOneWithoutRecoveriesInput = {
+  create?: Prisma.XOR<Prisma.HouseholdCreateWithoutRecoveriesInput, Prisma.HouseholdUncheckedCreateWithoutRecoveriesInput>
+  connectOrCreate?: Prisma.HouseholdCreateOrConnectWithoutRecoveriesInput
+  connect?: Prisma.HouseholdWhereUniqueInput
+}
+
+export type HouseholdUpdateOneRequiredWithoutRecoveriesNestedInput = {
+  create?: Prisma.XOR<Prisma.HouseholdCreateWithoutRecoveriesInput, Prisma.HouseholdUncheckedCreateWithoutRecoveriesInput>
+  connectOrCreate?: Prisma.HouseholdCreateOrConnectWithoutRecoveriesInput
+  upsert?: Prisma.HouseholdUpsertWithoutRecoveriesInput
+  connect?: Prisma.HouseholdWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.HouseholdUpdateToOneWithWhereWithoutRecoveriesInput, Prisma.HouseholdUpdateWithoutRecoveriesInput>, Prisma.HouseholdUncheckedUpdateWithoutRecoveriesInput>
+}
+
 export type HouseholdCreateWithoutCommunityInput = {
   id?: string
   name: string
@@ -494,6 +515,7 @@ export type HouseholdCreateWithoutCommunityInput = {
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  recoveries?: Prisma.RecoveryCreateNestedManyWithoutHouseholdInput
   members?: Prisma.HouseholdMemberCreateNestedManyWithoutHouseholdInput
 }
 
@@ -504,6 +526,7 @@ export type HouseholdUncheckedCreateWithoutCommunityInput = {
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  recoveries?: Prisma.RecoveryUncheckedCreateNestedManyWithoutHouseholdInput
   members?: Prisma.HouseholdMemberUncheckedCreateNestedManyWithoutHouseholdInput
 }
 
@@ -554,6 +577,7 @@ export type HouseholdCreateWithoutMembersInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   community: Prisma.CommunityCreateNestedOneWithoutHouseholdsInput
+  recoveries?: Prisma.RecoveryCreateNestedManyWithoutHouseholdInput
 }
 
 export type HouseholdUncheckedCreateWithoutMembersInput = {
@@ -564,6 +588,7 @@ export type HouseholdUncheckedCreateWithoutMembersInput = {
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  recoveries?: Prisma.RecoveryUncheckedCreateNestedManyWithoutHouseholdInput
 }
 
 export type HouseholdCreateOrConnectWithoutMembersInput = {
@@ -590,6 +615,7 @@ export type HouseholdUpdateWithoutMembersInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   community?: Prisma.CommunityUpdateOneRequiredWithoutHouseholdsNestedInput
+  recoveries?: Prisma.RecoveryUpdateManyWithoutHouseholdNestedInput
 }
 
 export type HouseholdUncheckedUpdateWithoutMembersInput = {
@@ -600,6 +626,67 @@ export type HouseholdUncheckedUpdateWithoutMembersInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  recoveries?: Prisma.RecoveryUncheckedUpdateManyWithoutHouseholdNestedInput
+}
+
+export type HouseholdCreateWithoutRecoveriesInput = {
+  id?: string
+  name: string
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  community: Prisma.CommunityCreateNestedOneWithoutHouseholdsInput
+  members?: Prisma.HouseholdMemberCreateNestedManyWithoutHouseholdInput
+}
+
+export type HouseholdUncheckedCreateWithoutRecoveriesInput = {
+  id?: string
+  name: string
+  communityId: string
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  members?: Prisma.HouseholdMemberUncheckedCreateNestedManyWithoutHouseholdInput
+}
+
+export type HouseholdCreateOrConnectWithoutRecoveriesInput = {
+  where: Prisma.HouseholdWhereUniqueInput
+  create: Prisma.XOR<Prisma.HouseholdCreateWithoutRecoveriesInput, Prisma.HouseholdUncheckedCreateWithoutRecoveriesInput>
+}
+
+export type HouseholdUpsertWithoutRecoveriesInput = {
+  update: Prisma.XOR<Prisma.HouseholdUpdateWithoutRecoveriesInput, Prisma.HouseholdUncheckedUpdateWithoutRecoveriesInput>
+  create: Prisma.XOR<Prisma.HouseholdCreateWithoutRecoveriesInput, Prisma.HouseholdUncheckedCreateWithoutRecoveriesInput>
+  where?: Prisma.HouseholdWhereInput
+}
+
+export type HouseholdUpdateToOneWithWhereWithoutRecoveriesInput = {
+  where?: Prisma.HouseholdWhereInput
+  data: Prisma.XOR<Prisma.HouseholdUpdateWithoutRecoveriesInput, Prisma.HouseholdUncheckedUpdateWithoutRecoveriesInput>
+}
+
+export type HouseholdUpdateWithoutRecoveriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  community?: Prisma.CommunityUpdateOneRequiredWithoutHouseholdsNestedInput
+  members?: Prisma.HouseholdMemberUpdateManyWithoutHouseholdNestedInput
+}
+
+export type HouseholdUncheckedUpdateWithoutRecoveriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  communityId?: Prisma.StringFieldUpdateOperationsInput | string
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  members?: Prisma.HouseholdMemberUncheckedUpdateManyWithoutHouseholdNestedInput
 }
 
 export type HouseholdCreateManyCommunityInput = {
@@ -618,6 +705,7 @@ export type HouseholdUpdateWithoutCommunityInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  recoveries?: Prisma.RecoveryUpdateManyWithoutHouseholdNestedInput
   members?: Prisma.HouseholdMemberUpdateManyWithoutHouseholdNestedInput
 }
 
@@ -628,6 +716,7 @@ export type HouseholdUncheckedUpdateWithoutCommunityInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  recoveries?: Prisma.RecoveryUncheckedUpdateManyWithoutHouseholdNestedInput
   members?: Prisma.HouseholdMemberUncheckedUpdateManyWithoutHouseholdNestedInput
 }
 
@@ -646,10 +735,12 @@ export type HouseholdUncheckedUpdateManyWithoutCommunityInput = {
  */
 
 export type HouseholdCountOutputType = {
+  recoveries: number
   members: number
 }
 
 export type HouseholdCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  recoveries?: boolean | HouseholdCountOutputTypeCountRecoveriesArgs
   members?: boolean | HouseholdCountOutputTypeCountMembersArgs
 }
 
@@ -661,6 +752,13 @@ export type HouseholdCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Ex
    * Select specific fields to fetch from the HouseholdCountOutputType
    */
   select?: Prisma.HouseholdCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * HouseholdCountOutputType without action
+ */
+export type HouseholdCountOutputTypeCountRecoveriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.RecoveryWhereInput
 }
 
 /**
@@ -680,6 +778,7 @@ export type HouseholdSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   createdAt?: boolean
   updatedAt?: boolean
   community?: boolean | Prisma.CommunityDefaultArgs<ExtArgs>
+  recoveries?: boolean | Prisma.Household$recoveriesArgs<ExtArgs>
   members?: boolean | Prisma.Household$membersArgs<ExtArgs>
   _count?: boolean | Prisma.HouseholdCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["household"]>
@@ -719,6 +818,7 @@ export type HouseholdSelectScalar = {
 export type HouseholdOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "communityId" | "latitude" | "longitude" | "createdAt" | "updatedAt", ExtArgs["result"]["household"]>
 export type HouseholdInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   community?: boolean | Prisma.CommunityDefaultArgs<ExtArgs>
+  recoveries?: boolean | Prisma.Household$recoveriesArgs<ExtArgs>
   members?: boolean | Prisma.Household$membersArgs<ExtArgs>
   _count?: boolean | Prisma.HouseholdCountOutputTypeDefaultArgs<ExtArgs>
 }
@@ -733,6 +833,7 @@ export type $HouseholdPayload<ExtArgs extends runtime.Types.Extensions.InternalA
   name: "Household"
   objects: {
     community: Prisma.$CommunityPayload<ExtArgs>
+    recoveries: Prisma.$RecoveryPayload<ExtArgs>[]
     members: Prisma.$HouseholdMemberPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
@@ -1138,6 +1239,7 @@ readonly fields: HouseholdFieldRefs;
 export interface Prisma__HouseholdClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   community<T extends Prisma.CommunityDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CommunityDefaultArgs<ExtArgs>>): Prisma.Prisma__CommunityClient<runtime.Types.Result.GetResult<Prisma.$CommunityPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  recoveries<T extends Prisma.Household$recoveriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Household$recoveriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RecoveryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   members<T extends Prisma.Household$membersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Household$membersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$HouseholdMemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1573,6 +1675,30 @@ export type HouseholdDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Int
    * Limit how many Households to delete.
    */
   limit?: number
+}
+
+/**
+ * Household.recoveries
+ */
+export type Household$recoveriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Recovery
+   */
+  select?: Prisma.RecoverySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Recovery
+   */
+  omit?: Prisma.RecoveryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RecoveryInclude<ExtArgs> | null
+  where?: Prisma.RecoveryWhereInput
+  orderBy?: Prisma.RecoveryOrderByWithRelationInput | Prisma.RecoveryOrderByWithRelationInput[]
+  cursor?: Prisma.RecoveryWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.RecoveryScalarFieldEnum | Prisma.RecoveryScalarFieldEnum[]
 }
 
 /**

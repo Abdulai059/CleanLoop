@@ -7,6 +7,12 @@ import hpp from "hpp";
 import userRouter from "./routes/userRoutes";
 import locationRouter from "./routes/locationRouters";
 import householdRouter from "./routes/householdRoutes";
+import materialRouter from "./routes/materialRoutes";
+import recoveryRouter from "./routes/recoveryRoutes";
+import pointRuleRouter from "./routes/pointRuleRoutes";
+import walletRouter from "./routes/walletRoutes";
+import rewardRouter from "./routes/rewardRoutes";
+import redemptionRouter from "./routes/redemptionRoutes";
 
 import AppError from "./utils/AppError";
 import globalErrorHandler from "./controllers/errorController";
@@ -45,6 +51,12 @@ app.use(hpp());
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/locations", locationRouter);
 app.use("/api/v1/households", householdRouter);
+app.use("/api/v1/materials", materialRouter);
+app.use("/api/v1/recoveries", recoveryRouter);
+app.use("/api/v1/point-rules", pointRuleRouter);
+app.use("/api/v1/wallet", walletRouter);
+app.use("/api/v1/rewards", rewardRouter);
+app.use("/api/v1/redemptions", redemptionRouter);
 
 // Handle undefined routes
 app.all("*splat", (req: Request, res: Response, next: NextFunction) => {

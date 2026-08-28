@@ -34,3 +34,41 @@ export const HouseholdRole = {
 } as const
 
 export type HouseholdRole = (typeof HouseholdRole)[keyof typeof HouseholdRole]
+
+
+export const RecoveryStatus = {
+  VERIFIED: 'VERIFIED',
+  VOIDED: 'VOIDED'
+} as const
+
+export type RecoveryStatus = (typeof RecoveryStatus)[keyof typeof RecoveryStatus]
+
+
+export const WalletTransactionType = {
+  EARN: 'EARN',
+  REDEEM: 'REDEEM',
+  ADJUSTMENT: 'ADJUSTMENT',
+  REVERSAL: 'REVERSAL'
+} as const
+
+export type WalletTransactionType = (typeof WalletTransactionType)[keyof typeof WalletTransactionType]
+
+
+export const RewardStatus = {
+  ACTIVE: 'ACTIVE',
+  INACTIVE: 'INACTIVE',
+  OUT_OF_STOCK: 'OUT_OF_STOCK'
+} as const
+
+export type RewardStatus = (typeof RewardStatus)[keyof typeof RewardStatus]
+
+
+export const RedemptionStatus = {
+  PENDING: 'PENDING',
+  PROCESSING: 'PROCESSING',
+  COMPLETED: 'COMPLETED',
+  FAILED: 'FAILED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type RedemptionStatus = (typeof RedemptionStatus)[keyof typeof RedemptionStatus]

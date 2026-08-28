@@ -26,6 +26,32 @@ enum HouseholdRole {
   MEMBER
 }
 
+enum RecoveryStatus {
+  VERIFIED
+  VOIDED
+}
+
+enum WalletTransactionType {
+  EARN
+  REDEEM
+  ADJUSTMENT
+  REVERSAL
+}
+
+enum RewardStatus {
+  ACTIVE
+  INACTIVE
+  OUT_OF_STOCK
+}
+
+enum RedemptionStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+  CANCELLED
+}
+
 model Permission {
   id          String   @id @default(cuid())
   name        String   @unique
@@ -101,6 +127,10 @@ model User {
   householdMemberships HouseholdMember[]
 
   roles UserRole[]
+  recordedRecoveries Recovery[] @relation("RecoveryRecordedBy")
+  redemptions Redemption[] 
+
+  wallet Wallet?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -110,6 +140,7 @@ model User {
   passwordResetToken  String?
   passwordResetExpires DateTime?
 }
+
 
 model UserRole {
   userId String
@@ -181,6 +212,8 @@ model Household {
   latitude Decimal? @db.Decimal(10,7)
   longitude Decimal? @db.Decimal(10,7)
 
+  recoveries Recovery[]
+
   members HouseholdMember[]
 
   createdAt DateTime @default(now())
@@ -202,3 +235,165 @@ model HouseholdMember {
   @@id([householdId, userId])
 }
 
+
+
+model MaterialType {
+  id          String  @id @default(cuid())
+  name        String  @unique
+  description String?
+  isActive    Boolean @default(true)
+
+  recoveryItems RecoveryItem[]
+  pointRules    PointRule[] 
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+
+model Recovery {
+  id String @id @default(cuid())
+
+  householdId  String
+  recordedById String
+
+  status RecoveryStatus @default(VERIFIED)
+
+  totalWeight Decimal @db.Decimal(10, 2)
+  totalPoints Int @default(0)
+
+  household Household @relation(fields: [householdId], references: [id])
+  recordedBy User @relation("RecoveryRecordedBy", fields: [recordedById], references: [id])
+
+  items RecoveryItem[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([householdId])
+  @@index([recordedById])
+  @@index([status])
+  @@index([createdAt])
+}
+
+
+model RecoveryItem {
+  id String @id @default(cuid())
+
+  recoveryId     String
+  materialTypeId String
+
+  weight Decimal @db.Decimal(10, 2)
+
+  recovery Recovery @relation(fields: [recoveryId], references: [id], onDelete: Cascade)
+  materialType MaterialType @relation(fields: [materialTypeId], references: [id])
+
+  createdAt DateTime @default(now())
+
+  @@index([recoveryId])
+  @@index([materialTypeId])
+}
+
+
+model PointRule {
+  id String @id @default(cuid())
+
+  materialTypeId String
+
+  pointsPerKg Decimal @db.Decimal(10, 2)
+
+  isActive Boolean @default(true)
+
+  materialType MaterialType @relation(fields: [materialTypeId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([materialTypeId])
+}
+
+model Wallet {
+  id String @id @default(cuid())
+
+  userId String @unique
+
+  balance Decimal @default(0) @db.Decimal(12, 2)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  transactions WalletTransaction[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model WalletTransaction {
+  id String @id @default(cuid())
+
+  walletId String
+
+  type WalletTransactionType
+
+  amount Decimal @db.Decimal(12, 2)
+
+  balanceAfter Decimal @db.Decimal(12, 2)
+
+  referenceId String?
+  description String?
+
+  wallet Wallet @relation(fields: [walletId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@index([walletId])
+  @@index([referenceId])
+  @@index([createdAt])
+}
+
+
+model Reward {
+  id String @id @default(cuid())
+
+  name        String
+  description String?
+
+  pointsCost Int
+
+  imageUrl String?
+
+  status RewardStatus @default(ACTIVE)
+
+  stockQuantity Int?
+
+  redemptions Redemption[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status])
+}
+
+model Redemption {
+  id String @id @default(cuid())
+
+  userId   String
+  rewardId String
+
+  pointsSpent Int
+
+  status RedemptionStatus @default(PENDING)
+
+  failureReason String?
+
+  user User @relation(fields: [userId], references: [id])
+
+  reward Reward @relation(fields: [rewardId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@index([rewardId])
+  @@index([status])
+  @@index([createdAt])
+}
