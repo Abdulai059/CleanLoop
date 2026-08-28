@@ -52,6 +52,28 @@ enum RedemptionStatus {
   CANCELLED
 }
 
+enum SchoolStaffRole {
+  ADMIN
+  STAFF
+}
+
+enum SchoolCollectionScope {
+  SCHOOL
+  CLASS
+}
+
+enum CampaignType {
+  SCHOOL
+  CLASS
+}
+
+enum CampaignStatus {
+  DRAFT
+  ACTIVE
+  COMPLETED
+  CANCELLED
+}
+
 model Permission {
   id          String   @id @default(cuid())
   name        String   @unique
@@ -130,6 +152,9 @@ model User {
   recordedRecoveries Recovery[] @relation("RecoveryRecordedBy")
   redemptions Redemption[] 
 
+  schoolStaffMemberships SchoolStaff[]
+recordedSchoolCollections SchoolCollection[] @relation("SchoolCollectionRecordedBy")
+
   wallet Wallet?
 
   createdAt DateTime @default(now())
@@ -161,6 +186,8 @@ model Region {
 
   users User[]
 
+  schools School[]
+
   createdAt DateTime @default(now())
 }
 
@@ -176,6 +203,8 @@ model District {
   communities Community[]
 
   users User[]
+
+  schools School[]
 
   createdAt DateTime @default(now())
 
@@ -194,6 +223,8 @@ model Community {
   households Household[]
 
   users User[]
+
+  schools School[]
 
   createdAt DateTime @default(now())
 
@@ -245,6 +276,8 @@ model MaterialType {
 
   recoveryItems RecoveryItem[]
   pointRules    PointRule[] 
+
+  schoolCollectionItems SchoolCollectionItem[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -396,4 +429,162 @@ model Redemption {
   @@index([rewardId])
   @@index([status])
   @@index([createdAt])
+}
+
+model School {
+  id String @id @default(cuid())
+
+  name String
+
+  regionId    String?
+  districtId  String?
+  communityId String?
+
+  region    Region?    @relation(fields: [regionId], references: [id])
+  district  District?  @relation(fields: [districtId], references: [id])
+  community Community? @relation(fields: [communityId], references: [id])
+
+  isActive Boolean @default(true)
+
+  staff       SchoolStaff[]
+  classes     SchoolClass[]
+  collections SchoolCollection[]
+  participants CampaignParticipant[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([districtId])
+  @@index([communityId])
+}
+
+model SchoolStaff {
+  schoolId String
+  userId   String
+
+  role SchoolStaffRole @default(ADMIN)
+
+  school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  joinedAt DateTime @default(now())
+
+  @@id([schoolId, userId])
+  @@index([schoolId])
+  @@index([userId])
+}
+
+model SchoolClass {
+  id String @id @default(cuid())
+
+  schoolId String
+  name     String
+
+  school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+
+  collections  SchoolCollection[]
+  participants CampaignParticipant[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([schoolId, name])
+  @@index([schoolId])
+}
+
+
+model SchoolCollection {
+  id String @id @default(cuid())
+
+  schoolId String
+  classId  String?
+
+  recordedById String
+
+  scope SchoolCollectionScope
+
+  totalWeight Decimal @db.Decimal(10, 2)
+  totalPoints Int @default(0)
+
+  campaignId String?
+
+  school     School       @relation(fields: [schoolId], references: [id])
+  class      SchoolClass? @relation(fields: [classId], references: [id])
+  campaign   Campaign?    @relation(fields: [campaignId], references: [id])
+  recordedBy User         @relation("SchoolCollectionRecordedBy", fields: [recordedById], references: [id])
+
+  items SchoolCollectionItem[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([schoolId])
+  @@index([classId])
+  @@index([recordedById])
+  @@index([campaignId])
+  @@index([createdAt])
+}
+
+
+model SchoolCollectionItem {
+  id String @id @default(cuid())
+
+  collectionId   String
+  materialTypeId String
+
+  weight Decimal @db.Decimal(10, 2)
+  points Int @default(0)
+
+  collection   SchoolCollection @relation(fields: [collectionId], references: [id], onDelete: Cascade)
+  materialType MaterialType     @relation(fields: [materialTypeId], references: [id])
+
+  createdAt DateTime @default(now())
+
+  @@index([collectionId])
+  @@index([materialTypeId])
+}
+
+
+model Campaign {
+  id String @id @default(cuid())
+
+  name        String
+  description String?
+
+  type CampaignType
+
+  startDate DateTime
+  endDate   DateTime
+
+  status CampaignStatus @default(DRAFT)
+
+  collections  SchoolCollection[]
+  participants CampaignParticipant[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status])
+  @@index([startDate])
+  @@index([endDate])
+}
+
+
+model CampaignParticipant {
+  id String @id @default(cuid())
+
+  campaignId String
+  schoolId   String
+  classId    String?
+
+  campaign Campaign    @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+  school   School      @relation(fields: [schoolId], references: [id])
+  class    SchoolClass? @relation(fields: [classId], references: [id])
+
+  createdAt DateTime @default(now())
+
+  @@index([campaignId])
+  @@index([schoolId])
+  @@index([classId])
+  @@unique([campaignId, schoolId, classId])
 }

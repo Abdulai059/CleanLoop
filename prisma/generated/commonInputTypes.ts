@@ -375,6 +375,74 @@ export type EnumRedemptionStatusWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumRedemptionStatusFilter<$PrismaModel>
 }
 
+export type EnumSchoolStaffRoleFilter<$PrismaModel = never> = {
+  equals?: $Enums.SchoolStaffRole | Prisma.EnumSchoolStaffRoleFieldRefInput<$PrismaModel>
+  in?: $Enums.SchoolStaffRole[] | Prisma.ListEnumSchoolStaffRoleFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SchoolStaffRole[] | Prisma.ListEnumSchoolStaffRoleFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSchoolStaffRoleFilter<$PrismaModel> | $Enums.SchoolStaffRole
+}
+
+export type EnumSchoolStaffRoleWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.SchoolStaffRole | Prisma.EnumSchoolStaffRoleFieldRefInput<$PrismaModel>
+  in?: $Enums.SchoolStaffRole[] | Prisma.ListEnumSchoolStaffRoleFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SchoolStaffRole[] | Prisma.ListEnumSchoolStaffRoleFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSchoolStaffRoleWithAggregatesFilter<$PrismaModel> | $Enums.SchoolStaffRole
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumSchoolStaffRoleFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumSchoolStaffRoleFilter<$PrismaModel>
+}
+
+export type EnumSchoolCollectionScopeFilter<$PrismaModel = never> = {
+  equals?: $Enums.SchoolCollectionScope | Prisma.EnumSchoolCollectionScopeFieldRefInput<$PrismaModel>
+  in?: $Enums.SchoolCollectionScope[] | Prisma.ListEnumSchoolCollectionScopeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SchoolCollectionScope[] | Prisma.ListEnumSchoolCollectionScopeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSchoolCollectionScopeFilter<$PrismaModel> | $Enums.SchoolCollectionScope
+}
+
+export type EnumSchoolCollectionScopeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.SchoolCollectionScope | Prisma.EnumSchoolCollectionScopeFieldRefInput<$PrismaModel>
+  in?: $Enums.SchoolCollectionScope[] | Prisma.ListEnumSchoolCollectionScopeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SchoolCollectionScope[] | Prisma.ListEnumSchoolCollectionScopeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSchoolCollectionScopeWithAggregatesFilter<$PrismaModel> | $Enums.SchoolCollectionScope
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumSchoolCollectionScopeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumSchoolCollectionScopeFilter<$PrismaModel>
+}
+
+export type EnumCampaignTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.CampaignType | Prisma.EnumCampaignTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.CampaignType[] | Prisma.ListEnumCampaignTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CampaignType[] | Prisma.ListEnumCampaignTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCampaignTypeFilter<$PrismaModel> | $Enums.CampaignType
+}
+
+export type EnumCampaignStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.CampaignStatus | Prisma.EnumCampaignStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.CampaignStatus[] | Prisma.ListEnumCampaignStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CampaignStatus[] | Prisma.ListEnumCampaignStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCampaignStatusFilter<$PrismaModel> | $Enums.CampaignStatus
+}
+
+export type EnumCampaignTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CampaignType | Prisma.EnumCampaignTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.CampaignType[] | Prisma.ListEnumCampaignTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CampaignType[] | Prisma.ListEnumCampaignTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCampaignTypeWithAggregatesFilter<$PrismaModel> | $Enums.CampaignType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCampaignTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCampaignTypeFilter<$PrismaModel>
+}
+
+export type EnumCampaignStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CampaignStatus | Prisma.EnumCampaignStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.CampaignStatus[] | Prisma.ListEnumCampaignStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CampaignStatus[] | Prisma.ListEnumCampaignStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCampaignStatusWithAggregatesFilter<$PrismaModel> | $Enums.CampaignStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCampaignStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCampaignStatusFilter<$PrismaModel>
+}
+
 export type NestedStringFilter<$PrismaModel = never> = {
   equals?: string | Prisma.StringFieldRefInput<$PrismaModel>
   in?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
@@ -747,6 +815,74 @@ export type NestedEnumRedemptionStatusWithAggregatesFilter<$PrismaModel = never>
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumRedemptionStatusFilter<$PrismaModel>
   _max?: Prisma.NestedEnumRedemptionStatusFilter<$PrismaModel>
+}
+
+export type NestedEnumSchoolStaffRoleFilter<$PrismaModel = never> = {
+  equals?: $Enums.SchoolStaffRole | Prisma.EnumSchoolStaffRoleFieldRefInput<$PrismaModel>
+  in?: $Enums.SchoolStaffRole[] | Prisma.ListEnumSchoolStaffRoleFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SchoolStaffRole[] | Prisma.ListEnumSchoolStaffRoleFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSchoolStaffRoleFilter<$PrismaModel> | $Enums.SchoolStaffRole
+}
+
+export type NestedEnumSchoolStaffRoleWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.SchoolStaffRole | Prisma.EnumSchoolStaffRoleFieldRefInput<$PrismaModel>
+  in?: $Enums.SchoolStaffRole[] | Prisma.ListEnumSchoolStaffRoleFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SchoolStaffRole[] | Prisma.ListEnumSchoolStaffRoleFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSchoolStaffRoleWithAggregatesFilter<$PrismaModel> | $Enums.SchoolStaffRole
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumSchoolStaffRoleFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumSchoolStaffRoleFilter<$PrismaModel>
+}
+
+export type NestedEnumSchoolCollectionScopeFilter<$PrismaModel = never> = {
+  equals?: $Enums.SchoolCollectionScope | Prisma.EnumSchoolCollectionScopeFieldRefInput<$PrismaModel>
+  in?: $Enums.SchoolCollectionScope[] | Prisma.ListEnumSchoolCollectionScopeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SchoolCollectionScope[] | Prisma.ListEnumSchoolCollectionScopeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSchoolCollectionScopeFilter<$PrismaModel> | $Enums.SchoolCollectionScope
+}
+
+export type NestedEnumSchoolCollectionScopeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.SchoolCollectionScope | Prisma.EnumSchoolCollectionScopeFieldRefInput<$PrismaModel>
+  in?: $Enums.SchoolCollectionScope[] | Prisma.ListEnumSchoolCollectionScopeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SchoolCollectionScope[] | Prisma.ListEnumSchoolCollectionScopeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSchoolCollectionScopeWithAggregatesFilter<$PrismaModel> | $Enums.SchoolCollectionScope
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumSchoolCollectionScopeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumSchoolCollectionScopeFilter<$PrismaModel>
+}
+
+export type NestedEnumCampaignTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.CampaignType | Prisma.EnumCampaignTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.CampaignType[] | Prisma.ListEnumCampaignTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CampaignType[] | Prisma.ListEnumCampaignTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCampaignTypeFilter<$PrismaModel> | $Enums.CampaignType
+}
+
+export type NestedEnumCampaignStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.CampaignStatus | Prisma.EnumCampaignStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.CampaignStatus[] | Prisma.ListEnumCampaignStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CampaignStatus[] | Prisma.ListEnumCampaignStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCampaignStatusFilter<$PrismaModel> | $Enums.CampaignStatus
+}
+
+export type NestedEnumCampaignTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CampaignType | Prisma.EnumCampaignTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.CampaignType[] | Prisma.ListEnumCampaignTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CampaignType[] | Prisma.ListEnumCampaignTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCampaignTypeWithAggregatesFilter<$PrismaModel> | $Enums.CampaignType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCampaignTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCampaignTypeFilter<$PrismaModel>
+}
+
+export type NestedEnumCampaignStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CampaignStatus | Prisma.EnumCampaignStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.CampaignStatus[] | Prisma.ListEnumCampaignStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CampaignStatus[] | Prisma.ListEnumCampaignStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCampaignStatusWithAggregatesFilter<$PrismaModel> | $Enums.CampaignStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCampaignStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCampaignStatusFilter<$PrismaModel>
 }
 
 

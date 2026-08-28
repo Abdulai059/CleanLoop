@@ -136,3 +136,38 @@ export type Reward = Prisma.RewardModel
  * 
  */
 export type Redemption = Prisma.RedemptionModel
+/**
+ * Model School
+ * 
+ */
+export type School = Prisma.SchoolModel
+/**
+ * Model SchoolStaff
+ * 
+ */
+export type SchoolStaff = Prisma.SchoolStaffModel
+/**
+ * Model SchoolClass
+ * 
+ */
+export type SchoolClass = Prisma.SchoolClassModel
+/**
+ * Model SchoolCollection
+ * 
+ */
+export type SchoolCollection = Prisma.SchoolCollectionModel
+/**
+ * Model SchoolCollectionItem
+ * 
+ */
+export type SchoolCollectionItem = Prisma.SchoolCollectionItemModel
+/**
+ * Model Campaign
+ * 
+ */
+export type Campaign = Prisma.CampaignModel
+/**
+ * Model CampaignParticipant
+ * 
+ */
+export type CampaignParticipant = Prisma.CampaignParticipantModel

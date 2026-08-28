@@ -13,6 +13,7 @@ import pointRuleRouter from "./routes/pointRuleRoutes";
 import walletRouter from "./routes/walletRoutes";
 import rewardRouter from "./routes/rewardRoutes";
 import redemptionRouter from "./routes/redemptionRoutes";
+import schoolRouter from "./routes/schoolRoutes";
 
 import AppError from "./utils/AppError";
 import globalErrorHandler from "./controllers/errorController";
@@ -57,6 +58,7 @@ app.use("/api/v1/point-rules", pointRuleRouter);
 app.use("/api/v1/wallet", walletRouter);
 app.use("/api/v1/rewards", rewardRouter);
 app.use("/api/v1/redemptions", redemptionRouter);
+app.use("/api/v1/schools", schoolRouter);
 
 // Handle undefined routes
 app.all("*splat", (req: Request, res: Response, next: NextFunction) => {

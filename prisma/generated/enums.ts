@@ -72,3 +72,37 @@ export const RedemptionStatus = {
 } as const
 
 export type RedemptionStatus = (typeof RedemptionStatus)[keyof typeof RedemptionStatus]
+
+
+export const SchoolStaffRole = {
+  ADMIN: 'ADMIN',
+  STAFF: 'STAFF'
+} as const
+
+export type SchoolStaffRole = (typeof SchoolStaffRole)[keyof typeof SchoolStaffRole]
+
+
+export const SchoolCollectionScope = {
+  SCHOOL: 'SCHOOL',
+  CLASS: 'CLASS'
+} as const
+
+export type SchoolCollectionScope = (typeof SchoolCollectionScope)[keyof typeof SchoolCollectionScope]
+
+
+export const CampaignType = {
+  SCHOOL: 'SCHOOL',
+  CLASS: 'CLASS'
+} as const
+
+export type CampaignType = (typeof CampaignType)[keyof typeof CampaignType]
+
+
+export const CampaignStatus = {
+  DRAFT: 'DRAFT',
+  ACTIVE: 'ACTIVE',
+  COMPLETED: 'COMPLETED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type CampaignStatus = (typeof CampaignStatus)[keyof typeof CampaignStatus]

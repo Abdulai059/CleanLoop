@@ -69,7 +69,14 @@ export const ModelName = {
   Wallet: 'Wallet',
   WalletTransaction: 'WalletTransaction',
   Reward: 'Reward',
-  Redemption: 'Redemption'
+  Redemption: 'Redemption',
+  School: 'School',
+  SchoolStaff: 'SchoolStaff',
+  SchoolClass: 'SchoolClass',
+  SchoolCollection: 'SchoolCollection',
+  SchoolCollectionItem: 'SchoolCollectionItem',
+  Campaign: 'Campaign',
+  CampaignParticipant: 'CampaignParticipant'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -314,6 +321,95 @@ export const RedemptionScalarFieldEnum = {
 } as const
 
 export type RedemptionScalarFieldEnum = (typeof RedemptionScalarFieldEnum)[keyof typeof RedemptionScalarFieldEnum]
+
+
+export const SchoolScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  regionId: 'regionId',
+  districtId: 'districtId',
+  communityId: 'communityId',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SchoolScalarFieldEnum = (typeof SchoolScalarFieldEnum)[keyof typeof SchoolScalarFieldEnum]
+
+
+export const SchoolStaffScalarFieldEnum = {
+  schoolId: 'schoolId',
+  userId: 'userId',
+  role: 'role',
+  joinedAt: 'joinedAt'
+} as const
+
+export type SchoolStaffScalarFieldEnum = (typeof SchoolStaffScalarFieldEnum)[keyof typeof SchoolStaffScalarFieldEnum]
+
+
+export const SchoolClassScalarFieldEnum = {
+  id: 'id',
+  schoolId: 'schoolId',
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SchoolClassScalarFieldEnum = (typeof SchoolClassScalarFieldEnum)[keyof typeof SchoolClassScalarFieldEnum]
+
+
+export const SchoolCollectionScalarFieldEnum = {
+  id: 'id',
+  schoolId: 'schoolId',
+  classId: 'classId',
+  recordedById: 'recordedById',
+  scope: 'scope',
+  totalWeight: 'totalWeight',
+  totalPoints: 'totalPoints',
+  campaignId: 'campaignId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SchoolCollectionScalarFieldEnum = (typeof SchoolCollectionScalarFieldEnum)[keyof typeof SchoolCollectionScalarFieldEnum]
+
+
+export const SchoolCollectionItemScalarFieldEnum = {
+  id: 'id',
+  collectionId: 'collectionId',
+  materialTypeId: 'materialTypeId',
+  weight: 'weight',
+  points: 'points',
+  createdAt: 'createdAt'
+} as const
+
+export type SchoolCollectionItemScalarFieldEnum = (typeof SchoolCollectionItemScalarFieldEnum)[keyof typeof SchoolCollectionItemScalarFieldEnum]
+
+
+export const CampaignScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  type: 'type',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CampaignScalarFieldEnum = (typeof CampaignScalarFieldEnum)[keyof typeof CampaignScalarFieldEnum]
+
+
+export const CampaignParticipantScalarFieldEnum = {
+  id: 'id',
+  campaignId: 'campaignId',
+  schoolId: 'schoolId',
+  classId: 'classId',
+  createdAt: 'createdAt'
+} as const
+
+export type CampaignParticipantScalarFieldEnum = (typeof CampaignParticipantScalarFieldEnum)[keyof typeof CampaignParticipantScalarFieldEnum]
 
 
 export const SortOrder = {

@@ -177,6 +177,7 @@ export type CommunityWhereInput = {
   district?: Prisma.XOR<Prisma.DistrictScalarRelationFilter, Prisma.DistrictWhereInput>
   households?: Prisma.HouseholdListRelationFilter
   users?: Prisma.UserListRelationFilter
+  schools?: Prisma.SchoolListRelationFilter
 }
 
 export type CommunityOrderByWithRelationInput = {
@@ -187,6 +188,7 @@ export type CommunityOrderByWithRelationInput = {
   district?: Prisma.DistrictOrderByWithRelationInput
   households?: Prisma.HouseholdOrderByRelationAggregateInput
   users?: Prisma.UserOrderByRelationAggregateInput
+  schools?: Prisma.SchoolOrderByRelationAggregateInput
 }
 
 export type CommunityWhereUniqueInput = Prisma.AtLeast<{
@@ -201,6 +203,7 @@ export type CommunityWhereUniqueInput = Prisma.AtLeast<{
   district?: Prisma.XOR<Prisma.DistrictScalarRelationFilter, Prisma.DistrictWhereInput>
   households?: Prisma.HouseholdListRelationFilter
   users?: Prisma.UserListRelationFilter
+  schools?: Prisma.SchoolListRelationFilter
 }, "id" | "districtId_name">
 
 export type CommunityOrderByWithAggregationInput = {
@@ -230,6 +233,7 @@ export type CommunityCreateInput = {
   district: Prisma.DistrictCreateNestedOneWithoutCommunitiesInput
   households?: Prisma.HouseholdCreateNestedManyWithoutCommunityInput
   users?: Prisma.UserCreateNestedManyWithoutCommunityInput
+  schools?: Prisma.SchoolCreateNestedManyWithoutCommunityInput
 }
 
 export type CommunityUncheckedCreateInput = {
@@ -239,6 +243,7 @@ export type CommunityUncheckedCreateInput = {
   createdAt?: Date | string
   households?: Prisma.HouseholdUncheckedCreateNestedManyWithoutCommunityInput
   users?: Prisma.UserUncheckedCreateNestedManyWithoutCommunityInput
+  schools?: Prisma.SchoolUncheckedCreateNestedManyWithoutCommunityInput
 }
 
 export type CommunityUpdateInput = {
@@ -248,6 +253,7 @@ export type CommunityUpdateInput = {
   district?: Prisma.DistrictUpdateOneRequiredWithoutCommunitiesNestedInput
   households?: Prisma.HouseholdUpdateManyWithoutCommunityNestedInput
   users?: Prisma.UserUpdateManyWithoutCommunityNestedInput
+  schools?: Prisma.SchoolUpdateManyWithoutCommunityNestedInput
 }
 
 export type CommunityUncheckedUpdateInput = {
@@ -257,6 +263,7 @@ export type CommunityUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   households?: Prisma.HouseholdUncheckedUpdateManyWithoutCommunityNestedInput
   users?: Prisma.UserUncheckedUpdateManyWithoutCommunityNestedInput
+  schools?: Prisma.SchoolUncheckedUpdateManyWithoutCommunityNestedInput
 }
 
 export type CommunityCreateManyInput = {
@@ -397,12 +404,29 @@ export type CommunityUpdateOneRequiredWithoutHouseholdsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.CommunityUpdateToOneWithWhereWithoutHouseholdsInput, Prisma.CommunityUpdateWithoutHouseholdsInput>, Prisma.CommunityUncheckedUpdateWithoutHouseholdsInput>
 }
 
+export type CommunityCreateNestedOneWithoutSchoolsInput = {
+  create?: Prisma.XOR<Prisma.CommunityCreateWithoutSchoolsInput, Prisma.CommunityUncheckedCreateWithoutSchoolsInput>
+  connectOrCreate?: Prisma.CommunityCreateOrConnectWithoutSchoolsInput
+  connect?: Prisma.CommunityWhereUniqueInput
+}
+
+export type CommunityUpdateOneWithoutSchoolsNestedInput = {
+  create?: Prisma.XOR<Prisma.CommunityCreateWithoutSchoolsInput, Prisma.CommunityUncheckedCreateWithoutSchoolsInput>
+  connectOrCreate?: Prisma.CommunityCreateOrConnectWithoutSchoolsInput
+  upsert?: Prisma.CommunityUpsertWithoutSchoolsInput
+  disconnect?: Prisma.CommunityWhereInput | boolean
+  delete?: Prisma.CommunityWhereInput | boolean
+  connect?: Prisma.CommunityWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CommunityUpdateToOneWithWhereWithoutSchoolsInput, Prisma.CommunityUpdateWithoutSchoolsInput>, Prisma.CommunityUncheckedUpdateWithoutSchoolsInput>
+}
+
 export type CommunityCreateWithoutUsersInput = {
   id?: string
   name: string
   createdAt?: Date | string
   district: Prisma.DistrictCreateNestedOneWithoutCommunitiesInput
   households?: Prisma.HouseholdCreateNestedManyWithoutCommunityInput
+  schools?: Prisma.SchoolCreateNestedManyWithoutCommunityInput
 }
 
 export type CommunityUncheckedCreateWithoutUsersInput = {
@@ -411,6 +435,7 @@ export type CommunityUncheckedCreateWithoutUsersInput = {
   districtId: string
   createdAt?: Date | string
   households?: Prisma.HouseholdUncheckedCreateNestedManyWithoutCommunityInput
+  schools?: Prisma.SchoolUncheckedCreateNestedManyWithoutCommunityInput
 }
 
 export type CommunityCreateOrConnectWithoutUsersInput = {
@@ -435,6 +460,7 @@ export type CommunityUpdateWithoutUsersInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   district?: Prisma.DistrictUpdateOneRequiredWithoutCommunitiesNestedInput
   households?: Prisma.HouseholdUpdateManyWithoutCommunityNestedInput
+  schools?: Prisma.SchoolUpdateManyWithoutCommunityNestedInput
 }
 
 export type CommunityUncheckedUpdateWithoutUsersInput = {
@@ -443,6 +469,7 @@ export type CommunityUncheckedUpdateWithoutUsersInput = {
   districtId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   households?: Prisma.HouseholdUncheckedUpdateManyWithoutCommunityNestedInput
+  schools?: Prisma.SchoolUncheckedUpdateManyWithoutCommunityNestedInput
 }
 
 export type CommunityCreateWithoutDistrictInput = {
@@ -451,6 +478,7 @@ export type CommunityCreateWithoutDistrictInput = {
   createdAt?: Date | string
   households?: Prisma.HouseholdCreateNestedManyWithoutCommunityInput
   users?: Prisma.UserCreateNestedManyWithoutCommunityInput
+  schools?: Prisma.SchoolCreateNestedManyWithoutCommunityInput
 }
 
 export type CommunityUncheckedCreateWithoutDistrictInput = {
@@ -459,6 +487,7 @@ export type CommunityUncheckedCreateWithoutDistrictInput = {
   createdAt?: Date | string
   households?: Prisma.HouseholdUncheckedCreateNestedManyWithoutCommunityInput
   users?: Prisma.UserUncheckedCreateNestedManyWithoutCommunityInput
+  schools?: Prisma.SchoolUncheckedCreateNestedManyWithoutCommunityInput
 }
 
 export type CommunityCreateOrConnectWithoutDistrictInput = {
@@ -503,6 +532,7 @@ export type CommunityCreateWithoutHouseholdsInput = {
   createdAt?: Date | string
   district: Prisma.DistrictCreateNestedOneWithoutCommunitiesInput
   users?: Prisma.UserCreateNestedManyWithoutCommunityInput
+  schools?: Prisma.SchoolCreateNestedManyWithoutCommunityInput
 }
 
 export type CommunityUncheckedCreateWithoutHouseholdsInput = {
@@ -511,6 +541,7 @@ export type CommunityUncheckedCreateWithoutHouseholdsInput = {
   districtId: string
   createdAt?: Date | string
   users?: Prisma.UserUncheckedCreateNestedManyWithoutCommunityInput
+  schools?: Prisma.SchoolUncheckedCreateNestedManyWithoutCommunityInput
 }
 
 export type CommunityCreateOrConnectWithoutHouseholdsInput = {
@@ -535,6 +566,7 @@ export type CommunityUpdateWithoutHouseholdsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   district?: Prisma.DistrictUpdateOneRequiredWithoutCommunitiesNestedInput
   users?: Prisma.UserUpdateManyWithoutCommunityNestedInput
+  schools?: Prisma.SchoolUpdateManyWithoutCommunityNestedInput
 }
 
 export type CommunityUncheckedUpdateWithoutHouseholdsInput = {
@@ -542,6 +574,59 @@ export type CommunityUncheckedUpdateWithoutHouseholdsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   districtId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  users?: Prisma.UserUncheckedUpdateManyWithoutCommunityNestedInput
+  schools?: Prisma.SchoolUncheckedUpdateManyWithoutCommunityNestedInput
+}
+
+export type CommunityCreateWithoutSchoolsInput = {
+  id?: string
+  name: string
+  createdAt?: Date | string
+  district: Prisma.DistrictCreateNestedOneWithoutCommunitiesInput
+  households?: Prisma.HouseholdCreateNestedManyWithoutCommunityInput
+  users?: Prisma.UserCreateNestedManyWithoutCommunityInput
+}
+
+export type CommunityUncheckedCreateWithoutSchoolsInput = {
+  id?: string
+  name: string
+  districtId: string
+  createdAt?: Date | string
+  households?: Prisma.HouseholdUncheckedCreateNestedManyWithoutCommunityInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutCommunityInput
+}
+
+export type CommunityCreateOrConnectWithoutSchoolsInput = {
+  where: Prisma.CommunityWhereUniqueInput
+  create: Prisma.XOR<Prisma.CommunityCreateWithoutSchoolsInput, Prisma.CommunityUncheckedCreateWithoutSchoolsInput>
+}
+
+export type CommunityUpsertWithoutSchoolsInput = {
+  update: Prisma.XOR<Prisma.CommunityUpdateWithoutSchoolsInput, Prisma.CommunityUncheckedUpdateWithoutSchoolsInput>
+  create: Prisma.XOR<Prisma.CommunityCreateWithoutSchoolsInput, Prisma.CommunityUncheckedCreateWithoutSchoolsInput>
+  where?: Prisma.CommunityWhereInput
+}
+
+export type CommunityUpdateToOneWithWhereWithoutSchoolsInput = {
+  where?: Prisma.CommunityWhereInput
+  data: Prisma.XOR<Prisma.CommunityUpdateWithoutSchoolsInput, Prisma.CommunityUncheckedUpdateWithoutSchoolsInput>
+}
+
+export type CommunityUpdateWithoutSchoolsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  district?: Prisma.DistrictUpdateOneRequiredWithoutCommunitiesNestedInput
+  households?: Prisma.HouseholdUpdateManyWithoutCommunityNestedInput
+  users?: Prisma.UserUpdateManyWithoutCommunityNestedInput
+}
+
+export type CommunityUncheckedUpdateWithoutSchoolsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  districtId?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  households?: Prisma.HouseholdUncheckedUpdateManyWithoutCommunityNestedInput
   users?: Prisma.UserUncheckedUpdateManyWithoutCommunityNestedInput
 }
 
@@ -557,6 +642,7 @@ export type CommunityUpdateWithoutDistrictInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   households?: Prisma.HouseholdUpdateManyWithoutCommunityNestedInput
   users?: Prisma.UserUpdateManyWithoutCommunityNestedInput
+  schools?: Prisma.SchoolUpdateManyWithoutCommunityNestedInput
 }
 
 export type CommunityUncheckedUpdateWithoutDistrictInput = {
@@ -565,6 +651,7 @@ export type CommunityUncheckedUpdateWithoutDistrictInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   households?: Prisma.HouseholdUncheckedUpdateManyWithoutCommunityNestedInput
   users?: Prisma.UserUncheckedUpdateManyWithoutCommunityNestedInput
+  schools?: Prisma.SchoolUncheckedUpdateManyWithoutCommunityNestedInput
 }
 
 export type CommunityUncheckedUpdateManyWithoutDistrictInput = {
@@ -581,11 +668,13 @@ export type CommunityUncheckedUpdateManyWithoutDistrictInput = {
 export type CommunityCountOutputType = {
   households: number
   users: number
+  schools: number
 }
 
 export type CommunityCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   households?: boolean | CommunityCountOutputTypeCountHouseholdsArgs
   users?: boolean | CommunityCountOutputTypeCountUsersArgs
+  schools?: boolean | CommunityCountOutputTypeCountSchoolsArgs
 }
 
 /**
@@ -612,6 +701,13 @@ export type CommunityCountOutputTypeCountUsersArgs<ExtArgs extends runtime.Types
   where?: Prisma.UserWhereInput
 }
 
+/**
+ * CommunityCountOutputType without action
+ */
+export type CommunityCountOutputTypeCountSchoolsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SchoolWhereInput
+}
+
 
 export type CommunitySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -621,6 +717,7 @@ export type CommunitySelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   district?: boolean | Prisma.DistrictDefaultArgs<ExtArgs>
   households?: boolean | Prisma.Community$householdsArgs<ExtArgs>
   users?: boolean | Prisma.Community$usersArgs<ExtArgs>
+  schools?: boolean | Prisma.Community$schoolsArgs<ExtArgs>
   _count?: boolean | Prisma.CommunityCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["community"]>
 
@@ -652,6 +749,7 @@ export type CommunityInclude<ExtArgs extends runtime.Types.Extensions.InternalAr
   district?: boolean | Prisma.DistrictDefaultArgs<ExtArgs>
   households?: boolean | Prisma.Community$householdsArgs<ExtArgs>
   users?: boolean | Prisma.Community$usersArgs<ExtArgs>
+  schools?: boolean | Prisma.Community$schoolsArgs<ExtArgs>
   _count?: boolean | Prisma.CommunityCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type CommunityIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -667,6 +765,7 @@ export type $CommunityPayload<ExtArgs extends runtime.Types.Extensions.InternalA
     district: Prisma.$DistrictPayload<ExtArgs>
     households: Prisma.$HouseholdPayload<ExtArgs>[]
     users: Prisma.$UserPayload<ExtArgs>[]
+    schools: Prisma.$SchoolPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1070,6 +1169,7 @@ export interface Prisma__CommunityClient<T, Null = never, ExtArgs extends runtim
   district<T extends Prisma.DistrictDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.DistrictDefaultArgs<ExtArgs>>): Prisma.Prisma__DistrictClient<runtime.Types.Result.GetResult<Prisma.$DistrictPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   households<T extends Prisma.Community$householdsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Community$householdsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$HouseholdPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   users<T extends Prisma.Community$usersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Community$usersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  schools<T extends Prisma.Community$schoolsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Community$schoolsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SchoolPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1549,6 +1649,30 @@ export type Community$usersArgs<ExtArgs extends runtime.Types.Extensions.Interna
   take?: number
   skip?: number
   distinct?: Prisma.UserScalarFieldEnum | Prisma.UserScalarFieldEnum[]
+}
+
+/**
+ * Community.schools
+ */
+export type Community$schoolsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the School
+   */
+  select?: Prisma.SchoolSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the School
+   */
+  omit?: Prisma.SchoolOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SchoolInclude<ExtArgs> | null
+  where?: Prisma.SchoolWhereInput
+  orderBy?: Prisma.SchoolOrderByWithRelationInput | Prisma.SchoolOrderByWithRelationInput[]
+  cursor?: Prisma.SchoolWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SchoolScalarFieldEnum | Prisma.SchoolScalarFieldEnum[]
 }
 
 /**
