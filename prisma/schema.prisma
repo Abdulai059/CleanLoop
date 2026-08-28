@@ -38,6 +38,20 @@ enum WalletTransactionType {
   REVERSAL
 }
 
+enum RewardStatus {
+  ACTIVE
+  INACTIVE
+  OUT_OF_STOCK
+}
+
+enum RedemptionStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+  CANCELLED
+}
+
 model Permission {
   id          String   @id @default(cuid())
   name        String   @unique
@@ -114,6 +128,7 @@ model User {
 
   roles UserRole[]
   recordedRecoveries Recovery[] @relation("RecoveryRecordedBy")
+  redemptions Redemption[] 
 
   wallet Wallet?
 
@@ -332,5 +347,53 @@ model WalletTransaction {
 
   @@index([walletId])
   @@index([referenceId])
+  @@index([createdAt])
+}
+
+
+model Reward {
+  id String @id @default(cuid())
+
+  name        String
+  description String?
+
+  pointsCost Int
+
+  imageUrl String?
+
+  status RewardStatus @default(ACTIVE)
+
+  stockQuantity Int?
+
+  redemptions Redemption[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status])
+}
+
+model Redemption {
+  id String @id @default(cuid())
+
+  userId   String
+  rewardId String
+
+  pointsSpent Int
+
+  status RedemptionStatus @default(PENDING)
+
+  failureReason String?
+
+  user User @relation(fields: [userId], references: [id])
+
+  reward Reward @relation(fields: [rewardId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@index([rewardId])
+  @@index([status])
   @@index([createdAt])
 }

@@ -52,3 +52,23 @@ export const WalletTransactionType = {
 } as const
 
 export type WalletTransactionType = (typeof WalletTransactionType)[keyof typeof WalletTransactionType]
+
+
+export const RewardStatus = {
+  ACTIVE: 'ACTIVE',
+  INACTIVE: 'INACTIVE',
+  OUT_OF_STOCK: 'OUT_OF_STOCK'
+} as const
+
+export type RewardStatus = (typeof RewardStatus)[keyof typeof RewardStatus]
+
+
+export const RedemptionStatus = {
+  PENDING: 'PENDING',
+  PROCESSING: 'PROCESSING',
+  COMPLETED: 'COMPLETED',
+  FAILED: 'FAILED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type RedemptionStatus = (typeof RedemptionStatus)[keyof typeof RedemptionStatus]

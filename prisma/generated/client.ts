@@ -126,3 +126,13 @@ export type Wallet = Prisma.WalletModel
  * 
  */
 export type WalletTransaction = Prisma.WalletTransactionModel
+/**
+ * Model Reward
+ * 
+ */
+export type Reward = Prisma.RewardModel
+/**
+ * Model Redemption
+ * 
+ */
+export type Redemption = Prisma.RedemptionModel

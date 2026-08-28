@@ -67,7 +67,9 @@ export const ModelName = {
   RecoveryItem: 'RecoveryItem',
   PointRule: 'PointRule',
   Wallet: 'Wallet',
-  WalletTransaction: 'WalletTransaction'
+  WalletTransaction: 'WalletTransaction',
+  Reward: 'Reward',
+  Redemption: 'Redemption'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -283,6 +285,35 @@ export const WalletTransactionScalarFieldEnum = {
 } as const
 
 export type WalletTransactionScalarFieldEnum = (typeof WalletTransactionScalarFieldEnum)[keyof typeof WalletTransactionScalarFieldEnum]
+
+
+export const RewardScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  pointsCost: 'pointsCost',
+  imageUrl: 'imageUrl',
+  status: 'status',
+  stockQuantity: 'stockQuantity',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type RewardScalarFieldEnum = (typeof RewardScalarFieldEnum)[keyof typeof RewardScalarFieldEnum]
+
+
+export const RedemptionScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  rewardId: 'rewardId',
+  pointsSpent: 'pointsSpent',
+  status: 'status',
+  failureReason: 'failureReason',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type RedemptionScalarFieldEnum = (typeof RedemptionScalarFieldEnum)[keyof typeof RedemptionScalarFieldEnum]
 
 
 export const SortOrder = {
