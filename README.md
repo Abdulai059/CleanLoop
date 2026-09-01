@@ -1,4 +1,3 @@
-
 # CleanLoop Backend
 
 Backend API for **CleanLoop**, a plastic recovery and rewards platform initially focused on the Ghanaian market.
@@ -1178,4 +1177,4 @@ The next step is to build the React Native application against the completed bac
           Expand Backend Modules
 ```
 
-This keeps development focused, reduces unnecessary engineering, and ensures that future backend features are based on real mobile application requirements.
+
