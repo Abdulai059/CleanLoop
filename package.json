@@ -4,8 +4,9 @@
   "description": "building node express and postgres",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon --exec tsx -r dotenv/config server.ts",
+    "build": "tsc",
+    "start:prod": "node -r dotenv/config dist/server.js",
     "seed": "tsx prisma/seed.ts"
   },
   "prisma": {

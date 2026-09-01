@@ -1,0 +1,84 @@
+"use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || (function () {
+    var ownKeys = function(o) {
+        ownKeys = Object.getOwnPropertyNames || function (o) {
+            var ar = [];
+            for (var k in o) if (Object.prototype.hasOwnProperty.call(o, k)) ar[ar.length] = k;
+            return ar;
+        };
+        return ownKeys(o);
+    };
+    return function (mod) {
+        if (mod && mod.__esModule) return mod;
+        var result = {};
+        if (mod != null) for (var k = ownKeys(mod), i = 0; i < k.length; i++) if (k[i] !== "default") __createBinding(result, mod, k[i]);
+        __setModuleDefault(result, mod);
+        return result;
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.voidRecovery = exports.getMyRecordedRecoveries = exports.getRecoveryById = exports.getMyRecoveries = exports.createRecovery = void 0;
+const catchAsync_1 = require("../utils/catchAsync");
+const recoveryService = __importStar(require("../services/recoveryService"));
+const getAuthenticatedUser_1 = require("../utils/getAuthenticatedUser");
+exports.createRecovery = (0, catchAsync_1.catchAsync)(async (req, res, _next) => {
+    const recordedById = (0, getAuthenticatedUser_1.getAuthenticatedUserId)(req);
+    const recovery = await recoveryService.createRecovery(recordedById, req.body);
+    res.status(201).json({
+        success: true,
+        message: "Recovery recorded successfully",
+        data: recovery,
+    });
+});
+exports.getMyRecoveries = (0, catchAsync_1.catchAsync)(async (req, res, _next) => {
+    const userId = (0, getAuthenticatedUser_1.getAuthenticatedUserId)(req);
+    const recoveries = await recoveryService.getMyRecoveries(userId);
+    res.status(200).json({
+        success: true,
+        data: recoveries,
+    });
+});
+exports.getRecoveryById = (0, catchAsync_1.catchAsync)(async (req, res, _next) => {
+    const userId = (0, getAuthenticatedUser_1.getAuthenticatedUserId)(req);
+    const { recoveryId } = req.params;
+    const recovery = await recoveryService.getRecoveryById(userId, recoveryId);
+    res.status(200).json({
+        success: true,
+        data: recovery,
+    });
+});
+exports.getMyRecordedRecoveries = (0, catchAsync_1.catchAsync)(async (req, res, _next) => {
+    const recordedById = (0, getAuthenticatedUser_1.getAuthenticatedUserId)(req);
+    const recoveries = await recoveryService.getMyRecordedRecoveries(recordedById);
+    res.status(200).json({
+        success: true,
+        data: recoveries,
+    });
+});
+exports.voidRecovery = (0, catchAsync_1.catchAsync)(async (req, res, _next) => {
+    const { recoveryId } = req.params;
+    const { reason } = req.body;
+    const recovery = await recoveryService.voidRecovery(recoveryId, reason);
+    res.status(200).json({
+        success: true,
+        message: "Recovery voided successfully",
+        data: recovery,
+    });
+});
+//# sourceMappingURL=recoveryController.js.map
