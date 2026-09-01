@@ -1,0 +1,1366 @@
+import type * as runtime from "@prisma/client/runtime/client";
+import type * as Prisma from "../internal/prismaNamespace.js";
+/**
+ * Model SchoolCollectionItem
+ *
+ */
+export type SchoolCollectionItemModel = runtime.Types.Result.DefaultSelection<Prisma.$SchoolCollectionItemPayload>;
+export type AggregateSchoolCollectionItem = {
+    _count: SchoolCollectionItemCountAggregateOutputType | null;
+    _avg: SchoolCollectionItemAvgAggregateOutputType | null;
+    _sum: SchoolCollectionItemSumAggregateOutputType | null;
+    _min: SchoolCollectionItemMinAggregateOutputType | null;
+    _max: SchoolCollectionItemMaxAggregateOutputType | null;
+};
+export type SchoolCollectionItemAvgAggregateOutputType = {
+    weight: runtime.Decimal | null;
+    points: number | null;
+};
+export type SchoolCollectionItemSumAggregateOutputType = {
+    weight: runtime.Decimal | null;
+    points: number | null;
+};
+export type SchoolCollectionItemMinAggregateOutputType = {
+    id: string | null;
+    collectionId: string | null;
+    materialTypeId: string | null;
+    weight: runtime.Decimal | null;
+    points: number | null;
+    createdAt: Date | null;
+};
+export type SchoolCollectionItemMaxAggregateOutputType = {
+    id: string | null;
+    collectionId: string | null;
+    materialTypeId: string | null;
+    weight: runtime.Decimal | null;
+    points: number | null;
+    createdAt: Date | null;
+};
+export type SchoolCollectionItemCountAggregateOutputType = {
+    id: number;
+    collectionId: number;
+    materialTypeId: number;
+    weight: number;
+    points: number;
+    createdAt: number;
+    _all: number;
+};
+export type SchoolCollectionItemAvgAggregateInputType = {
+    weight?: true;
+    points?: true;
+};
+export type SchoolCollectionItemSumAggregateInputType = {
+    weight?: true;
+    points?: true;
+};
+export type SchoolCollectionItemMinAggregateInputType = {
+    id?: true;
+    collectionId?: true;
+    materialTypeId?: true;
+    weight?: true;
+    points?: true;
+    createdAt?: true;
+};
+export type SchoolCollectionItemMaxAggregateInputType = {
+    id?: true;
+    collectionId?: true;
+    materialTypeId?: true;
+    weight?: true;
+    points?: true;
+    createdAt?: true;
+};
+export type SchoolCollectionItemCountAggregateInputType = {
+    id?: true;
+    collectionId?: true;
+    materialTypeId?: true;
+    weight?: true;
+    points?: true;
+    createdAt?: true;
+    _all?: true;
+};
+export type SchoolCollectionItemAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Filter which SchoolCollectionItem to aggregate.
+     */
+    where?: Prisma.SchoolCollectionItemWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of SchoolCollectionItems to fetch.
+     */
+    orderBy?: Prisma.SchoolCollectionItemOrderByWithRelationInput | Prisma.SchoolCollectionItemOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the start position
+     */
+    cursor?: Prisma.SchoolCollectionItemWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` SchoolCollectionItems from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` SchoolCollectionItems.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Count returned SchoolCollectionItems
+    **/
+    _count?: true | SchoolCollectionItemCountAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to average
+    **/
+    _avg?: SchoolCollectionItemAvgAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to sum
+    **/
+    _sum?: SchoolCollectionItemSumAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the minimum value
+    **/
+    _min?: SchoolCollectionItemMinAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the maximum value
+    **/
+    _max?: SchoolCollectionItemMaxAggregateInputType;
+};
+export type GetSchoolCollectionItemAggregateType<T extends SchoolCollectionItemAggregateArgs> = {
+    [P in keyof T & keyof AggregateSchoolCollectionItem]: P extends '_count' | 'count' ? T[P] extends true ? number : Prisma.GetScalarType<T[P], AggregateSchoolCollectionItem[P]> : Prisma.GetScalarType<T[P], AggregateSchoolCollectionItem[P]>;
+};
+export type SchoolCollectionItemGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.SchoolCollectionItemWhereInput;
+    orderBy?: Prisma.SchoolCollectionItemOrderByWithAggregationInput | Prisma.SchoolCollectionItemOrderByWithAggregationInput[];
+    by: Prisma.SchoolCollectionItemScalarFieldEnum[] | Prisma.SchoolCollectionItemScalarFieldEnum;
+    having?: Prisma.SchoolCollectionItemScalarWhereWithAggregatesInput;
+    take?: number;
+    skip?: number;
+    _count?: SchoolCollectionItemCountAggregateInputType | true;
+    _avg?: SchoolCollectionItemAvgAggregateInputType;
+    _sum?: SchoolCollectionItemSumAggregateInputType;
+    _min?: SchoolCollectionItemMinAggregateInputType;
+    _max?: SchoolCollectionItemMaxAggregateInputType;
+};
+export type SchoolCollectionItemGroupByOutputType = {
+    id: string;
+    collectionId: string;
+    materialTypeId: string;
+    weight: runtime.Decimal;
+    points: number;
+    createdAt: Date;
+    _count: SchoolCollectionItemCountAggregateOutputType | null;
+    _avg: SchoolCollectionItemAvgAggregateOutputType | null;
+    _sum: SchoolCollectionItemSumAggregateOutputType | null;
+    _min: SchoolCollectionItemMinAggregateOutputType | null;
+    _max: SchoolCollectionItemMaxAggregateOutputType | null;
+};
+export type GetSchoolCollectionItemGroupByPayload<T extends SchoolCollectionItemGroupByArgs> = Prisma.PrismaPromise<Array<Prisma.PickEnumerable<SchoolCollectionItemGroupByOutputType, T['by']> & {
+    [P in ((keyof T) & (keyof SchoolCollectionItemGroupByOutputType))]: P extends '_count' ? T[P] extends boolean ? number : Prisma.GetScalarType<T[P], SchoolCollectionItemGroupByOutputType[P]> : Prisma.GetScalarType<T[P], SchoolCollectionItemGroupByOutputType[P]>;
+}>>;
+export type SchoolCollectionItemWhereInput = {
+    AND?: Prisma.SchoolCollectionItemWhereInput | Prisma.SchoolCollectionItemWhereInput[];
+    OR?: Prisma.SchoolCollectionItemWhereInput[];
+    NOT?: Prisma.SchoolCollectionItemWhereInput | Prisma.SchoolCollectionItemWhereInput[];
+    id?: Prisma.StringFilter<"SchoolCollectionItem"> | string;
+    collectionId?: Prisma.StringFilter<"SchoolCollectionItem"> | string;
+    materialTypeId?: Prisma.StringFilter<"SchoolCollectionItem"> | string;
+    weight?: Prisma.DecimalFilter<"SchoolCollectionItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    points?: Prisma.IntFilter<"SchoolCollectionItem"> | number;
+    createdAt?: Prisma.DateTimeFilter<"SchoolCollectionItem"> | Date | string;
+    collection?: Prisma.XOR<Prisma.SchoolCollectionScalarRelationFilter, Prisma.SchoolCollectionWhereInput>;
+    materialType?: Prisma.XOR<Prisma.MaterialTypeScalarRelationFilter, Prisma.MaterialTypeWhereInput>;
+};
+export type SchoolCollectionItemOrderByWithRelationInput = {
+    id?: Prisma.SortOrder;
+    collectionId?: Prisma.SortOrder;
+    materialTypeId?: Prisma.SortOrder;
+    weight?: Prisma.SortOrder;
+    points?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    collection?: Prisma.SchoolCollectionOrderByWithRelationInput;
+    materialType?: Prisma.MaterialTypeOrderByWithRelationInput;
+};
+export type SchoolCollectionItemWhereUniqueInput = Prisma.AtLeast<{
+    id?: string;
+    AND?: Prisma.SchoolCollectionItemWhereInput | Prisma.SchoolCollectionItemWhereInput[];
+    OR?: Prisma.SchoolCollectionItemWhereInput[];
+    NOT?: Prisma.SchoolCollectionItemWhereInput | Prisma.SchoolCollectionItemWhereInput[];
+    collectionId?: Prisma.StringFilter<"SchoolCollectionItem"> | string;
+    materialTypeId?: Prisma.StringFilter<"SchoolCollectionItem"> | string;
+    weight?: Prisma.DecimalFilter<"SchoolCollectionItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    points?: Prisma.IntFilter<"SchoolCollectionItem"> | number;
+    createdAt?: Prisma.DateTimeFilter<"SchoolCollectionItem"> | Date | string;
+    collection?: Prisma.XOR<Prisma.SchoolCollectionScalarRelationFilter, Prisma.SchoolCollectionWhereInput>;
+    materialType?: Prisma.XOR<Prisma.MaterialTypeScalarRelationFilter, Prisma.MaterialTypeWhereInput>;
+}, "id">;
+export type SchoolCollectionItemOrderByWithAggregationInput = {
+    id?: Prisma.SortOrder;
+    collectionId?: Prisma.SortOrder;
+    materialTypeId?: Prisma.SortOrder;
+    weight?: Prisma.SortOrder;
+    points?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    _count?: Prisma.SchoolCollectionItemCountOrderByAggregateInput;
+    _avg?: Prisma.SchoolCollectionItemAvgOrderByAggregateInput;
+    _max?: Prisma.SchoolCollectionItemMaxOrderByAggregateInput;
+    _min?: Prisma.SchoolCollectionItemMinOrderByAggregateInput;
+    _sum?: Prisma.SchoolCollectionItemSumOrderByAggregateInput;
+};
+export type SchoolCollectionItemScalarWhereWithAggregatesInput = {
+    AND?: Prisma.SchoolCollectionItemScalarWhereWithAggregatesInput | Prisma.SchoolCollectionItemScalarWhereWithAggregatesInput[];
+    OR?: Prisma.SchoolCollectionItemScalarWhereWithAggregatesInput[];
+    NOT?: Prisma.SchoolCollectionItemScalarWhereWithAggregatesInput | Prisma.SchoolCollectionItemScalarWhereWithAggregatesInput[];
+    id?: Prisma.StringWithAggregatesFilter<"SchoolCollectionItem"> | string;
+    collectionId?: Prisma.StringWithAggregatesFilter<"SchoolCollectionItem"> | string;
+    materialTypeId?: Prisma.StringWithAggregatesFilter<"SchoolCollectionItem"> | string;
+    weight?: Prisma.DecimalWithAggregatesFilter<"SchoolCollectionItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    points?: Prisma.IntWithAggregatesFilter<"SchoolCollectionItem"> | number;
+    createdAt?: Prisma.DateTimeWithAggregatesFilter<"SchoolCollectionItem"> | Date | string;
+};
+export type SchoolCollectionItemCreateInput = {
+    id?: string;
+    weight: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    points?: number;
+    createdAt?: Date | string;
+    collection: Prisma.SchoolCollectionCreateNestedOneWithoutItemsInput;
+    materialType: Prisma.MaterialTypeCreateNestedOneWithoutSchoolCollectionItemsInput;
+};
+export type SchoolCollectionItemUncheckedCreateInput = {
+    id?: string;
+    collectionId: string;
+    materialTypeId: string;
+    weight: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    points?: number;
+    createdAt?: Date | string;
+};
+export type SchoolCollectionItemUpdateInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    weight?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    points?: Prisma.IntFieldUpdateOperationsInput | number;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    collection?: Prisma.SchoolCollectionUpdateOneRequiredWithoutItemsNestedInput;
+    materialType?: Prisma.MaterialTypeUpdateOneRequiredWithoutSchoolCollectionItemsNestedInput;
+};
+export type SchoolCollectionItemUncheckedUpdateInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    collectionId?: Prisma.StringFieldUpdateOperationsInput | string;
+    materialTypeId?: Prisma.StringFieldUpdateOperationsInput | string;
+    weight?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    points?: Prisma.IntFieldUpdateOperationsInput | number;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type SchoolCollectionItemCreateManyInput = {
+    id?: string;
+    collectionId: string;
+    materialTypeId: string;
+    weight: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    points?: number;
+    createdAt?: Date | string;
+};
+export type SchoolCollectionItemUpdateManyMutationInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    weight?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    points?: Prisma.IntFieldUpdateOperationsInput | number;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type SchoolCollectionItemUncheckedUpdateManyInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    collectionId?: Prisma.StringFieldUpdateOperationsInput | string;
+    materialTypeId?: Prisma.StringFieldUpdateOperationsInput | string;
+    weight?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    points?: Prisma.IntFieldUpdateOperationsInput | number;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type SchoolCollectionItemListRelationFilter = {
+    every?: Prisma.SchoolCollectionItemWhereInput;
+    some?: Prisma.SchoolCollectionItemWhereInput;
+    none?: Prisma.SchoolCollectionItemWhereInput;
+};
+export type SchoolCollectionItemOrderByRelationAggregateInput = {
+    _count?: Prisma.SortOrder;
+};
+export type SchoolCollectionItemCountOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    collectionId?: Prisma.SortOrder;
+    materialTypeId?: Prisma.SortOrder;
+    weight?: Prisma.SortOrder;
+    points?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+};
+export type SchoolCollectionItemAvgOrderByAggregateInput = {
+    weight?: Prisma.SortOrder;
+    points?: Prisma.SortOrder;
+};
+export type SchoolCollectionItemMaxOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    collectionId?: Prisma.SortOrder;
+    materialTypeId?: Prisma.SortOrder;
+    weight?: Prisma.SortOrder;
+    points?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+};
+export type SchoolCollectionItemMinOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    collectionId?: Prisma.SortOrder;
+    materialTypeId?: Prisma.SortOrder;
+    weight?: Prisma.SortOrder;
+    points?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+};
+export type SchoolCollectionItemSumOrderByAggregateInput = {
+    weight?: Prisma.SortOrder;
+    points?: Prisma.SortOrder;
+};
+export type SchoolCollectionItemCreateNestedManyWithoutMaterialTypeInput = {
+    create?: Prisma.XOR<Prisma.SchoolCollectionItemCreateWithoutMaterialTypeInput, Prisma.SchoolCollectionItemUncheckedCreateWithoutMaterialTypeInput> | Prisma.SchoolCollectionItemCreateWithoutMaterialTypeInput[] | Prisma.SchoolCollectionItemUncheckedCreateWithoutMaterialTypeInput[];
+    connectOrCreate?: Prisma.SchoolCollectionItemCreateOrConnectWithoutMaterialTypeInput | Prisma.SchoolCollectionItemCreateOrConnectWithoutMaterialTypeInput[];
+    createMany?: Prisma.SchoolCollectionItemCreateManyMaterialTypeInputEnvelope;
+    connect?: Prisma.SchoolCollectionItemWhereUniqueInput | Prisma.SchoolCollectionItemWhereUniqueInput[];
+};
+export type SchoolCollectionItemUncheckedCreateNestedManyWithoutMaterialTypeInput = {
+    create?: Prisma.XOR<Prisma.SchoolCollectionItemCreateWithoutMaterialTypeInput, Prisma.SchoolCollectionItemUncheckedCreateWithoutMaterialTypeInput> | Prisma.SchoolCollectionItemCreateWithoutMaterialTypeInput[] | Prisma.SchoolCollectionItemUncheckedCreateWithoutMaterialTypeInput[];
+    connectOrCreate?: Prisma.SchoolCollectionItemCreateOrConnectWithoutMaterialTypeInput | Prisma.SchoolCollectionItemCreateOrConnectWithoutMaterialTypeInput[];
+    createMany?: Prisma.SchoolCollectionItemCreateManyMaterialTypeInputEnvelope;
+    connect?: Prisma.SchoolCollectionItemWhereUniqueInput | Prisma.SchoolCollectionItemWhereUniqueInput[];
+};
+export type SchoolCollectionItemUpdateManyWithoutMaterialTypeNestedInput = {
+    create?: Prisma.XOR<Prisma.SchoolCollectionItemCreateWithoutMaterialTypeInput, Prisma.SchoolCollectionItemUncheckedCreateWithoutMaterialTypeInput> | Prisma.SchoolCollectionItemCreateWithoutMaterialTypeInput[] | Prisma.SchoolCollectionItemUncheckedCreateWithoutMaterialTypeInput[];
+    connectOrCreate?: Prisma.SchoolCollectionItemCreateOrConnectWithoutMaterialTypeInput | Prisma.SchoolCollectionItemCreateOrConnectWithoutMaterialTypeInput[];
+    upsert?: Prisma.SchoolCollectionItemUpsertWithWhereUniqueWithoutMaterialTypeInput | Prisma.SchoolCollectionItemUpsertWithWhereUniqueWithoutMaterialTypeInput[];
+    createMany?: Prisma.SchoolCollectionItemCreateManyMaterialTypeInputEnvelope;
+    set?: Prisma.SchoolCollectionItemWhereUniqueInput | Prisma.SchoolCollectionItemWhereUniqueInput[];
+    disconnect?: Prisma.SchoolCollectionItemWhereUniqueInput | Prisma.SchoolCollectionItemWhereUniqueInput[];
+    delete?: Prisma.SchoolCollectionItemWhereUniqueInput | Prisma.SchoolCollectionItemWhereUniqueInput[];
+    connect?: Prisma.SchoolCollectionItemWhereUniqueInput | Prisma.SchoolCollectionItemWhereUniqueInput[];
+    update?: Prisma.SchoolCollectionItemUpdateWithWhereUniqueWithoutMaterialTypeInput | Prisma.SchoolCollectionItemUpdateWithWhereUniqueWithoutMaterialTypeInput[];
+    updateMany?: Prisma.SchoolCollectionItemUpdateManyWithWhereWithoutMaterialTypeInput | Prisma.SchoolCollectionItemUpdateManyWithWhereWithoutMaterialTypeInput[];
+    deleteMany?: Prisma.SchoolCollectionItemScalarWhereInput | Prisma.SchoolCollectionItemScalarWhereInput[];
+};
+export type SchoolCollectionItemUncheckedUpdateManyWithoutMaterialTypeNestedInput = {
+    create?: Prisma.XOR<Prisma.SchoolCollectionItemCreateWithoutMaterialTypeInput, Prisma.SchoolCollectionItemUncheckedCreateWithoutMaterialTypeInput> | Prisma.SchoolCollectionItemCreateWithoutMaterialTypeInput[] | Prisma.SchoolCollectionItemUncheckedCreateWithoutMaterialTypeInput[];
+    connectOrCreate?: Prisma.SchoolCollectionItemCreateOrConnectWithoutMaterialTypeInput | Prisma.SchoolCollectionItemCreateOrConnectWithoutMaterialTypeInput[];
+    upsert?: Prisma.SchoolCollectionItemUpsertWithWhereUniqueWithoutMaterialTypeInput | Prisma.SchoolCollectionItemUpsertWithWhereUniqueWithoutMaterialTypeInput[];
+    createMany?: Prisma.SchoolCollectionItemCreateManyMaterialTypeInputEnvelope;
+    set?: Prisma.SchoolCollectionItemWhereUniqueInput | Prisma.SchoolCollectionItemWhereUniqueInput[];
+    disconnect?: Prisma.SchoolCollectionItemWhereUniqueInput | Prisma.SchoolCollectionItemWhereUniqueInput[];
+    delete?: Prisma.SchoolCollectionItemWhereUniqueInput | Prisma.SchoolCollectionItemWhereUniqueInput[];
+    connect?: Prisma.SchoolCollectionItemWhereUniqueInput | Prisma.SchoolCollectionItemWhereUniqueInput[];
+    update?: Prisma.SchoolCollectionItemUpdateWithWhereUniqueWithoutMaterialTypeInput | Prisma.SchoolCollectionItemUpdateWithWhereUniqueWithoutMaterialTypeInput[];
+    updateMany?: Prisma.SchoolCollectionItemUpdateManyWithWhereWithoutMaterialTypeInput | Prisma.SchoolCollectionItemUpdateManyWithWhereWithoutMaterialTypeInput[];
+    deleteMany?: Prisma.SchoolCollectionItemScalarWhereInput | Prisma.SchoolCollectionItemScalarWhereInput[];
+};
+export type SchoolCollectionItemCreateNestedManyWithoutCollectionInput = {
+    create?: Prisma.XOR<Prisma.SchoolCollectionItemCreateWithoutCollectionInput, Prisma.SchoolCollectionItemUncheckedCreateWithoutCollectionInput> | Prisma.SchoolCollectionItemCreateWithoutCollectionInput[] | Prisma.SchoolCollectionItemUncheckedCreateWithoutCollectionInput[];
+    connectOrCreate?: Prisma.SchoolCollectionItemCreateOrConnectWithoutCollectionInput | Prisma.SchoolCollectionItemCreateOrConnectWithoutCollectionInput[];
+    createMany?: Prisma.SchoolCollectionItemCreateManyCollectionInputEnvelope;
+    connect?: Prisma.SchoolCollectionItemWhereUniqueInput | Prisma.SchoolCollectionItemWhereUniqueInput[];
+};
+export type SchoolCollectionItemUncheckedCreateNestedManyWithoutCollectionInput = {
+    create?: Prisma.XOR<Prisma.SchoolCollectionItemCreateWithoutCollectionInput, Prisma.SchoolCollectionItemUncheckedCreateWithoutCollectionInput> | Prisma.SchoolCollectionItemCreateWithoutCollectionInput[] | Prisma.SchoolCollectionItemUncheckedCreateWithoutCollectionInput[];
+    connectOrCreate?: Prisma.SchoolCollectionItemCreateOrConnectWithoutCollectionInput | Prisma.SchoolCollectionItemCreateOrConnectWithoutCollectionInput[];
+    createMany?: Prisma.SchoolCollectionItemCreateManyCollectionInputEnvelope;
+    connect?: Prisma.SchoolCollectionItemWhereUniqueInput | Prisma.SchoolCollectionItemWhereUniqueInput[];
+};
+export type SchoolCollectionItemUpdateManyWithoutCollectionNestedInput = {
+    create?: Prisma.XOR<Prisma.SchoolCollectionItemCreateWithoutCollectionInput, Prisma.SchoolCollectionItemUncheckedCreateWithoutCollectionInput> | Prisma.SchoolCollectionItemCreateWithoutCollectionInput[] | Prisma.SchoolCollectionItemUncheckedCreateWithoutCollectionInput[];
+    connectOrCreate?: Prisma.SchoolCollectionItemCreateOrConnectWithoutCollectionInput | Prisma.SchoolCollectionItemCreateOrConnectWithoutCollectionInput[];
+    upsert?: Prisma.SchoolCollectionItemUpsertWithWhereUniqueWithoutCollectionInput | Prisma.SchoolCollectionItemUpsertWithWhereUniqueWithoutCollectionInput[];
+    createMany?: Prisma.SchoolCollectionItemCreateManyCollectionInputEnvelope;
+    set?: Prisma.SchoolCollectionItemWhereUniqueInput | Prisma.SchoolCollectionItemWhereUniqueInput[];
+    disconnect?: Prisma.SchoolCollectionItemWhereUniqueInput | Prisma.SchoolCollectionItemWhereUniqueInput[];
+    delete?: Prisma.SchoolCollectionItemWhereUniqueInput | Prisma.SchoolCollectionItemWhereUniqueInput[];
+    connect?: Prisma.SchoolCollectionItemWhereUniqueInput | Prisma.SchoolCollectionItemWhereUniqueInput[];
+    update?: Prisma.SchoolCollectionItemUpdateWithWhereUniqueWithoutCollectionInput | Prisma.SchoolCollectionItemUpdateWithWhereUniqueWithoutCollectionInput[];
+    updateMany?: Prisma.SchoolCollectionItemUpdateManyWithWhereWithoutCollectionInput | Prisma.SchoolCollectionItemUpdateManyWithWhereWithoutCollectionInput[];
+    deleteMany?: Prisma.SchoolCollectionItemScalarWhereInput | Prisma.SchoolCollectionItemScalarWhereInput[];
+};
+export type SchoolCollectionItemUncheckedUpdateManyWithoutCollectionNestedInput = {
+    create?: Prisma.XOR<Prisma.SchoolCollectionItemCreateWithoutCollectionInput, Prisma.SchoolCollectionItemUncheckedCreateWithoutCollectionInput> | Prisma.SchoolCollectionItemCreateWithoutCollectionInput[] | Prisma.SchoolCollectionItemUncheckedCreateWithoutCollectionInput[];
+    connectOrCreate?: Prisma.SchoolCollectionItemCreateOrConnectWithoutCollectionInput | Prisma.SchoolCollectionItemCreateOrConnectWithoutCollectionInput[];
+    upsert?: Prisma.SchoolCollectionItemUpsertWithWhereUniqueWithoutCollectionInput | Prisma.SchoolCollectionItemUpsertWithWhereUniqueWithoutCollectionInput[];
+    createMany?: Prisma.SchoolCollectionItemCreateManyCollectionInputEnvelope;
+    set?: Prisma.SchoolCollectionItemWhereUniqueInput | Prisma.SchoolCollectionItemWhereUniqueInput[];
+    disconnect?: Prisma.SchoolCollectionItemWhereUniqueInput | Prisma.SchoolCollectionItemWhereUniqueInput[];
+    delete?: Prisma.SchoolCollectionItemWhereUniqueInput | Prisma.SchoolCollectionItemWhereUniqueInput[];
+    connect?: Prisma.SchoolCollectionItemWhereUniqueInput | Prisma.SchoolCollectionItemWhereUniqueInput[];
+    update?: Prisma.SchoolCollectionItemUpdateWithWhereUniqueWithoutCollectionInput | Prisma.SchoolCollectionItemUpdateWithWhereUniqueWithoutCollectionInput[];
+    updateMany?: Prisma.SchoolCollectionItemUpdateManyWithWhereWithoutCollectionInput | Prisma.SchoolCollectionItemUpdateManyWithWhereWithoutCollectionInput[];
+    deleteMany?: Prisma.SchoolCollectionItemScalarWhereInput | Prisma.SchoolCollectionItemScalarWhereInput[];
+};
+export type SchoolCollectionItemCreateWithoutMaterialTypeInput = {
+    id?: string;
+    weight: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    points?: number;
+    createdAt?: Date | string;
+    collection: Prisma.SchoolCollectionCreateNestedOneWithoutItemsInput;
+};
+export type SchoolCollectionItemUncheckedCreateWithoutMaterialTypeInput = {
+    id?: string;
+    collectionId: string;
+    weight: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    points?: number;
+    createdAt?: Date | string;
+};
+export type SchoolCollectionItemCreateOrConnectWithoutMaterialTypeInput = {
+    where: Prisma.SchoolCollectionItemWhereUniqueInput;
+    create: Prisma.XOR<Prisma.SchoolCollectionItemCreateWithoutMaterialTypeInput, Prisma.SchoolCollectionItemUncheckedCreateWithoutMaterialTypeInput>;
+};
+export type SchoolCollectionItemCreateManyMaterialTypeInputEnvelope = {
+    data: Prisma.SchoolCollectionItemCreateManyMaterialTypeInput | Prisma.SchoolCollectionItemCreateManyMaterialTypeInput[];
+    skipDuplicates?: boolean;
+};
+export type SchoolCollectionItemUpsertWithWhereUniqueWithoutMaterialTypeInput = {
+    where: Prisma.SchoolCollectionItemWhereUniqueInput;
+    update: Prisma.XOR<Prisma.SchoolCollectionItemUpdateWithoutMaterialTypeInput, Prisma.SchoolCollectionItemUncheckedUpdateWithoutMaterialTypeInput>;
+    create: Prisma.XOR<Prisma.SchoolCollectionItemCreateWithoutMaterialTypeInput, Prisma.SchoolCollectionItemUncheckedCreateWithoutMaterialTypeInput>;
+};
+export type SchoolCollectionItemUpdateWithWhereUniqueWithoutMaterialTypeInput = {
+    where: Prisma.SchoolCollectionItemWhereUniqueInput;
+    data: Prisma.XOR<Prisma.SchoolCollectionItemUpdateWithoutMaterialTypeInput, Prisma.SchoolCollectionItemUncheckedUpdateWithoutMaterialTypeInput>;
+};
+export type SchoolCollectionItemUpdateManyWithWhereWithoutMaterialTypeInput = {
+    where: Prisma.SchoolCollectionItemScalarWhereInput;
+    data: Prisma.XOR<Prisma.SchoolCollectionItemUpdateManyMutationInput, Prisma.SchoolCollectionItemUncheckedUpdateManyWithoutMaterialTypeInput>;
+};
+export type SchoolCollectionItemScalarWhereInput = {
+    AND?: Prisma.SchoolCollectionItemScalarWhereInput | Prisma.SchoolCollectionItemScalarWhereInput[];
+    OR?: Prisma.SchoolCollectionItemScalarWhereInput[];
+    NOT?: Prisma.SchoolCollectionItemScalarWhereInput | Prisma.SchoolCollectionItemScalarWhereInput[];
+    id?: Prisma.StringFilter<"SchoolCollectionItem"> | string;
+    collectionId?: Prisma.StringFilter<"SchoolCollectionItem"> | string;
+    materialTypeId?: Prisma.StringFilter<"SchoolCollectionItem"> | string;
+    weight?: Prisma.DecimalFilter<"SchoolCollectionItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    points?: Prisma.IntFilter<"SchoolCollectionItem"> | number;
+    createdAt?: Prisma.DateTimeFilter<"SchoolCollectionItem"> | Date | string;
+};
+export type SchoolCollectionItemCreateWithoutCollectionInput = {
+    id?: string;
+    weight: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    points?: number;
+    createdAt?: Date | string;
+    materialType: Prisma.MaterialTypeCreateNestedOneWithoutSchoolCollectionItemsInput;
+};
+export type SchoolCollectionItemUncheckedCreateWithoutCollectionInput = {
+    id?: string;
+    materialTypeId: string;
+    weight: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    points?: number;
+    createdAt?: Date | string;
+};
+export type SchoolCollectionItemCreateOrConnectWithoutCollectionInput = {
+    where: Prisma.SchoolCollectionItemWhereUniqueInput;
+    create: Prisma.XOR<Prisma.SchoolCollectionItemCreateWithoutCollectionInput, Prisma.SchoolCollectionItemUncheckedCreateWithoutCollectionInput>;
+};
+export type SchoolCollectionItemCreateManyCollectionInputEnvelope = {
+    data: Prisma.SchoolCollectionItemCreateManyCollectionInput | Prisma.SchoolCollectionItemCreateManyCollectionInput[];
+    skipDuplicates?: boolean;
+};
+export type SchoolCollectionItemUpsertWithWhereUniqueWithoutCollectionInput = {
+    where: Prisma.SchoolCollectionItemWhereUniqueInput;
+    update: Prisma.XOR<Prisma.SchoolCollectionItemUpdateWithoutCollectionInput, Prisma.SchoolCollectionItemUncheckedUpdateWithoutCollectionInput>;
+    create: Prisma.XOR<Prisma.SchoolCollectionItemCreateWithoutCollectionInput, Prisma.SchoolCollectionItemUncheckedCreateWithoutCollectionInput>;
+};
+export type SchoolCollectionItemUpdateWithWhereUniqueWithoutCollectionInput = {
+    where: Prisma.SchoolCollectionItemWhereUniqueInput;
+    data: Prisma.XOR<Prisma.SchoolCollectionItemUpdateWithoutCollectionInput, Prisma.SchoolCollectionItemUncheckedUpdateWithoutCollectionInput>;
+};
+export type SchoolCollectionItemUpdateManyWithWhereWithoutCollectionInput = {
+    where: Prisma.SchoolCollectionItemScalarWhereInput;
+    data: Prisma.XOR<Prisma.SchoolCollectionItemUpdateManyMutationInput, Prisma.SchoolCollectionItemUncheckedUpdateManyWithoutCollectionInput>;
+};
+export type SchoolCollectionItemCreateManyMaterialTypeInput = {
+    id?: string;
+    collectionId: string;
+    weight: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    points?: number;
+    createdAt?: Date | string;
+};
+export type SchoolCollectionItemUpdateWithoutMaterialTypeInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    weight?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    points?: Prisma.IntFieldUpdateOperationsInput | number;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    collection?: Prisma.SchoolCollectionUpdateOneRequiredWithoutItemsNestedInput;
+};
+export type SchoolCollectionItemUncheckedUpdateWithoutMaterialTypeInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    collectionId?: Prisma.StringFieldUpdateOperationsInput | string;
+    weight?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    points?: Prisma.IntFieldUpdateOperationsInput | number;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type SchoolCollectionItemUncheckedUpdateManyWithoutMaterialTypeInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    collectionId?: Prisma.StringFieldUpdateOperationsInput | string;
+    weight?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    points?: Prisma.IntFieldUpdateOperationsInput | number;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type SchoolCollectionItemCreateManyCollectionInput = {
+    id?: string;
+    materialTypeId: string;
+    weight: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    points?: number;
+    createdAt?: Date | string;
+};
+export type SchoolCollectionItemUpdateWithoutCollectionInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    weight?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    points?: Prisma.IntFieldUpdateOperationsInput | number;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    materialType?: Prisma.MaterialTypeUpdateOneRequiredWithoutSchoolCollectionItemsNestedInput;
+};
+export type SchoolCollectionItemUncheckedUpdateWithoutCollectionInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    materialTypeId?: Prisma.StringFieldUpdateOperationsInput | string;
+    weight?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    points?: Prisma.IntFieldUpdateOperationsInput | number;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type SchoolCollectionItemUncheckedUpdateManyWithoutCollectionInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    materialTypeId?: Prisma.StringFieldUpdateOperationsInput | string;
+    weight?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    points?: Prisma.IntFieldUpdateOperationsInput | number;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type SchoolCollectionItemSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    collectionId?: boolean;
+    materialTypeId?: boolean;
+    weight?: boolean;
+    points?: boolean;
+    createdAt?: boolean;
+    collection?: boolean | Prisma.SchoolCollectionDefaultArgs<ExtArgs>;
+    materialType?: boolean | Prisma.MaterialTypeDefaultArgs<ExtArgs>;
+}, ExtArgs["result"]["schoolCollectionItem"]>;
+export type SchoolCollectionItemSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    collectionId?: boolean;
+    materialTypeId?: boolean;
+    weight?: boolean;
+    points?: boolean;
+    createdAt?: boolean;
+    collection?: boolean | Prisma.SchoolCollectionDefaultArgs<ExtArgs>;
+    materialType?: boolean | Prisma.MaterialTypeDefaultArgs<ExtArgs>;
+}, ExtArgs["result"]["schoolCollectionItem"]>;
+export type SchoolCollectionItemSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    collectionId?: boolean;
+    materialTypeId?: boolean;
+    weight?: boolean;
+    points?: boolean;
+    createdAt?: boolean;
+    collection?: boolean | Prisma.SchoolCollectionDefaultArgs<ExtArgs>;
+    materialType?: boolean | Prisma.MaterialTypeDefaultArgs<ExtArgs>;
+}, ExtArgs["result"]["schoolCollectionItem"]>;
+export type SchoolCollectionItemSelectScalar = {
+    id?: boolean;
+    collectionId?: boolean;
+    materialTypeId?: boolean;
+    weight?: boolean;
+    points?: boolean;
+    createdAt?: boolean;
+};
+export type SchoolCollectionItemOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "collectionId" | "materialTypeId" | "weight" | "points" | "createdAt", ExtArgs["result"]["schoolCollectionItem"]>;
+export type SchoolCollectionItemInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    collection?: boolean | Prisma.SchoolCollectionDefaultArgs<ExtArgs>;
+    materialType?: boolean | Prisma.MaterialTypeDefaultArgs<ExtArgs>;
+};
+export type SchoolCollectionItemIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    collection?: boolean | Prisma.SchoolCollectionDefaultArgs<ExtArgs>;
+    materialType?: boolean | Prisma.MaterialTypeDefaultArgs<ExtArgs>;
+};
+export type SchoolCollectionItemIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    collection?: boolean | Prisma.SchoolCollectionDefaultArgs<ExtArgs>;
+    materialType?: boolean | Prisma.MaterialTypeDefaultArgs<ExtArgs>;
+};
+export type $SchoolCollectionItemPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    name: "SchoolCollectionItem";
+    objects: {
+        collection: Prisma.$SchoolCollectionPayload<ExtArgs>;
+        materialType: Prisma.$MaterialTypePayload<ExtArgs>;
+    };
+    scalars: runtime.Types.Extensions.GetPayloadResult<{
+        id: string;
+        collectionId: string;
+        materialTypeId: string;
+        weight: runtime.Decimal;
+        points: number;
+        createdAt: Date;
+    }, ExtArgs["result"]["schoolCollectionItem"]>;
+    composites: {};
+};
+export type SchoolCollectionItemGetPayload<S extends boolean | null | undefined | SchoolCollectionItemDefaultArgs> = runtime.Types.Result.GetResult<Prisma.$SchoolCollectionItemPayload, S>;
+export type SchoolCollectionItemCountArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = Omit<SchoolCollectionItemFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+    select?: SchoolCollectionItemCountAggregateInputType | true;
+};
+export interface SchoolCollectionItemDelegate<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: {
+        types: Prisma.TypeMap<ExtArgs>['model']['SchoolCollectionItem'];
+        meta: {
+            name: 'SchoolCollectionItem';
+        };
+    };
+    /**
+     * Find zero or one SchoolCollectionItem that matches the filter.
+     * @param {SchoolCollectionItemFindUniqueArgs} args - Arguments to find a SchoolCollectionItem
+     * @example
+     * // Get one SchoolCollectionItem
+     * const schoolCollectionItem = await prisma.schoolCollectionItem.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends SchoolCollectionItemFindUniqueArgs>(args: Prisma.SelectSubset<T, SchoolCollectionItemFindUniqueArgs<ExtArgs>>): Prisma.Prisma__SchoolCollectionItemClient<runtime.Types.Result.GetResult<Prisma.$SchoolCollectionItemPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find one SchoolCollectionItem that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {SchoolCollectionItemFindUniqueOrThrowArgs} args - Arguments to find a SchoolCollectionItem
+     * @example
+     * // Get one SchoolCollectionItem
+     * const schoolCollectionItem = await prisma.schoolCollectionItem.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends SchoolCollectionItemFindUniqueOrThrowArgs>(args: Prisma.SelectSubset<T, SchoolCollectionItemFindUniqueOrThrowArgs<ExtArgs>>): Prisma.Prisma__SchoolCollectionItemClient<runtime.Types.Result.GetResult<Prisma.$SchoolCollectionItemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find the first SchoolCollectionItem that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SchoolCollectionItemFindFirstArgs} args - Arguments to find a SchoolCollectionItem
+     * @example
+     * // Get one SchoolCollectionItem
+     * const schoolCollectionItem = await prisma.schoolCollectionItem.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends SchoolCollectionItemFindFirstArgs>(args?: Prisma.SelectSubset<T, SchoolCollectionItemFindFirstArgs<ExtArgs>>): Prisma.Prisma__SchoolCollectionItemClient<runtime.Types.Result.GetResult<Prisma.$SchoolCollectionItemPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find the first SchoolCollectionItem that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SchoolCollectionItemFindFirstOrThrowArgs} args - Arguments to find a SchoolCollectionItem
+     * @example
+     * // Get one SchoolCollectionItem
+     * const schoolCollectionItem = await prisma.schoolCollectionItem.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends SchoolCollectionItemFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, SchoolCollectionItemFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__SchoolCollectionItemClient<runtime.Types.Result.GetResult<Prisma.$SchoolCollectionItemPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find zero or more SchoolCollectionItems that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SchoolCollectionItemFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all SchoolCollectionItems
+     * const schoolCollectionItems = await prisma.schoolCollectionItem.findMany()
+     *
+     * // Get first 10 SchoolCollectionItems
+     * const schoolCollectionItems = await prisma.schoolCollectionItem.findMany({ take: 10 })
+     *
+     * // Only select the `id`
+     * const schoolCollectionItemWithIdOnly = await prisma.schoolCollectionItem.findMany({ select: { id: true } })
+     *
+     */
+    findMany<T extends SchoolCollectionItemFindManyArgs>(args?: Prisma.SelectSubset<T, SchoolCollectionItemFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SchoolCollectionItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>;
+    /**
+     * Create a SchoolCollectionItem.
+     * @param {SchoolCollectionItemCreateArgs} args - Arguments to create a SchoolCollectionItem.
+     * @example
+     * // Create one SchoolCollectionItem
+     * const SchoolCollectionItem = await prisma.schoolCollectionItem.create({
+     *   data: {
+     *     // ... data to create a SchoolCollectionItem
+     *   }
+     * })
+     *
+     */
+    create<T extends SchoolCollectionItemCreateArgs>(args: Prisma.SelectSubset<T, SchoolCollectionItemCreateArgs<ExtArgs>>): Prisma.Prisma__SchoolCollectionItemClient<runtime.Types.Result.GetResult<Prisma.$SchoolCollectionItemPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Create many SchoolCollectionItems.
+     * @param {SchoolCollectionItemCreateManyArgs} args - Arguments to create many SchoolCollectionItems.
+     * @example
+     * // Create many SchoolCollectionItems
+     * const schoolCollectionItem = await prisma.schoolCollectionItem.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     */
+    createMany<T extends SchoolCollectionItemCreateManyArgs>(args?: Prisma.SelectSubset<T, SchoolCollectionItemCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Create many SchoolCollectionItems and returns the data saved in the database.
+     * @param {SchoolCollectionItemCreateManyAndReturnArgs} args - Arguments to create many SchoolCollectionItems.
+     * @example
+     * // Create many SchoolCollectionItems
+     * const schoolCollectionItem = await prisma.schoolCollectionItem.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Create many SchoolCollectionItems and only return the `id`
+     * const schoolCollectionItemWithIdOnly = await prisma.schoolCollectionItem.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    createManyAndReturn<T extends SchoolCollectionItemCreateManyAndReturnArgs>(args?: Prisma.SelectSubset<T, SchoolCollectionItemCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SchoolCollectionItemPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>;
+    /**
+     * Delete a SchoolCollectionItem.
+     * @param {SchoolCollectionItemDeleteArgs} args - Arguments to delete one SchoolCollectionItem.
+     * @example
+     * // Delete one SchoolCollectionItem
+     * const SchoolCollectionItem = await prisma.schoolCollectionItem.delete({
+     *   where: {
+     *     // ... filter to delete one SchoolCollectionItem
+     *   }
+     * })
+     *
+     */
+    delete<T extends SchoolCollectionItemDeleteArgs>(args: Prisma.SelectSubset<T, SchoolCollectionItemDeleteArgs<ExtArgs>>): Prisma.Prisma__SchoolCollectionItemClient<runtime.Types.Result.GetResult<Prisma.$SchoolCollectionItemPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Update one SchoolCollectionItem.
+     * @param {SchoolCollectionItemUpdateArgs} args - Arguments to update one SchoolCollectionItem.
+     * @example
+     * // Update one SchoolCollectionItem
+     * const schoolCollectionItem = await prisma.schoolCollectionItem.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    update<T extends SchoolCollectionItemUpdateArgs>(args: Prisma.SelectSubset<T, SchoolCollectionItemUpdateArgs<ExtArgs>>): Prisma.Prisma__SchoolCollectionItemClient<runtime.Types.Result.GetResult<Prisma.$SchoolCollectionItemPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Delete zero or more SchoolCollectionItems.
+     * @param {SchoolCollectionItemDeleteManyArgs} args - Arguments to filter SchoolCollectionItems to delete.
+     * @example
+     * // Delete a few SchoolCollectionItems
+     * const { count } = await prisma.schoolCollectionItem.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     *
+     */
+    deleteMany<T extends SchoolCollectionItemDeleteManyArgs>(args?: Prisma.SelectSubset<T, SchoolCollectionItemDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Update zero or more SchoolCollectionItems.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SchoolCollectionItemUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many SchoolCollectionItems
+     * const schoolCollectionItem = await prisma.schoolCollectionItem.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    updateMany<T extends SchoolCollectionItemUpdateManyArgs>(args: Prisma.SelectSubset<T, SchoolCollectionItemUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Update zero or more SchoolCollectionItems and returns the data updated in the database.
+     * @param {SchoolCollectionItemUpdateManyAndReturnArgs} args - Arguments to update many SchoolCollectionItems.
+     * @example
+     * // Update many SchoolCollectionItems
+     * const schoolCollectionItem = await prisma.schoolCollectionItem.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Update zero or more SchoolCollectionItems and only return the `id`
+     * const schoolCollectionItemWithIdOnly = await prisma.schoolCollectionItem.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    updateManyAndReturn<T extends SchoolCollectionItemUpdateManyAndReturnArgs>(args: Prisma.SelectSubset<T, SchoolCollectionItemUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SchoolCollectionItemPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>;
+    /**
+     * Create or update one SchoolCollectionItem.
+     * @param {SchoolCollectionItemUpsertArgs} args - Arguments to update or create a SchoolCollectionItem.
+     * @example
+     * // Update or create a SchoolCollectionItem
+     * const schoolCollectionItem = await prisma.schoolCollectionItem.upsert({
+     *   create: {
+     *     // ... data to create a SchoolCollectionItem
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the SchoolCollectionItem we want to update
+     *   }
+     * })
+     */
+    upsert<T extends SchoolCollectionItemUpsertArgs>(args: Prisma.SelectSubset<T, SchoolCollectionItemUpsertArgs<ExtArgs>>): Prisma.Prisma__SchoolCollectionItemClient<runtime.Types.Result.GetResult<Prisma.$SchoolCollectionItemPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Count the number of SchoolCollectionItems.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SchoolCollectionItemCountArgs} args - Arguments to filter SchoolCollectionItems to count.
+     * @example
+     * // Count the number of SchoolCollectionItems
+     * const count = await prisma.schoolCollectionItem.count({
+     *   where: {
+     *     // ... the filter for the SchoolCollectionItems we want to count
+     *   }
+     * })
+    **/
+    count<T extends SchoolCollectionItemCountArgs>(args?: Prisma.Subset<T, SchoolCollectionItemCountArgs>): Prisma.PrismaPromise<T extends runtime.Types.Utils.Record<'select', any> ? T['select'] extends true ? number : Prisma.GetScalarType<T['select'], SchoolCollectionItemCountAggregateOutputType> : number>;
+    /**
+     * Allows you to perform aggregations operations on a SchoolCollectionItem.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SchoolCollectionItemAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends SchoolCollectionItemAggregateArgs>(args: Prisma.Subset<T, SchoolCollectionItemAggregateArgs>): Prisma.PrismaPromise<GetSchoolCollectionItemAggregateType<T>>;
+    /**
+     * Group by SchoolCollectionItem.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SchoolCollectionItemGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     *
+    **/
+    groupBy<T extends SchoolCollectionItemGroupByArgs, HasSelectOrTake extends Prisma.Or<Prisma.Extends<'skip', Prisma.Keys<T>>, Prisma.Extends<'take', Prisma.Keys<T>>>, OrderByArg extends Prisma.True extends HasSelectOrTake ? {
+        orderBy: SchoolCollectionItemGroupByArgs['orderBy'];
+    } : {
+        orderBy?: SchoolCollectionItemGroupByArgs['orderBy'];
+    }, OrderFields extends Prisma.ExcludeUnderscoreKeys<Prisma.Keys<Prisma.MaybeTupleToUnion<T['orderBy']>>>, ByFields extends Prisma.MaybeTupleToUnion<T['by']>, ByValid extends Prisma.Has<ByFields, OrderFields>, HavingFields extends Prisma.GetHavingFields<T['having']>, HavingValid extends Prisma.Has<ByFields, HavingFields>, ByEmpty extends T['by'] extends never[] ? Prisma.True : Prisma.False, InputErrors extends ByEmpty extends Prisma.True ? `Error: "by" must not be empty.` : HavingValid extends Prisma.False ? {
+        [P in HavingFields]: P extends ByFields ? never : P extends string ? `Error: Field "${P}" used in "having" needs to be provided in "by".` : [
+            Error,
+            'Field ',
+            P,
+            ` in "having" needs to be provided in "by"`
+        ];
+    }[HavingFields] : 'take' extends Prisma.Keys<T> ? 'orderBy' extends Prisma.Keys<T> ? ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields] : 'Error: If you provide "take", you also need to provide "orderBy"' : 'skip' extends Prisma.Keys<T> ? 'orderBy' extends Prisma.Keys<T> ? ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields] : 'Error: If you provide "skip", you also need to provide "orderBy"' : ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields]>(args: Prisma.SubsetIntersection<T, SchoolCollectionItemGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSchoolCollectionItemGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
+    /**
+     * Fields of the SchoolCollectionItem model
+     */
+    readonly fields: SchoolCollectionItemFieldRefs;
+}
+/**
+ * The delegate class that acts as a "Promise-like" for SchoolCollectionItem.
+ * Why is this prefixed with `Prisma__`?
+ * Because we want to prevent naming conflicts as mentioned in
+ * https://github.com/prisma/prisma-client-js/issues/707
+ */
+export interface Prisma__SchoolCollectionItemClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise";
+    collection<T extends Prisma.SchoolCollectionDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SchoolCollectionDefaultArgs<ExtArgs>>): Prisma.Prisma__SchoolCollectionClient<runtime.Types.Result.GetResult<Prisma.$SchoolCollectionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
+    materialType<T extends Prisma.MaterialTypeDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MaterialTypeDefaultArgs<ExtArgs>>): Prisma.Prisma__MaterialTypeClient<runtime.Types.Result.GetResult<Prisma.$MaterialTypePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): runtime.Types.Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): runtime.Types.Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): runtime.Types.Utils.JsPromise<T>;
+}
+/**
+ * Fields of the SchoolCollectionItem model
+ */
+export interface SchoolCollectionItemFieldRefs {
+    readonly id: Prisma.FieldRef<"SchoolCollectionItem", 'String'>;
+    readonly collectionId: Prisma.FieldRef<"SchoolCollectionItem", 'String'>;
+    readonly materialTypeId: Prisma.FieldRef<"SchoolCollectionItem", 'String'>;
+    readonly weight: Prisma.FieldRef<"SchoolCollectionItem", 'Decimal'>;
+    readonly points: Prisma.FieldRef<"SchoolCollectionItem", 'Int'>;
+    readonly createdAt: Prisma.FieldRef<"SchoolCollectionItem", 'DateTime'>;
+}
+/**
+ * SchoolCollectionItem findUnique
+ */
+export type SchoolCollectionItemFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SchoolCollectionItem
+     */
+    select?: Prisma.SchoolCollectionItemSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the SchoolCollectionItem
+     */
+    omit?: Prisma.SchoolCollectionItemOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.SchoolCollectionItemInclude<ExtArgs> | null;
+    /**
+     * Filter, which SchoolCollectionItem to fetch.
+     */
+    where: Prisma.SchoolCollectionItemWhereUniqueInput;
+};
+/**
+ * SchoolCollectionItem findUniqueOrThrow
+ */
+export type SchoolCollectionItemFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SchoolCollectionItem
+     */
+    select?: Prisma.SchoolCollectionItemSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the SchoolCollectionItem
+     */
+    omit?: Prisma.SchoolCollectionItemOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.SchoolCollectionItemInclude<ExtArgs> | null;
+    /**
+     * Filter, which SchoolCollectionItem to fetch.
+     */
+    where: Prisma.SchoolCollectionItemWhereUniqueInput;
+};
+/**
+ * SchoolCollectionItem findFirst
+ */
+export type SchoolCollectionItemFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SchoolCollectionItem
+     */
+    select?: Prisma.SchoolCollectionItemSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the SchoolCollectionItem
+     */
+    omit?: Prisma.SchoolCollectionItemOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.SchoolCollectionItemInclude<ExtArgs> | null;
+    /**
+     * Filter, which SchoolCollectionItem to fetch.
+     */
+    where?: Prisma.SchoolCollectionItemWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of SchoolCollectionItems to fetch.
+     */
+    orderBy?: Prisma.SchoolCollectionItemOrderByWithRelationInput | Prisma.SchoolCollectionItemOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for SchoolCollectionItems.
+     */
+    cursor?: Prisma.SchoolCollectionItemWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` SchoolCollectionItems from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` SchoolCollectionItems.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of SchoolCollectionItems.
+     */
+    distinct?: Prisma.SchoolCollectionItemScalarFieldEnum | Prisma.SchoolCollectionItemScalarFieldEnum[];
+};
+/**
+ * SchoolCollectionItem findFirstOrThrow
+ */
+export type SchoolCollectionItemFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SchoolCollectionItem
+     */
+    select?: Prisma.SchoolCollectionItemSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the SchoolCollectionItem
+     */
+    omit?: Prisma.SchoolCollectionItemOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.SchoolCollectionItemInclude<ExtArgs> | null;
+    /**
+     * Filter, which SchoolCollectionItem to fetch.
+     */
+    where?: Prisma.SchoolCollectionItemWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of SchoolCollectionItems to fetch.
+     */
+    orderBy?: Prisma.SchoolCollectionItemOrderByWithRelationInput | Prisma.SchoolCollectionItemOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for SchoolCollectionItems.
+     */
+    cursor?: Prisma.SchoolCollectionItemWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` SchoolCollectionItems from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` SchoolCollectionItems.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of SchoolCollectionItems.
+     */
+    distinct?: Prisma.SchoolCollectionItemScalarFieldEnum | Prisma.SchoolCollectionItemScalarFieldEnum[];
+};
+/**
+ * SchoolCollectionItem findMany
+ */
+export type SchoolCollectionItemFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SchoolCollectionItem
+     */
+    select?: Prisma.SchoolCollectionItemSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the SchoolCollectionItem
+     */
+    omit?: Prisma.SchoolCollectionItemOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.SchoolCollectionItemInclude<ExtArgs> | null;
+    /**
+     * Filter, which SchoolCollectionItems to fetch.
+     */
+    where?: Prisma.SchoolCollectionItemWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of SchoolCollectionItems to fetch.
+     */
+    orderBy?: Prisma.SchoolCollectionItemOrderByWithRelationInput | Prisma.SchoolCollectionItemOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for listing SchoolCollectionItems.
+     */
+    cursor?: Prisma.SchoolCollectionItemWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` SchoolCollectionItems from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` SchoolCollectionItems.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of SchoolCollectionItems.
+     */
+    distinct?: Prisma.SchoolCollectionItemScalarFieldEnum | Prisma.SchoolCollectionItemScalarFieldEnum[];
+};
+/**
+ * SchoolCollectionItem create
+ */
+export type SchoolCollectionItemCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SchoolCollectionItem
+     */
+    select?: Prisma.SchoolCollectionItemSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the SchoolCollectionItem
+     */
+    omit?: Prisma.SchoolCollectionItemOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.SchoolCollectionItemInclude<ExtArgs> | null;
+    /**
+     * The data needed to create a SchoolCollectionItem.
+     */
+    data: Prisma.XOR<Prisma.SchoolCollectionItemCreateInput, Prisma.SchoolCollectionItemUncheckedCreateInput>;
+};
+/**
+ * SchoolCollectionItem createMany
+ */
+export type SchoolCollectionItemCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many SchoolCollectionItems.
+     */
+    data: Prisma.SchoolCollectionItemCreateManyInput | Prisma.SchoolCollectionItemCreateManyInput[];
+    skipDuplicates?: boolean;
+};
+/**
+ * SchoolCollectionItem createManyAndReturn
+ */
+export type SchoolCollectionItemCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SchoolCollectionItem
+     */
+    select?: Prisma.SchoolCollectionItemSelectCreateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the SchoolCollectionItem
+     */
+    omit?: Prisma.SchoolCollectionItemOmit<ExtArgs> | null;
+    /**
+     * The data used to create many SchoolCollectionItems.
+     */
+    data: Prisma.SchoolCollectionItemCreateManyInput | Prisma.SchoolCollectionItemCreateManyInput[];
+    skipDuplicates?: boolean;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.SchoolCollectionItemIncludeCreateManyAndReturn<ExtArgs> | null;
+};
+/**
+ * SchoolCollectionItem update
+ */
+export type SchoolCollectionItemUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SchoolCollectionItem
+     */
+    select?: Prisma.SchoolCollectionItemSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the SchoolCollectionItem
+     */
+    omit?: Prisma.SchoolCollectionItemOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.SchoolCollectionItemInclude<ExtArgs> | null;
+    /**
+     * The data needed to update a SchoolCollectionItem.
+     */
+    data: Prisma.XOR<Prisma.SchoolCollectionItemUpdateInput, Prisma.SchoolCollectionItemUncheckedUpdateInput>;
+    /**
+     * Choose, which SchoolCollectionItem to update.
+     */
+    where: Prisma.SchoolCollectionItemWhereUniqueInput;
+};
+/**
+ * SchoolCollectionItem updateMany
+ */
+export type SchoolCollectionItemUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * The data used to update SchoolCollectionItems.
+     */
+    data: Prisma.XOR<Prisma.SchoolCollectionItemUpdateManyMutationInput, Prisma.SchoolCollectionItemUncheckedUpdateManyInput>;
+    /**
+     * Filter which SchoolCollectionItems to update
+     */
+    where?: Prisma.SchoolCollectionItemWhereInput;
+    /**
+     * Limit how many SchoolCollectionItems to update.
+     */
+    limit?: number;
+};
+/**
+ * SchoolCollectionItem updateManyAndReturn
+ */
+export type SchoolCollectionItemUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SchoolCollectionItem
+     */
+    select?: Prisma.SchoolCollectionItemSelectUpdateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the SchoolCollectionItem
+     */
+    omit?: Prisma.SchoolCollectionItemOmit<ExtArgs> | null;
+    /**
+     * The data used to update SchoolCollectionItems.
+     */
+    data: Prisma.XOR<Prisma.SchoolCollectionItemUpdateManyMutationInput, Prisma.SchoolCollectionItemUncheckedUpdateManyInput>;
+    /**
+     * Filter which SchoolCollectionItems to update
+     */
+    where?: Prisma.SchoolCollectionItemWhereInput;
+    /**
+     * Limit how many SchoolCollectionItems to update.
+     */
+    limit?: number;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.SchoolCollectionItemIncludeUpdateManyAndReturn<ExtArgs> | null;
+};
+/**
+ * SchoolCollectionItem upsert
+ */
+export type SchoolCollectionItemUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SchoolCollectionItem
+     */
+    select?: Prisma.SchoolCollectionItemSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the SchoolCollectionItem
+     */
+    omit?: Prisma.SchoolCollectionItemOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.SchoolCollectionItemInclude<ExtArgs> | null;
+    /**
+     * The filter to search for the SchoolCollectionItem to update in case it exists.
+     */
+    where: Prisma.SchoolCollectionItemWhereUniqueInput;
+    /**
+     * In case the SchoolCollectionItem found by the `where` argument doesn't exist, create a new SchoolCollectionItem with this data.
+     */
+    create: Prisma.XOR<Prisma.SchoolCollectionItemCreateInput, Prisma.SchoolCollectionItemUncheckedCreateInput>;
+    /**
+     * In case the SchoolCollectionItem was found with the provided `where` argument, update it with this data.
+     */
+    update: Prisma.XOR<Prisma.SchoolCollectionItemUpdateInput, Prisma.SchoolCollectionItemUncheckedUpdateInput>;
+};
+/**
+ * SchoolCollectionItem delete
+ */
+export type SchoolCollectionItemDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SchoolCollectionItem
+     */
+    select?: Prisma.SchoolCollectionItemSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the SchoolCollectionItem
+     */
+    omit?: Prisma.SchoolCollectionItemOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.SchoolCollectionItemInclude<ExtArgs> | null;
+    /**
+     * Filter which SchoolCollectionItem to delete.
+     */
+    where: Prisma.SchoolCollectionItemWhereUniqueInput;
+};
+/**
+ * SchoolCollectionItem deleteMany
+ */
+export type SchoolCollectionItemDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Filter which SchoolCollectionItems to delete
+     */
+    where?: Prisma.SchoolCollectionItemWhereInput;
+    /**
+     * Limit how many SchoolCollectionItems to delete.
+     */
+    limit?: number;
+};
+/**
+ * SchoolCollectionItem without action
+ */
+export type SchoolCollectionItemDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SchoolCollectionItem
+     */
+    select?: Prisma.SchoolCollectionItemSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the SchoolCollectionItem
+     */
+    omit?: Prisma.SchoolCollectionItemOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.SchoolCollectionItemInclude<ExtArgs> | null;
+};
+//# sourceMappingURL=SchoolCollectionItem.d.ts.map

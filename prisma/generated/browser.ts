@@ -13,15 +13,20 @@
  * 🟢 You can import this file directly.
  */
 
-import * as Prisma from './internal/prismaNamespaceBrowser'
+import * as Prisma from './internal/prismaNamespaceBrowser.js'
 export { Prisma }
-export * as $Enums from './enums'
-export * from './enums';
+export * as $Enums from './enums.js'
+export * from './enums.js';
 /**
  * Model Permission
  * 
  */
 export type Permission = Prisma.PermissionModel
+/**
+ * Model RefreshToken
+ * 
+ */
+export type RefreshToken = Prisma.RefreshTokenModel
 /**
  * Model Role
  * 
@@ -68,7 +73,77 @@ export type Household = Prisma.HouseholdModel
  */
 export type HouseholdMember = Prisma.HouseholdMemberModel
 /**
- * Model RefreshToken
+ * Model MaterialType
  * 
  */
-export type RefreshToken = Prisma.RefreshTokenModel
+export type MaterialType = Prisma.MaterialTypeModel
+/**
+ * Model Recovery
+ * 
+ */
+export type Recovery = Prisma.RecoveryModel
+/**
+ * Model RecoveryItem
+ * 
+ */
+export type RecoveryItem = Prisma.RecoveryItemModel
+/**
+ * Model PointRule
+ * 
+ */
+export type PointRule = Prisma.PointRuleModel
+/**
+ * Model Wallet
+ * 
+ */
+export type Wallet = Prisma.WalletModel
+/**
+ * Model WalletTransaction
+ * 
+ */
+export type WalletTransaction = Prisma.WalletTransactionModel
+/**
+ * Model Reward
+ * 
+ */
+export type Reward = Prisma.RewardModel
+/**
+ * Model Redemption
+ * 
+ */
+export type Redemption = Prisma.RedemptionModel
+/**
+ * Model School
+ * 
+ */
+export type School = Prisma.SchoolModel
+/**
+ * Model SchoolStaff
+ * 
+ */
+export type SchoolStaff = Prisma.SchoolStaffModel
+/**
+ * Model SchoolClass
+ * 
+ */
+export type SchoolClass = Prisma.SchoolClassModel
+/**
+ * Model SchoolCollection
+ * 
+ */
+export type SchoolCollection = Prisma.SchoolCollectionModel
+/**
+ * Model SchoolCollectionItem
+ * 
+ */
+export type SchoolCollectionItem = Prisma.SchoolCollectionItemModel
+/**
+ * Model Campaign
+ * 
+ */
+export type Campaign = Prisma.CampaignModel
+/**
+ * Model CampaignParticipant
+ * 
+ */
+export type CampaignParticipant = Prisma.CampaignParticipantModel

@@ -9,8 +9,8 @@
  * 🟢 You can import this file directly.
  */
 import type * as runtime from "@prisma/client/runtime/client"
-import type * as $Enums from "../enums"
-import type * as Prisma from "../internal/prismaNamespace"
+import type * as $Enums from "../enums.js"
+import type * as Prisma from "../internal/prismaNamespace.js"
 
 /**
  * Model Region
@@ -168,6 +168,7 @@ export type RegionWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"Region"> | Date | string
   districts?: Prisma.DistrictListRelationFilter
   users?: Prisma.UserListRelationFilter
+  schools?: Prisma.SchoolListRelationFilter
 }
 
 export type RegionOrderByWithRelationInput = {
@@ -176,6 +177,7 @@ export type RegionOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   districts?: Prisma.DistrictOrderByRelationAggregateInput
   users?: Prisma.UserOrderByRelationAggregateInput
+  schools?: Prisma.SchoolOrderByRelationAggregateInput
 }
 
 export type RegionWhereUniqueInput = Prisma.AtLeast<{
@@ -187,6 +189,7 @@ export type RegionWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"Region"> | Date | string
   districts?: Prisma.DistrictListRelationFilter
   users?: Prisma.UserListRelationFilter
+  schools?: Prisma.SchoolListRelationFilter
 }, "id" | "name">
 
 export type RegionOrderByWithAggregationInput = {
@@ -213,6 +216,7 @@ export type RegionCreateInput = {
   createdAt?: Date | string
   districts?: Prisma.DistrictCreateNestedManyWithoutRegionInput
   users?: Prisma.UserCreateNestedManyWithoutRegionInput
+  schools?: Prisma.SchoolCreateNestedManyWithoutRegionInput
 }
 
 export type RegionUncheckedCreateInput = {
@@ -221,6 +225,7 @@ export type RegionUncheckedCreateInput = {
   createdAt?: Date | string
   districts?: Prisma.DistrictUncheckedCreateNestedManyWithoutRegionInput
   users?: Prisma.UserUncheckedCreateNestedManyWithoutRegionInput
+  schools?: Prisma.SchoolUncheckedCreateNestedManyWithoutRegionInput
 }
 
 export type RegionUpdateInput = {
@@ -229,6 +234,7 @@ export type RegionUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   districts?: Prisma.DistrictUpdateManyWithoutRegionNestedInput
   users?: Prisma.UserUpdateManyWithoutRegionNestedInput
+  schools?: Prisma.SchoolUpdateManyWithoutRegionNestedInput
 }
 
 export type RegionUncheckedUpdateInput = {
@@ -237,6 +243,7 @@ export type RegionUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   districts?: Prisma.DistrictUncheckedUpdateManyWithoutRegionNestedInput
   users?: Prisma.UserUncheckedUpdateManyWithoutRegionNestedInput
+  schools?: Prisma.SchoolUncheckedUpdateManyWithoutRegionNestedInput
 }
 
 export type RegionCreateManyInput = {
@@ -315,11 +322,28 @@ export type RegionUpdateOneRequiredWithoutDistrictsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.RegionUpdateToOneWithWhereWithoutDistrictsInput, Prisma.RegionUpdateWithoutDistrictsInput>, Prisma.RegionUncheckedUpdateWithoutDistrictsInput>
 }
 
+export type RegionCreateNestedOneWithoutSchoolsInput = {
+  create?: Prisma.XOR<Prisma.RegionCreateWithoutSchoolsInput, Prisma.RegionUncheckedCreateWithoutSchoolsInput>
+  connectOrCreate?: Prisma.RegionCreateOrConnectWithoutSchoolsInput
+  connect?: Prisma.RegionWhereUniqueInput
+}
+
+export type RegionUpdateOneWithoutSchoolsNestedInput = {
+  create?: Prisma.XOR<Prisma.RegionCreateWithoutSchoolsInput, Prisma.RegionUncheckedCreateWithoutSchoolsInput>
+  connectOrCreate?: Prisma.RegionCreateOrConnectWithoutSchoolsInput
+  upsert?: Prisma.RegionUpsertWithoutSchoolsInput
+  disconnect?: Prisma.RegionWhereInput | boolean
+  delete?: Prisma.RegionWhereInput | boolean
+  connect?: Prisma.RegionWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.RegionUpdateToOneWithWhereWithoutSchoolsInput, Prisma.RegionUpdateWithoutSchoolsInput>, Prisma.RegionUncheckedUpdateWithoutSchoolsInput>
+}
+
 export type RegionCreateWithoutUsersInput = {
   id?: string
   name: string
   createdAt?: Date | string
   districts?: Prisma.DistrictCreateNestedManyWithoutRegionInput
+  schools?: Prisma.SchoolCreateNestedManyWithoutRegionInput
 }
 
 export type RegionUncheckedCreateWithoutUsersInput = {
@@ -327,6 +351,7 @@ export type RegionUncheckedCreateWithoutUsersInput = {
   name: string
   createdAt?: Date | string
   districts?: Prisma.DistrictUncheckedCreateNestedManyWithoutRegionInput
+  schools?: Prisma.SchoolUncheckedCreateNestedManyWithoutRegionInput
 }
 
 export type RegionCreateOrConnectWithoutUsersInput = {
@@ -350,6 +375,7 @@ export type RegionUpdateWithoutUsersInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   districts?: Prisma.DistrictUpdateManyWithoutRegionNestedInput
+  schools?: Prisma.SchoolUpdateManyWithoutRegionNestedInput
 }
 
 export type RegionUncheckedUpdateWithoutUsersInput = {
@@ -357,6 +383,7 @@ export type RegionUncheckedUpdateWithoutUsersInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   districts?: Prisma.DistrictUncheckedUpdateManyWithoutRegionNestedInput
+  schools?: Prisma.SchoolUncheckedUpdateManyWithoutRegionNestedInput
 }
 
 export type RegionCreateWithoutDistrictsInput = {
@@ -364,6 +391,7 @@ export type RegionCreateWithoutDistrictsInput = {
   name: string
   createdAt?: Date | string
   users?: Prisma.UserCreateNestedManyWithoutRegionInput
+  schools?: Prisma.SchoolCreateNestedManyWithoutRegionInput
 }
 
 export type RegionUncheckedCreateWithoutDistrictsInput = {
@@ -371,6 +399,7 @@ export type RegionUncheckedCreateWithoutDistrictsInput = {
   name: string
   createdAt?: Date | string
   users?: Prisma.UserUncheckedCreateNestedManyWithoutRegionInput
+  schools?: Prisma.SchoolUncheckedCreateNestedManyWithoutRegionInput
 }
 
 export type RegionCreateOrConnectWithoutDistrictsInput = {
@@ -394,12 +423,62 @@ export type RegionUpdateWithoutDistrictsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   users?: Prisma.UserUpdateManyWithoutRegionNestedInput
+  schools?: Prisma.SchoolUpdateManyWithoutRegionNestedInput
 }
 
 export type RegionUncheckedUpdateWithoutDistrictsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  users?: Prisma.UserUncheckedUpdateManyWithoutRegionNestedInput
+  schools?: Prisma.SchoolUncheckedUpdateManyWithoutRegionNestedInput
+}
+
+export type RegionCreateWithoutSchoolsInput = {
+  id?: string
+  name: string
+  createdAt?: Date | string
+  districts?: Prisma.DistrictCreateNestedManyWithoutRegionInput
+  users?: Prisma.UserCreateNestedManyWithoutRegionInput
+}
+
+export type RegionUncheckedCreateWithoutSchoolsInput = {
+  id?: string
+  name: string
+  createdAt?: Date | string
+  districts?: Prisma.DistrictUncheckedCreateNestedManyWithoutRegionInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutRegionInput
+}
+
+export type RegionCreateOrConnectWithoutSchoolsInput = {
+  where: Prisma.RegionWhereUniqueInput
+  create: Prisma.XOR<Prisma.RegionCreateWithoutSchoolsInput, Prisma.RegionUncheckedCreateWithoutSchoolsInput>
+}
+
+export type RegionUpsertWithoutSchoolsInput = {
+  update: Prisma.XOR<Prisma.RegionUpdateWithoutSchoolsInput, Prisma.RegionUncheckedUpdateWithoutSchoolsInput>
+  create: Prisma.XOR<Prisma.RegionCreateWithoutSchoolsInput, Prisma.RegionUncheckedCreateWithoutSchoolsInput>
+  where?: Prisma.RegionWhereInput
+}
+
+export type RegionUpdateToOneWithWhereWithoutSchoolsInput = {
+  where?: Prisma.RegionWhereInput
+  data: Prisma.XOR<Prisma.RegionUpdateWithoutSchoolsInput, Prisma.RegionUncheckedUpdateWithoutSchoolsInput>
+}
+
+export type RegionUpdateWithoutSchoolsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  districts?: Prisma.DistrictUpdateManyWithoutRegionNestedInput
+  users?: Prisma.UserUpdateManyWithoutRegionNestedInput
+}
+
+export type RegionUncheckedUpdateWithoutSchoolsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  districts?: Prisma.DistrictUncheckedUpdateManyWithoutRegionNestedInput
   users?: Prisma.UserUncheckedUpdateManyWithoutRegionNestedInput
 }
 
@@ -411,11 +490,13 @@ export type RegionUncheckedUpdateWithoutDistrictsInput = {
 export type RegionCountOutputType = {
   districts: number
   users: number
+  schools: number
 }
 
 export type RegionCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   districts?: boolean | RegionCountOutputTypeCountDistrictsArgs
   users?: boolean | RegionCountOutputTypeCountUsersArgs
+  schools?: boolean | RegionCountOutputTypeCountSchoolsArgs
 }
 
 /**
@@ -442,6 +523,13 @@ export type RegionCountOutputTypeCountUsersArgs<ExtArgs extends runtime.Types.Ex
   where?: Prisma.UserWhereInput
 }
 
+/**
+ * RegionCountOutputType without action
+ */
+export type RegionCountOutputTypeCountSchoolsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SchoolWhereInput
+}
+
 
 export type RegionSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -449,6 +537,7 @@ export type RegionSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   createdAt?: boolean
   districts?: boolean | Prisma.Region$districtsArgs<ExtArgs>
   users?: boolean | Prisma.Region$usersArgs<ExtArgs>
+  schools?: boolean | Prisma.Region$schoolsArgs<ExtArgs>
   _count?: boolean | Prisma.RegionCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["region"]>
 
@@ -474,6 +563,7 @@ export type RegionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
 export type RegionInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   districts?: boolean | Prisma.Region$districtsArgs<ExtArgs>
   users?: boolean | Prisma.Region$usersArgs<ExtArgs>
+  schools?: boolean | Prisma.Region$schoolsArgs<ExtArgs>
   _count?: boolean | Prisma.RegionCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type RegionIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -484,6 +574,7 @@ export type $RegionPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
   objects: {
     districts: Prisma.$DistrictPayload<ExtArgs>[]
     users: Prisma.$UserPayload<ExtArgs>[]
+    schools: Prisma.$SchoolPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -885,6 +976,7 @@ export interface Prisma__RegionClient<T, Null = never, ExtArgs extends runtime.T
   readonly [Symbol.toStringTag]: "PrismaPromise"
   districts<T extends Prisma.Region$districtsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Region$districtsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DistrictPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   users<T extends Prisma.Region$usersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Region$usersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  schools<T extends Prisma.Region$schoolsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Region$schoolsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SchoolPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1355,6 +1447,30 @@ export type Region$usersArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
   take?: number
   skip?: number
   distinct?: Prisma.UserScalarFieldEnum | Prisma.UserScalarFieldEnum[]
+}
+
+/**
+ * Region.schools
+ */
+export type Region$schoolsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the School
+   */
+  select?: Prisma.SchoolSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the School
+   */
+  omit?: Prisma.SchoolOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SchoolInclude<ExtArgs> | null
+  where?: Prisma.SchoolWhereInput
+  orderBy?: Prisma.SchoolOrderByWithRelationInput | Prisma.SchoolOrderByWithRelationInput[]
+  cursor?: Prisma.SchoolWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SchoolScalarFieldEnum | Prisma.SchoolScalarFieldEnum[]
 }
 
 /**

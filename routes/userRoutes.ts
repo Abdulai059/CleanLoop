@@ -6,10 +6,12 @@ import {
   protect,
   refresh,
   resetPassword,
+  restrictTo,
   singUp,
   updatePassword,
 } from "../controllers/authController";
 import {
+  assignRole,
   getAllUsers,
   createUser,
   getUser,
@@ -30,10 +32,12 @@ router.post("/forgotPassword", forgotPassword);
 router.patch("/resetPassword", resetPassword);
 
 router.patch("/updatePassword", protect, updatePassword);
-
 router.route("/updateMe").patch(protect, updateMe);
 
 router.route("/").get(getAllUsers).post(createUser);
 router.route("/:id").get(getUser).patch(updateUser).delete(deleteUser);
+
+// Assign role to user (SUPER_ADMIN only)
+router.post("/assign-role", protect, restrictTo("SUPER_ADMIN"), assignRole);
 
 export default router;
