@@ -5,7 +5,7 @@ export declare const createHousehold: (userId: string, data: {
     longitude: number;
 }) => Promise<{
     members: {
-        role: import(".prisma/client").$Enums.HouseholdRole;
+        role: import("@prisma/client").$Enums.HouseholdRole;
         userId: string;
         householdId: string;
         joinedAt: Date;
@@ -40,7 +40,7 @@ export declare const getMyHousehold: (userId: string) => Promise<{
         districtId: string;
     };
     members: {
-        role: import(".prisma/client").$Enums.HouseholdRole;
+        role: import("@prisma/client").$Enums.HouseholdRole;
         userId: string;
         householdId: string;
         joinedAt: Date;
@@ -69,7 +69,7 @@ export declare const updateMyHousehold: (userId: string, data: {
     longitude: import("@prisma/client-runtime-utils").Decimal | null;
 }>;
 export declare const addMember: (headUserId: string, phone: string) => Promise<{
-    role: import(".prisma/client").$Enums.HouseholdRole;
+    role: import("@prisma/client").$Enums.HouseholdRole;
     userId: string;
     householdId: string;
     joinedAt: Date;

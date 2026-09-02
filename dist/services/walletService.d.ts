@@ -12,6 +12,6 @@ export declare const getMyTransactions: (userId: string) => Promise<{
     id: string;
     description: string | null;
     createdAt: Date;
-    type: import(".prisma/client").$Enums.WalletTransactionType;
+    type: import("@prisma/client").$Enums.WalletTransactionType;
     amount: import("@prisma/client-runtime-utils").Decimal;
 }[]>;

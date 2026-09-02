@@ -15,7 +15,7 @@ export declare const createSchool: (teacherId: string, data: {
 }>;
 export declare const getMySchool: (teacherId: string) => Promise<{
     staff: {
-        role: import(".prisma/client").$Enums.SchoolStaffRole;
+        role: import("@prisma/client").$Enums.SchoolStaffRole;
         userId: string;
         joinedAt: Date;
         schoolId: string;

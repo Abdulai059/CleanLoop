@@ -5,7 +5,7 @@ export declare const createRedemption: (userId: string, rewardId: string) => Pro
         description: string | null;
         createdAt: Date;
         updatedAt: Date;
-        status: import(".prisma/client").$Enums.RewardStatus;
+        status: import("@prisma/client").$Enums.RewardStatus;
         pointsCost: number;
         imageUrl: string | null;
         stockQuantity: number | null;
@@ -15,7 +15,7 @@ export declare const createRedemption: (userId: string, rewardId: string) => Pro
     createdAt: Date;
     updatedAt: Date;
     userId: string;
-    status: import(".prisma/client").$Enums.RedemptionStatus;
+    status: import("@prisma/client").$Enums.RedemptionStatus;
     rewardId: string;
     pointsSpent: number;
     failureReason: string | null;
@@ -27,7 +27,7 @@ export declare const getMyRedemptions: (userId: string) => Promise<({
         description: string | null;
         createdAt: Date;
         updatedAt: Date;
-        status: import(".prisma/client").$Enums.RewardStatus;
+        status: import("@prisma/client").$Enums.RewardStatus;
         pointsCost: number;
         imageUrl: string | null;
         stockQuantity: number | null;
@@ -37,7 +37,7 @@ export declare const getMyRedemptions: (userId: string) => Promise<({
     createdAt: Date;
     updatedAt: Date;
     userId: string;
-    status: import(".prisma/client").$Enums.RedemptionStatus;
+    status: import("@prisma/client").$Enums.RedemptionStatus;
     rewardId: string;
     pointsSpent: number;
     failureReason: string | null;
@@ -49,7 +49,7 @@ export declare const getRedemptionById: (userId: string, redemptionId: string) =
         description: string | null;
         createdAt: Date;
         updatedAt: Date;
-        status: import(".prisma/client").$Enums.RewardStatus;
+        status: import("@prisma/client").$Enums.RewardStatus;
         pointsCost: number;
         imageUrl: string | null;
         stockQuantity: number | null;
@@ -59,7 +59,7 @@ export declare const getRedemptionById: (userId: string, redemptionId: string) =
     createdAt: Date;
     updatedAt: Date;
     userId: string;
-    status: import(".prisma/client").$Enums.RedemptionStatus;
+    status: import("@prisma/client").$Enums.RedemptionStatus;
     rewardId: string;
     pointsSpent: number;
     failureReason: string | null;

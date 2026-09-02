@@ -26,7 +26,7 @@ export declare const createRecovery: (recordedById: string, data: {
     id: string;
     createdAt: Date;
     updatedAt: Date;
-    status: import(".prisma/client").$Enums.RecoveryStatus;
+    status: import("@prisma/client").$Enums.RecoveryStatus;
     householdId: string;
     recordedById: string;
     totalWeight: import("@prisma/client-runtime-utils").Decimal;
@@ -35,7 +35,7 @@ export declare const createRecovery: (recordedById: string, data: {
 export declare const getMyRecoveries: (userId: string) => Promise<{
     id: string;
     createdAt: Date;
-    status: import(".prisma/client").$Enums.RecoveryStatus;
+    status: import("@prisma/client").$Enums.RecoveryStatus;
     totalWeight: import("@prisma/client-runtime-utils").Decimal;
     totalPoints: number;
 }[]>;
@@ -60,7 +60,7 @@ export declare const getRecoveryById: (userId: string, recoveryId: string) => Pr
     id: string;
     createdAt: Date;
     updatedAt: Date;
-    status: import(".prisma/client").$Enums.RecoveryStatus;
+    status: import("@prisma/client").$Enums.RecoveryStatus;
     householdId: string;
     recordedById: string;
     totalWeight: import("@prisma/client-runtime-utils").Decimal;
@@ -69,7 +69,7 @@ export declare const getRecoveryById: (userId: string, recoveryId: string) => Pr
 export declare const getMyRecordedRecoveries: (recordedById: string) => Promise<{
     id: string;
     createdAt: Date;
-    status: import(".prisma/client").$Enums.RecoveryStatus;
+    status: import("@prisma/client").$Enums.RecoveryStatus;
     householdId: string;
     totalWeight: import("@prisma/client-runtime-utils").Decimal;
     totalPoints: number;
@@ -78,7 +78,7 @@ export declare const voidRecovery: (recoveryId: string, _reason: string) => Prom
     id: string;
     createdAt: Date;
     updatedAt: Date;
-    status: import(".prisma/client").$Enums.RecoveryStatus;
+    status: import("@prisma/client").$Enums.RecoveryStatus;
     householdId: string;
     recordedById: string;
     totalWeight: import("@prisma/client-runtime-utils").Decimal;
