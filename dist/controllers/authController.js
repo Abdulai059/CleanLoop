@@ -145,7 +145,7 @@ exports.protect = (0, catchAsync_1.catchAsync)(async (req, res, next) => {
     next();
 });
 const restrictTo = (...allowedRoles) => {
-    return (req, res, next) => {
+    return (req, _res, next) => {
         // roles ['admin', 'User']. role='user'
         const userRoleNames = req.user.roles.map((userRole) => userRole.role.name);
         const hasAccess = userRoleNames.some((roleName) => allowedRoles.includes(roleName));
@@ -288,7 +288,7 @@ exports.refresh = (0, catchAsync_1.catchAsync)(async (req, res, next) => {
         token: newAccessToken,
     });
 });
-exports.logout = (0, catchAsync_1.catchAsync)(async (req, res, next) => {
+exports.logout = (0, catchAsync_1.catchAsync)(async (req, res, _next) => {
     const refreshToken = req.cookies?.refreshToken;
     if (refreshToken) {
         const tokenHash = crypto_1.default

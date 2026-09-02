@@ -6,4 +6,3 @@ export declare const createUser: (req: Request, res: Response, next: NextFunctio
 export declare const updateUser: (req: Request, res: Response, next: NextFunction) => void;
 export declare const deleteUser: (req: Request, res: Response, next: NextFunction) => void;
 export declare const assignRole: (req: Request, res: Response, next: NextFunction) => void;
-//# sourceMappingURL=userController.d.ts.map

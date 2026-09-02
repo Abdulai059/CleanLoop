@@ -4,51 +4,50 @@ export declare const createSchool: (teacherId: string, data: {
     districtId?: string;
     regionId?: string;
 }) => Promise<{
+    name: string;
     id: string;
+    createdAt: Date;
+    updatedAt: Date;
     regionId: string | null;
     districtId: string | null;
     communityId: string | null;
-    createdAt: Date;
-    updatedAt: Date;
-    name: string;
     isActive: boolean;
 }>;
 export declare const getMySchool: (teacherId: string) => Promise<{
     staff: {
+        role: import(".prisma/client").$Enums.SchoolStaffRole;
         userId: string;
-        role: import("../prisma/generated/enums").SchoolStaffRole;
         joinedAt: Date;
         schoolId: string;
     }[];
     classes: {
+        name: string;
         id: string;
         createdAt: Date;
         updatedAt: Date;
-        name: string;
         schoolId: string;
     }[];
 } & {
+    name: string;
     id: string;
+    createdAt: Date;
+    updatedAt: Date;
     regionId: string | null;
     districtId: string | null;
     communityId: string | null;
-    createdAt: Date;
-    updatedAt: Date;
-    name: string;
     isActive: boolean;
 }>;
 export declare const addClass: (teacherId: string, name: string) => Promise<{
+    name: string;
     id: string;
     createdAt: Date;
     updatedAt: Date;
-    name: string;
     schoolId: string;
 }>;
 export declare const getMyClasses: (teacherId: string) => Promise<{
+    name: string;
     id: string;
     createdAt: Date;
     updatedAt: Date;
-    name: string;
     schoolId: string;
 }[]>;
-//# sourceMappingURL=schoolService.d.ts.map

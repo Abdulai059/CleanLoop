@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 require("dotenv/config");
-const client_1 = require("../prisma/generated/client");
+const client_1 = require("@prisma/client");
 const adapter_pg_1 = require("@prisma/adapter-pg");
 const pg_1 = require("pg");
 const connectionString = process.env.DATABASE_URL;
@@ -26,13 +26,6 @@ const adapter = new adapter_pg_1.PrismaPg(pool);
 const prisma = globalForPrisma.prisma ||
     new client_1.PrismaClient({
         adapter,
-        omit: {
-            user: {
-                passwordHash: true,
-                passwordResetToken: true,
-                passwordResetExpires: true,
-            },
-        },
     });
 if (process.env.NODE_ENV !== "production") {
     globalForPrisma.prisma = prisma;

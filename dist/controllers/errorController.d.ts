@@ -1,4 +1,3 @@
 import { Request, Response, NextFunction } from "express";
-declare const _default: (err: any, req: Request, res: Response, next: NextFunction) => void;
+declare const _default: (err: any, _req: Request, res: Response, _next: NextFunction) => void;
 export default _default;
-//# sourceMappingURL=errorController.d.ts.map

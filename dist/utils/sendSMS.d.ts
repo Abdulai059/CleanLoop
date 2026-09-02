@@ -16,4 +16,3 @@ interface ATSMSResponse {
 }
 export declare const sendSMS: ({ to, message, }: SendSMSOptions) => Promise<ATSMSResponse>;
 export {};
-//# sourceMappingURL=sendSMS.d.ts.map

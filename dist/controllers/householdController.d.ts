@@ -4,4 +4,3 @@ export declare const getMyHousehold: (req: Request, res: Response, next: NextFun
 export declare const updateMyHousehold: (req: Request, res: Response, next: NextFunction) => void;
 export declare const addMember: (req: Request, res: Response, next: NextFunction) => void;
 export declare const removeMember: (req: Request, res: Response, next: NextFunction) => void;
-//# sourceMappingURL=householdController.d.ts.map

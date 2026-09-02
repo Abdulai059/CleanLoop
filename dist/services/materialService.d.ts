@@ -1,9 +1,8 @@
 export declare const getActiveMaterials: () => Promise<{
+    name: string;
     id: string;
+    description: string | null;
     createdAt: Date;
     updatedAt: Date;
-    name: string;
-    description: string | null;
     isActive: boolean;
 }[]>;
-//# sourceMappingURL=materialService.d.ts.map

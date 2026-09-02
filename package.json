@@ -4,10 +4,14 @@
   "description": "building node express and postgres",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon --exec tsx -r dotenv/config server.ts",
-    "build": "tsc",
-    "start:prod": "node -r dotenv/config dist/server.js",
-    "seed": "tsx prisma/seed.ts"
+    "dev": "tsx watch src/server.ts",
+    "build": "prisma generate && tsc --ignoreDeprecations 6.0",
+    "start": "node dist/server.js",
+    "type-check": "tsc --noEmit --ignoreDeprecations 6.0",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:migrate:deploy": "prisma migrate deploy",
+    "prisma:seed": "tsx prisma/seed.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

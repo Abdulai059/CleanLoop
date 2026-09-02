@@ -3,4 +3,3 @@ export declare const getActivePointRules: () => Promise<{
     materialType: string;
     pointsPerKg: import("@prisma/client-runtime-utils").Decimal;
 }[]>;
-//# sourceMappingURL=pointRuleService.d.ts.map

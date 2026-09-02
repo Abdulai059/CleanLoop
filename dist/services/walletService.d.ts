@@ -10,9 +10,8 @@ export declare const getMyWallet: (userId: string) => Promise<{
 }>;
 export declare const getMyTransactions: (userId: string) => Promise<{
     id: string;
-    createdAt: Date;
     description: string | null;
-    type: import("../prisma/generated/enums").WalletTransactionType;
+    createdAt: Date;
+    type: import(".prisma/client").$Enums.WalletTransactionType;
     amount: import("@prisma/client-runtime-utils").Decimal;
 }[]>;
-//# sourceMappingURL=walletService.d.ts.map

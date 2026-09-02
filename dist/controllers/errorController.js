@@ -50,7 +50,7 @@ const sendErrorProd = (err, res) => {
         });
     }
 };
-exports.default = (err, req, res, next) => {
+exports.default = (err, _req, res, _next) => {
     err.statusCode = err.statusCode || 500;
     err.status = err.status || "error";
     // Development mode

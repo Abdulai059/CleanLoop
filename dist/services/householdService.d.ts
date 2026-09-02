@@ -5,17 +5,17 @@ export declare const createHousehold: (userId: string, data: {
     longitude: number;
 }) => Promise<{
     members: {
+        role: import(".prisma/client").$Enums.HouseholdRole;
         userId: string;
-        role: import("../prisma/generated/enums").HouseholdRole;
-        joinedAt: Date;
         householdId: string;
+        joinedAt: Date;
     }[];
 } & {
+    name: string;
     id: string;
-    communityId: string;
     createdAt: Date;
     updatedAt: Date;
-    name: string;
+    communityId: string;
     latitude: import("@prisma/client-runtime-utils").Decimal | null;
     longitude: import("@prisma/client-runtime-utils").Decimal | null;
 }>;
@@ -23,34 +23,34 @@ export declare const getMyHousehold: (userId: string) => Promise<{
     community: {
         district: {
             region: {
+                name: string;
                 id: string;
                 createdAt: Date;
-                name: string;
             };
         } & {
-            id: string;
-            regionId: string;
-            createdAt: Date;
             name: string;
+            id: string;
+            createdAt: Date;
+            regionId: string;
         };
     } & {
-        id: string;
-        districtId: string;
-        createdAt: Date;
         name: string;
+        id: string;
+        createdAt: Date;
+        districtId: string;
     };
     members: {
+        role: import(".prisma/client").$Enums.HouseholdRole;
         userId: string;
-        role: import("../prisma/generated/enums").HouseholdRole;
-        joinedAt: Date;
         householdId: string;
+        joinedAt: Date;
     }[];
 } & {
+    name: string;
     id: string;
-    communityId: string;
     createdAt: Date;
     updatedAt: Date;
-    name: string;
+    communityId: string;
     latitude: import("@prisma/client-runtime-utils").Decimal | null;
     longitude: import("@prisma/client-runtime-utils").Decimal | null;
 }>;
@@ -60,21 +60,20 @@ export declare const updateMyHousehold: (userId: string, data: {
     latitude?: number;
     longitude?: number;
 }) => Promise<{
+    name: string;
     id: string;
-    communityId: string;
     createdAt: Date;
     updatedAt: Date;
-    name: string;
+    communityId: string;
     latitude: import("@prisma/client-runtime-utils").Decimal | null;
     longitude: import("@prisma/client-runtime-utils").Decimal | null;
 }>;
 export declare const addMember: (headUserId: string, phone: string) => Promise<{
+    role: import(".prisma/client").$Enums.HouseholdRole;
     userId: string;
-    role: import("../prisma/generated/enums").HouseholdRole;
-    joinedAt: Date;
     householdId: string;
+    joinedAt: Date;
 }>;
 export declare const removeMember: (requesterId: string, targetUserId: string) => Promise<{
     removed: boolean;
 }>;
-//# sourceMappingURL=householdService.d.ts.map

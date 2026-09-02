@@ -8,4 +8,3 @@ export declare const env: {
     PORT: string;
     NODE_ENV: string;
 };
-//# sourceMappingURL=env.d.ts.map

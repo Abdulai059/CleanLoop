@@ -38,8 +38,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const locationController = __importStar(require("../controllers/locationController"));
-const validate_1 = require("../middleware/validate");
-const locationValidators_1 = require("../validators/locationValidators");
+const validate_1 = require("../middlewares/validate");
+const locationValidators_1 = require("../schemas/locationValidators");
 const router = express_1.default.Router();
 router.get("/regions", locationController.getRegions);
 router.get("/regions/:regionId/districts", (0, validate_1.validateParams)(locationValidators_1.regionParamsSchema), locationController.getDistricts);

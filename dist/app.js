@@ -52,8 +52,16 @@ app.use("/api/v1/wallet", walletRoutes_1.default);
 app.use("/api/v1/rewards", rewardRoutes_1.default);
 app.use("/api/v1/redemptions", redemptionRoutes_1.default);
 app.use("/api/v1/schools", schoolRoutes_1.default);
+// Health check endpoint
+app.get("/api/v1/health", (_req, res) => {
+    res.status(200).json({
+        success: true,
+        status: "ok",
+        timestamp: new Date().toISOString(),
+    });
+});
 // Handle undefined routes
-app.all("*splat", (req, res, next) => {
+app.all("*splat", (req, _res, next) => {
     next(new AppError_1.default(`Can't find ${req.originalUrl} on this server!`, 404));
 });
 app.use(errorController_1.default);

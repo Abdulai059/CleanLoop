@@ -167,7 +167,7 @@ const getMyRecordedRecoveries = async (recordedById) => {
     });
 };
 exports.getMyRecordedRecoveries = getMyRecordedRecoveries;
-const voidRecovery = async (recoveryId, reason) => {
+const voidRecovery = async (recoveryId, _reason) => {
     const recovery = await prisma_1.default.recovery.findUnique({
         where: { id: recoveryId },
     });

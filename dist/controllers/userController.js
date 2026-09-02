@@ -16,7 +16,7 @@ const filterObj = (obj, ...allowedFields) => {
     });
     return newObj;
 };
-exports.getAllUsers = (0, catchAsync_1.catchAsync)(async (req, res, next) => {
+exports.getAllUsers = (0, catchAsync_1.catchAsync)(async (_req, res, _next) => {
     const users = await prisma_1.default.user.findMany({
         include: {
             region: true,
@@ -112,7 +112,7 @@ exports.getUser = (0, catchAsync_1.catchAsync)(async (req, res, next) => {
     });
 });
 // create user
-exports.createUser = (0, catchAsync_1.catchAsync)(async (req, res, next) => {
+exports.createUser = (0, catchAsync_1.catchAsync)(async (req, res, _next) => {
     // const passwordHash = await bcrypt.hash(req.body.password, 12);
     const user = await prisma_1.default.user.create({
         data: {

@@ -101,8 +101,6 @@ async function main() {
 
   console.log("✅ Point rules seeded successfully");
 
-
-
   const rewards = [
     // Airtime & Data
     {
@@ -162,7 +160,7 @@ async function main() {
       pointsCost: 600,
     },
   ];
-  
+
   for (const reward of rewards) {
     const existing = await prisma.reward.findFirst({
       where: { name: reward.name },
