@@ -1,8 +1,8 @@
 export declare const getOrCreateWallet: (userId: string) => Promise<{
     id: string;
     createdAt: Date;
-    updatedAt: Date;
     userId: string;
+    updatedAt: Date;
     balance: import("@prisma/client-runtime-utils").Decimal;
 }>;
 export declare const getMyWallet: (userId: string) => Promise<{
@@ -10,8 +10,8 @@ export declare const getMyWallet: (userId: string) => Promise<{
 }>;
 export declare const getMyTransactions: (userId: string) => Promise<{
     id: string;
-    description: string | null;
     createdAt: Date;
-    type: import("@prisma/client").$Enums.WalletTransactionType;
+    description: string | null;
+    type: import("../generated/prisma/enums").WalletTransactionType;
     amount: import("@prisma/client-runtime-utils").Decimal;
 }[]>;

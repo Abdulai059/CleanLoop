@@ -1,8 +1,8 @@
 export declare const getActiveMaterials: () => Promise<{
-    name: string;
     id: string;
-    description: string | null;
     createdAt: Date;
+    name: string;
     updatedAt: Date;
+    description: string | null;
     isActive: boolean;
 }[]>;

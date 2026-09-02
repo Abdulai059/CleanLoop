@@ -1,0 +1,1318 @@
+import type * as runtime from "@prisma/client/runtime/client";
+import type * as Prisma from "../internal/prismaNamespace";
+/**
+ * Model RecoveryItem
+ *
+ */
+export type RecoveryItemModel = runtime.Types.Result.DefaultSelection<Prisma.$RecoveryItemPayload>;
+export type AggregateRecoveryItem = {
+    _count: RecoveryItemCountAggregateOutputType | null;
+    _avg: RecoveryItemAvgAggregateOutputType | null;
+    _sum: RecoveryItemSumAggregateOutputType | null;
+    _min: RecoveryItemMinAggregateOutputType | null;
+    _max: RecoveryItemMaxAggregateOutputType | null;
+};
+export type RecoveryItemAvgAggregateOutputType = {
+    weight: runtime.Decimal | null;
+};
+export type RecoveryItemSumAggregateOutputType = {
+    weight: runtime.Decimal | null;
+};
+export type RecoveryItemMinAggregateOutputType = {
+    id: string | null;
+    recoveryId: string | null;
+    materialTypeId: string | null;
+    weight: runtime.Decimal | null;
+    createdAt: Date | null;
+};
+export type RecoveryItemMaxAggregateOutputType = {
+    id: string | null;
+    recoveryId: string | null;
+    materialTypeId: string | null;
+    weight: runtime.Decimal | null;
+    createdAt: Date | null;
+};
+export type RecoveryItemCountAggregateOutputType = {
+    id: number;
+    recoveryId: number;
+    materialTypeId: number;
+    weight: number;
+    createdAt: number;
+    _all: number;
+};
+export type RecoveryItemAvgAggregateInputType = {
+    weight?: true;
+};
+export type RecoveryItemSumAggregateInputType = {
+    weight?: true;
+};
+export type RecoveryItemMinAggregateInputType = {
+    id?: true;
+    recoveryId?: true;
+    materialTypeId?: true;
+    weight?: true;
+    createdAt?: true;
+};
+export type RecoveryItemMaxAggregateInputType = {
+    id?: true;
+    recoveryId?: true;
+    materialTypeId?: true;
+    weight?: true;
+    createdAt?: true;
+};
+export type RecoveryItemCountAggregateInputType = {
+    id?: true;
+    recoveryId?: true;
+    materialTypeId?: true;
+    weight?: true;
+    createdAt?: true;
+    _all?: true;
+};
+export type RecoveryItemAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Filter which RecoveryItem to aggregate.
+     */
+    where?: Prisma.RecoveryItemWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of RecoveryItems to fetch.
+     */
+    orderBy?: Prisma.RecoveryItemOrderByWithRelationInput | Prisma.RecoveryItemOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the start position
+     */
+    cursor?: Prisma.RecoveryItemWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` RecoveryItems from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` RecoveryItems.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Count returned RecoveryItems
+    **/
+    _count?: true | RecoveryItemCountAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to average
+    **/
+    _avg?: RecoveryItemAvgAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to sum
+    **/
+    _sum?: RecoveryItemSumAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the minimum value
+    **/
+    _min?: RecoveryItemMinAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the maximum value
+    **/
+    _max?: RecoveryItemMaxAggregateInputType;
+};
+export type GetRecoveryItemAggregateType<T extends RecoveryItemAggregateArgs> = {
+    [P in keyof T & keyof AggregateRecoveryItem]: P extends '_count' | 'count' ? T[P] extends true ? number : Prisma.GetScalarType<T[P], AggregateRecoveryItem[P]> : Prisma.GetScalarType<T[P], AggregateRecoveryItem[P]>;
+};
+export type RecoveryItemGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.RecoveryItemWhereInput;
+    orderBy?: Prisma.RecoveryItemOrderByWithAggregationInput | Prisma.RecoveryItemOrderByWithAggregationInput[];
+    by: Prisma.RecoveryItemScalarFieldEnum[] | Prisma.RecoveryItemScalarFieldEnum;
+    having?: Prisma.RecoveryItemScalarWhereWithAggregatesInput;
+    take?: number;
+    skip?: number;
+    _count?: RecoveryItemCountAggregateInputType | true;
+    _avg?: RecoveryItemAvgAggregateInputType;
+    _sum?: RecoveryItemSumAggregateInputType;
+    _min?: RecoveryItemMinAggregateInputType;
+    _max?: RecoveryItemMaxAggregateInputType;
+};
+export type RecoveryItemGroupByOutputType = {
+    id: string;
+    recoveryId: string;
+    materialTypeId: string;
+    weight: runtime.Decimal;
+    createdAt: Date;
+    _count: RecoveryItemCountAggregateOutputType | null;
+    _avg: RecoveryItemAvgAggregateOutputType | null;
+    _sum: RecoveryItemSumAggregateOutputType | null;
+    _min: RecoveryItemMinAggregateOutputType | null;
+    _max: RecoveryItemMaxAggregateOutputType | null;
+};
+export type GetRecoveryItemGroupByPayload<T extends RecoveryItemGroupByArgs> = Prisma.PrismaPromise<Array<Prisma.PickEnumerable<RecoveryItemGroupByOutputType, T['by']> & {
+    [P in ((keyof T) & (keyof RecoveryItemGroupByOutputType))]: P extends '_count' ? T[P] extends boolean ? number : Prisma.GetScalarType<T[P], RecoveryItemGroupByOutputType[P]> : Prisma.GetScalarType<T[P], RecoveryItemGroupByOutputType[P]>;
+}>>;
+export type RecoveryItemWhereInput = {
+    AND?: Prisma.RecoveryItemWhereInput | Prisma.RecoveryItemWhereInput[];
+    OR?: Prisma.RecoveryItemWhereInput[];
+    NOT?: Prisma.RecoveryItemWhereInput | Prisma.RecoveryItemWhereInput[];
+    id?: Prisma.StringFilter<"RecoveryItem"> | string;
+    recoveryId?: Prisma.StringFilter<"RecoveryItem"> | string;
+    materialTypeId?: Prisma.StringFilter<"RecoveryItem"> | string;
+    weight?: Prisma.DecimalFilter<"RecoveryItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFilter<"RecoveryItem"> | Date | string;
+    recovery?: Prisma.XOR<Prisma.RecoveryScalarRelationFilter, Prisma.RecoveryWhereInput>;
+    materialType?: Prisma.XOR<Prisma.MaterialTypeScalarRelationFilter, Prisma.MaterialTypeWhereInput>;
+};
+export type RecoveryItemOrderByWithRelationInput = {
+    id?: Prisma.SortOrder;
+    recoveryId?: Prisma.SortOrder;
+    materialTypeId?: Prisma.SortOrder;
+    weight?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    recovery?: Prisma.RecoveryOrderByWithRelationInput;
+    materialType?: Prisma.MaterialTypeOrderByWithRelationInput;
+};
+export type RecoveryItemWhereUniqueInput = Prisma.AtLeast<{
+    id?: string;
+    AND?: Prisma.RecoveryItemWhereInput | Prisma.RecoveryItemWhereInput[];
+    OR?: Prisma.RecoveryItemWhereInput[];
+    NOT?: Prisma.RecoveryItemWhereInput | Prisma.RecoveryItemWhereInput[];
+    recoveryId?: Prisma.StringFilter<"RecoveryItem"> | string;
+    materialTypeId?: Prisma.StringFilter<"RecoveryItem"> | string;
+    weight?: Prisma.DecimalFilter<"RecoveryItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFilter<"RecoveryItem"> | Date | string;
+    recovery?: Prisma.XOR<Prisma.RecoveryScalarRelationFilter, Prisma.RecoveryWhereInput>;
+    materialType?: Prisma.XOR<Prisma.MaterialTypeScalarRelationFilter, Prisma.MaterialTypeWhereInput>;
+}, "id">;
+export type RecoveryItemOrderByWithAggregationInput = {
+    id?: Prisma.SortOrder;
+    recoveryId?: Prisma.SortOrder;
+    materialTypeId?: Prisma.SortOrder;
+    weight?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    _count?: Prisma.RecoveryItemCountOrderByAggregateInput;
+    _avg?: Prisma.RecoveryItemAvgOrderByAggregateInput;
+    _max?: Prisma.RecoveryItemMaxOrderByAggregateInput;
+    _min?: Prisma.RecoveryItemMinOrderByAggregateInput;
+    _sum?: Prisma.RecoveryItemSumOrderByAggregateInput;
+};
+export type RecoveryItemScalarWhereWithAggregatesInput = {
+    AND?: Prisma.RecoveryItemScalarWhereWithAggregatesInput | Prisma.RecoveryItemScalarWhereWithAggregatesInput[];
+    OR?: Prisma.RecoveryItemScalarWhereWithAggregatesInput[];
+    NOT?: Prisma.RecoveryItemScalarWhereWithAggregatesInput | Prisma.RecoveryItemScalarWhereWithAggregatesInput[];
+    id?: Prisma.StringWithAggregatesFilter<"RecoveryItem"> | string;
+    recoveryId?: Prisma.StringWithAggregatesFilter<"RecoveryItem"> | string;
+    materialTypeId?: Prisma.StringWithAggregatesFilter<"RecoveryItem"> | string;
+    weight?: Prisma.DecimalWithAggregatesFilter<"RecoveryItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeWithAggregatesFilter<"RecoveryItem"> | Date | string;
+};
+export type RecoveryItemCreateInput = {
+    id?: string;
+    weight: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Date | string;
+    recovery: Prisma.RecoveryCreateNestedOneWithoutItemsInput;
+    materialType: Prisma.MaterialTypeCreateNestedOneWithoutRecoveryItemsInput;
+};
+export type RecoveryItemUncheckedCreateInput = {
+    id?: string;
+    recoveryId: string;
+    materialTypeId: string;
+    weight: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Date | string;
+};
+export type RecoveryItemUpdateInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    weight?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    recovery?: Prisma.RecoveryUpdateOneRequiredWithoutItemsNestedInput;
+    materialType?: Prisma.MaterialTypeUpdateOneRequiredWithoutRecoveryItemsNestedInput;
+};
+export type RecoveryItemUncheckedUpdateInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    recoveryId?: Prisma.StringFieldUpdateOperationsInput | string;
+    materialTypeId?: Prisma.StringFieldUpdateOperationsInput | string;
+    weight?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type RecoveryItemCreateManyInput = {
+    id?: string;
+    recoveryId: string;
+    materialTypeId: string;
+    weight: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Date | string;
+};
+export type RecoveryItemUpdateManyMutationInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    weight?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type RecoveryItemUncheckedUpdateManyInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    recoveryId?: Prisma.StringFieldUpdateOperationsInput | string;
+    materialTypeId?: Prisma.StringFieldUpdateOperationsInput | string;
+    weight?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type RecoveryItemListRelationFilter = {
+    every?: Prisma.RecoveryItemWhereInput;
+    some?: Prisma.RecoveryItemWhereInput;
+    none?: Prisma.RecoveryItemWhereInput;
+};
+export type RecoveryItemOrderByRelationAggregateInput = {
+    _count?: Prisma.SortOrder;
+};
+export type RecoveryItemCountOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    recoveryId?: Prisma.SortOrder;
+    materialTypeId?: Prisma.SortOrder;
+    weight?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+};
+export type RecoveryItemAvgOrderByAggregateInput = {
+    weight?: Prisma.SortOrder;
+};
+export type RecoveryItemMaxOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    recoveryId?: Prisma.SortOrder;
+    materialTypeId?: Prisma.SortOrder;
+    weight?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+};
+export type RecoveryItemMinOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    recoveryId?: Prisma.SortOrder;
+    materialTypeId?: Prisma.SortOrder;
+    weight?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+};
+export type RecoveryItemSumOrderByAggregateInput = {
+    weight?: Prisma.SortOrder;
+};
+export type RecoveryItemCreateNestedManyWithoutMaterialTypeInput = {
+    create?: Prisma.XOR<Prisma.RecoveryItemCreateWithoutMaterialTypeInput, Prisma.RecoveryItemUncheckedCreateWithoutMaterialTypeInput> | Prisma.RecoveryItemCreateWithoutMaterialTypeInput[] | Prisma.RecoveryItemUncheckedCreateWithoutMaterialTypeInput[];
+    connectOrCreate?: Prisma.RecoveryItemCreateOrConnectWithoutMaterialTypeInput | Prisma.RecoveryItemCreateOrConnectWithoutMaterialTypeInput[];
+    createMany?: Prisma.RecoveryItemCreateManyMaterialTypeInputEnvelope;
+    connect?: Prisma.RecoveryItemWhereUniqueInput | Prisma.RecoveryItemWhereUniqueInput[];
+};
+export type RecoveryItemUncheckedCreateNestedManyWithoutMaterialTypeInput = {
+    create?: Prisma.XOR<Prisma.RecoveryItemCreateWithoutMaterialTypeInput, Prisma.RecoveryItemUncheckedCreateWithoutMaterialTypeInput> | Prisma.RecoveryItemCreateWithoutMaterialTypeInput[] | Prisma.RecoveryItemUncheckedCreateWithoutMaterialTypeInput[];
+    connectOrCreate?: Prisma.RecoveryItemCreateOrConnectWithoutMaterialTypeInput | Prisma.RecoveryItemCreateOrConnectWithoutMaterialTypeInput[];
+    createMany?: Prisma.RecoveryItemCreateManyMaterialTypeInputEnvelope;
+    connect?: Prisma.RecoveryItemWhereUniqueInput | Prisma.RecoveryItemWhereUniqueInput[];
+};
+export type RecoveryItemUpdateManyWithoutMaterialTypeNestedInput = {
+    create?: Prisma.XOR<Prisma.RecoveryItemCreateWithoutMaterialTypeInput, Prisma.RecoveryItemUncheckedCreateWithoutMaterialTypeInput> | Prisma.RecoveryItemCreateWithoutMaterialTypeInput[] | Prisma.RecoveryItemUncheckedCreateWithoutMaterialTypeInput[];
+    connectOrCreate?: Prisma.RecoveryItemCreateOrConnectWithoutMaterialTypeInput | Prisma.RecoveryItemCreateOrConnectWithoutMaterialTypeInput[];
+    upsert?: Prisma.RecoveryItemUpsertWithWhereUniqueWithoutMaterialTypeInput | Prisma.RecoveryItemUpsertWithWhereUniqueWithoutMaterialTypeInput[];
+    createMany?: Prisma.RecoveryItemCreateManyMaterialTypeInputEnvelope;
+    set?: Prisma.RecoveryItemWhereUniqueInput | Prisma.RecoveryItemWhereUniqueInput[];
+    disconnect?: Prisma.RecoveryItemWhereUniqueInput | Prisma.RecoveryItemWhereUniqueInput[];
+    delete?: Prisma.RecoveryItemWhereUniqueInput | Prisma.RecoveryItemWhereUniqueInput[];
+    connect?: Prisma.RecoveryItemWhereUniqueInput | Prisma.RecoveryItemWhereUniqueInput[];
+    update?: Prisma.RecoveryItemUpdateWithWhereUniqueWithoutMaterialTypeInput | Prisma.RecoveryItemUpdateWithWhereUniqueWithoutMaterialTypeInput[];
+    updateMany?: Prisma.RecoveryItemUpdateManyWithWhereWithoutMaterialTypeInput | Prisma.RecoveryItemUpdateManyWithWhereWithoutMaterialTypeInput[];
+    deleteMany?: Prisma.RecoveryItemScalarWhereInput | Prisma.RecoveryItemScalarWhereInput[];
+};
+export type RecoveryItemUncheckedUpdateManyWithoutMaterialTypeNestedInput = {
+    create?: Prisma.XOR<Prisma.RecoveryItemCreateWithoutMaterialTypeInput, Prisma.RecoveryItemUncheckedCreateWithoutMaterialTypeInput> | Prisma.RecoveryItemCreateWithoutMaterialTypeInput[] | Prisma.RecoveryItemUncheckedCreateWithoutMaterialTypeInput[];
+    connectOrCreate?: Prisma.RecoveryItemCreateOrConnectWithoutMaterialTypeInput | Prisma.RecoveryItemCreateOrConnectWithoutMaterialTypeInput[];
+    upsert?: Prisma.RecoveryItemUpsertWithWhereUniqueWithoutMaterialTypeInput | Prisma.RecoveryItemUpsertWithWhereUniqueWithoutMaterialTypeInput[];
+    createMany?: Prisma.RecoveryItemCreateManyMaterialTypeInputEnvelope;
+    set?: Prisma.RecoveryItemWhereUniqueInput | Prisma.RecoveryItemWhereUniqueInput[];
+    disconnect?: Prisma.RecoveryItemWhereUniqueInput | Prisma.RecoveryItemWhereUniqueInput[];
+    delete?: Prisma.RecoveryItemWhereUniqueInput | Prisma.RecoveryItemWhereUniqueInput[];
+    connect?: Prisma.RecoveryItemWhereUniqueInput | Prisma.RecoveryItemWhereUniqueInput[];
+    update?: Prisma.RecoveryItemUpdateWithWhereUniqueWithoutMaterialTypeInput | Prisma.RecoveryItemUpdateWithWhereUniqueWithoutMaterialTypeInput[];
+    updateMany?: Prisma.RecoveryItemUpdateManyWithWhereWithoutMaterialTypeInput | Prisma.RecoveryItemUpdateManyWithWhereWithoutMaterialTypeInput[];
+    deleteMany?: Prisma.RecoveryItemScalarWhereInput | Prisma.RecoveryItemScalarWhereInput[];
+};
+export type RecoveryItemCreateNestedManyWithoutRecoveryInput = {
+    create?: Prisma.XOR<Prisma.RecoveryItemCreateWithoutRecoveryInput, Prisma.RecoveryItemUncheckedCreateWithoutRecoveryInput> | Prisma.RecoveryItemCreateWithoutRecoveryInput[] | Prisma.RecoveryItemUncheckedCreateWithoutRecoveryInput[];
+    connectOrCreate?: Prisma.RecoveryItemCreateOrConnectWithoutRecoveryInput | Prisma.RecoveryItemCreateOrConnectWithoutRecoveryInput[];
+    createMany?: Prisma.RecoveryItemCreateManyRecoveryInputEnvelope;
+    connect?: Prisma.RecoveryItemWhereUniqueInput | Prisma.RecoveryItemWhereUniqueInput[];
+};
+export type RecoveryItemUncheckedCreateNestedManyWithoutRecoveryInput = {
+    create?: Prisma.XOR<Prisma.RecoveryItemCreateWithoutRecoveryInput, Prisma.RecoveryItemUncheckedCreateWithoutRecoveryInput> | Prisma.RecoveryItemCreateWithoutRecoveryInput[] | Prisma.RecoveryItemUncheckedCreateWithoutRecoveryInput[];
+    connectOrCreate?: Prisma.RecoveryItemCreateOrConnectWithoutRecoveryInput | Prisma.RecoveryItemCreateOrConnectWithoutRecoveryInput[];
+    createMany?: Prisma.RecoveryItemCreateManyRecoveryInputEnvelope;
+    connect?: Prisma.RecoveryItemWhereUniqueInput | Prisma.RecoveryItemWhereUniqueInput[];
+};
+export type RecoveryItemUpdateManyWithoutRecoveryNestedInput = {
+    create?: Prisma.XOR<Prisma.RecoveryItemCreateWithoutRecoveryInput, Prisma.RecoveryItemUncheckedCreateWithoutRecoveryInput> | Prisma.RecoveryItemCreateWithoutRecoveryInput[] | Prisma.RecoveryItemUncheckedCreateWithoutRecoveryInput[];
+    connectOrCreate?: Prisma.RecoveryItemCreateOrConnectWithoutRecoveryInput | Prisma.RecoveryItemCreateOrConnectWithoutRecoveryInput[];
+    upsert?: Prisma.RecoveryItemUpsertWithWhereUniqueWithoutRecoveryInput | Prisma.RecoveryItemUpsertWithWhereUniqueWithoutRecoveryInput[];
+    createMany?: Prisma.RecoveryItemCreateManyRecoveryInputEnvelope;
+    set?: Prisma.RecoveryItemWhereUniqueInput | Prisma.RecoveryItemWhereUniqueInput[];
+    disconnect?: Prisma.RecoveryItemWhereUniqueInput | Prisma.RecoveryItemWhereUniqueInput[];
+    delete?: Prisma.RecoveryItemWhereUniqueInput | Prisma.RecoveryItemWhereUniqueInput[];
+    connect?: Prisma.RecoveryItemWhereUniqueInput | Prisma.RecoveryItemWhereUniqueInput[];
+    update?: Prisma.RecoveryItemUpdateWithWhereUniqueWithoutRecoveryInput | Prisma.RecoveryItemUpdateWithWhereUniqueWithoutRecoveryInput[];
+    updateMany?: Prisma.RecoveryItemUpdateManyWithWhereWithoutRecoveryInput | Prisma.RecoveryItemUpdateManyWithWhereWithoutRecoveryInput[];
+    deleteMany?: Prisma.RecoveryItemScalarWhereInput | Prisma.RecoveryItemScalarWhereInput[];
+};
+export type RecoveryItemUncheckedUpdateManyWithoutRecoveryNestedInput = {
+    create?: Prisma.XOR<Prisma.RecoveryItemCreateWithoutRecoveryInput, Prisma.RecoveryItemUncheckedCreateWithoutRecoveryInput> | Prisma.RecoveryItemCreateWithoutRecoveryInput[] | Prisma.RecoveryItemUncheckedCreateWithoutRecoveryInput[];
+    connectOrCreate?: Prisma.RecoveryItemCreateOrConnectWithoutRecoveryInput | Prisma.RecoveryItemCreateOrConnectWithoutRecoveryInput[];
+    upsert?: Prisma.RecoveryItemUpsertWithWhereUniqueWithoutRecoveryInput | Prisma.RecoveryItemUpsertWithWhereUniqueWithoutRecoveryInput[];
+    createMany?: Prisma.RecoveryItemCreateManyRecoveryInputEnvelope;
+    set?: Prisma.RecoveryItemWhereUniqueInput | Prisma.RecoveryItemWhereUniqueInput[];
+    disconnect?: Prisma.RecoveryItemWhereUniqueInput | Prisma.RecoveryItemWhereUniqueInput[];
+    delete?: Prisma.RecoveryItemWhereUniqueInput | Prisma.RecoveryItemWhereUniqueInput[];
+    connect?: Prisma.RecoveryItemWhereUniqueInput | Prisma.RecoveryItemWhereUniqueInput[];
+    update?: Prisma.RecoveryItemUpdateWithWhereUniqueWithoutRecoveryInput | Prisma.RecoveryItemUpdateWithWhereUniqueWithoutRecoveryInput[];
+    updateMany?: Prisma.RecoveryItemUpdateManyWithWhereWithoutRecoveryInput | Prisma.RecoveryItemUpdateManyWithWhereWithoutRecoveryInput[];
+    deleteMany?: Prisma.RecoveryItemScalarWhereInput | Prisma.RecoveryItemScalarWhereInput[];
+};
+export type RecoveryItemCreateWithoutMaterialTypeInput = {
+    id?: string;
+    weight: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Date | string;
+    recovery: Prisma.RecoveryCreateNestedOneWithoutItemsInput;
+};
+export type RecoveryItemUncheckedCreateWithoutMaterialTypeInput = {
+    id?: string;
+    recoveryId: string;
+    weight: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Date | string;
+};
+export type RecoveryItemCreateOrConnectWithoutMaterialTypeInput = {
+    where: Prisma.RecoveryItemWhereUniqueInput;
+    create: Prisma.XOR<Prisma.RecoveryItemCreateWithoutMaterialTypeInput, Prisma.RecoveryItemUncheckedCreateWithoutMaterialTypeInput>;
+};
+export type RecoveryItemCreateManyMaterialTypeInputEnvelope = {
+    data: Prisma.RecoveryItemCreateManyMaterialTypeInput | Prisma.RecoveryItemCreateManyMaterialTypeInput[];
+    skipDuplicates?: boolean;
+};
+export type RecoveryItemUpsertWithWhereUniqueWithoutMaterialTypeInput = {
+    where: Prisma.RecoveryItemWhereUniqueInput;
+    update: Prisma.XOR<Prisma.RecoveryItemUpdateWithoutMaterialTypeInput, Prisma.RecoveryItemUncheckedUpdateWithoutMaterialTypeInput>;
+    create: Prisma.XOR<Prisma.RecoveryItemCreateWithoutMaterialTypeInput, Prisma.RecoveryItemUncheckedCreateWithoutMaterialTypeInput>;
+};
+export type RecoveryItemUpdateWithWhereUniqueWithoutMaterialTypeInput = {
+    where: Prisma.RecoveryItemWhereUniqueInput;
+    data: Prisma.XOR<Prisma.RecoveryItemUpdateWithoutMaterialTypeInput, Prisma.RecoveryItemUncheckedUpdateWithoutMaterialTypeInput>;
+};
+export type RecoveryItemUpdateManyWithWhereWithoutMaterialTypeInput = {
+    where: Prisma.RecoveryItemScalarWhereInput;
+    data: Prisma.XOR<Prisma.RecoveryItemUpdateManyMutationInput, Prisma.RecoveryItemUncheckedUpdateManyWithoutMaterialTypeInput>;
+};
+export type RecoveryItemScalarWhereInput = {
+    AND?: Prisma.RecoveryItemScalarWhereInput | Prisma.RecoveryItemScalarWhereInput[];
+    OR?: Prisma.RecoveryItemScalarWhereInput[];
+    NOT?: Prisma.RecoveryItemScalarWhereInput | Prisma.RecoveryItemScalarWhereInput[];
+    id?: Prisma.StringFilter<"RecoveryItem"> | string;
+    recoveryId?: Prisma.StringFilter<"RecoveryItem"> | string;
+    materialTypeId?: Prisma.StringFilter<"RecoveryItem"> | string;
+    weight?: Prisma.DecimalFilter<"RecoveryItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFilter<"RecoveryItem"> | Date | string;
+};
+export type RecoveryItemCreateWithoutRecoveryInput = {
+    id?: string;
+    weight: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Date | string;
+    materialType: Prisma.MaterialTypeCreateNestedOneWithoutRecoveryItemsInput;
+};
+export type RecoveryItemUncheckedCreateWithoutRecoveryInput = {
+    id?: string;
+    materialTypeId: string;
+    weight: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Date | string;
+};
+export type RecoveryItemCreateOrConnectWithoutRecoveryInput = {
+    where: Prisma.RecoveryItemWhereUniqueInput;
+    create: Prisma.XOR<Prisma.RecoveryItemCreateWithoutRecoveryInput, Prisma.RecoveryItemUncheckedCreateWithoutRecoveryInput>;
+};
+export type RecoveryItemCreateManyRecoveryInputEnvelope = {
+    data: Prisma.RecoveryItemCreateManyRecoveryInput | Prisma.RecoveryItemCreateManyRecoveryInput[];
+    skipDuplicates?: boolean;
+};
+export type RecoveryItemUpsertWithWhereUniqueWithoutRecoveryInput = {
+    where: Prisma.RecoveryItemWhereUniqueInput;
+    update: Prisma.XOR<Prisma.RecoveryItemUpdateWithoutRecoveryInput, Prisma.RecoveryItemUncheckedUpdateWithoutRecoveryInput>;
+    create: Prisma.XOR<Prisma.RecoveryItemCreateWithoutRecoveryInput, Prisma.RecoveryItemUncheckedCreateWithoutRecoveryInput>;
+};
+export type RecoveryItemUpdateWithWhereUniqueWithoutRecoveryInput = {
+    where: Prisma.RecoveryItemWhereUniqueInput;
+    data: Prisma.XOR<Prisma.RecoveryItemUpdateWithoutRecoveryInput, Prisma.RecoveryItemUncheckedUpdateWithoutRecoveryInput>;
+};
+export type RecoveryItemUpdateManyWithWhereWithoutRecoveryInput = {
+    where: Prisma.RecoveryItemScalarWhereInput;
+    data: Prisma.XOR<Prisma.RecoveryItemUpdateManyMutationInput, Prisma.RecoveryItemUncheckedUpdateManyWithoutRecoveryInput>;
+};
+export type RecoveryItemCreateManyMaterialTypeInput = {
+    id?: string;
+    recoveryId: string;
+    weight: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Date | string;
+};
+export type RecoveryItemUpdateWithoutMaterialTypeInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    weight?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    recovery?: Prisma.RecoveryUpdateOneRequiredWithoutItemsNestedInput;
+};
+export type RecoveryItemUncheckedUpdateWithoutMaterialTypeInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    recoveryId?: Prisma.StringFieldUpdateOperationsInput | string;
+    weight?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type RecoveryItemUncheckedUpdateManyWithoutMaterialTypeInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    recoveryId?: Prisma.StringFieldUpdateOperationsInput | string;
+    weight?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type RecoveryItemCreateManyRecoveryInput = {
+    id?: string;
+    materialTypeId: string;
+    weight: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Date | string;
+};
+export type RecoveryItemUpdateWithoutRecoveryInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    weight?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    materialType?: Prisma.MaterialTypeUpdateOneRequiredWithoutRecoveryItemsNestedInput;
+};
+export type RecoveryItemUncheckedUpdateWithoutRecoveryInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    materialTypeId?: Prisma.StringFieldUpdateOperationsInput | string;
+    weight?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type RecoveryItemUncheckedUpdateManyWithoutRecoveryInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    materialTypeId?: Prisma.StringFieldUpdateOperationsInput | string;
+    weight?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type RecoveryItemSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    recoveryId?: boolean;
+    materialTypeId?: boolean;
+    weight?: boolean;
+    createdAt?: boolean;
+    recovery?: boolean | Prisma.RecoveryDefaultArgs<ExtArgs>;
+    materialType?: boolean | Prisma.MaterialTypeDefaultArgs<ExtArgs>;
+}, ExtArgs["result"]["recoveryItem"]>;
+export type RecoveryItemSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    recoveryId?: boolean;
+    materialTypeId?: boolean;
+    weight?: boolean;
+    createdAt?: boolean;
+    recovery?: boolean | Prisma.RecoveryDefaultArgs<ExtArgs>;
+    materialType?: boolean | Prisma.MaterialTypeDefaultArgs<ExtArgs>;
+}, ExtArgs["result"]["recoveryItem"]>;
+export type RecoveryItemSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    recoveryId?: boolean;
+    materialTypeId?: boolean;
+    weight?: boolean;
+    createdAt?: boolean;
+    recovery?: boolean | Prisma.RecoveryDefaultArgs<ExtArgs>;
+    materialType?: boolean | Prisma.MaterialTypeDefaultArgs<ExtArgs>;
+}, ExtArgs["result"]["recoveryItem"]>;
+export type RecoveryItemSelectScalar = {
+    id?: boolean;
+    recoveryId?: boolean;
+    materialTypeId?: boolean;
+    weight?: boolean;
+    createdAt?: boolean;
+};
+export type RecoveryItemOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "recoveryId" | "materialTypeId" | "weight" | "createdAt", ExtArgs["result"]["recoveryItem"]>;
+export type RecoveryItemInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    recovery?: boolean | Prisma.RecoveryDefaultArgs<ExtArgs>;
+    materialType?: boolean | Prisma.MaterialTypeDefaultArgs<ExtArgs>;
+};
+export type RecoveryItemIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    recovery?: boolean | Prisma.RecoveryDefaultArgs<ExtArgs>;
+    materialType?: boolean | Prisma.MaterialTypeDefaultArgs<ExtArgs>;
+};
+export type RecoveryItemIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    recovery?: boolean | Prisma.RecoveryDefaultArgs<ExtArgs>;
+    materialType?: boolean | Prisma.MaterialTypeDefaultArgs<ExtArgs>;
+};
+export type $RecoveryItemPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    name: "RecoveryItem";
+    objects: {
+        recovery: Prisma.$RecoveryPayload<ExtArgs>;
+        materialType: Prisma.$MaterialTypePayload<ExtArgs>;
+    };
+    scalars: runtime.Types.Extensions.GetPayloadResult<{
+        id: string;
+        recoveryId: string;
+        materialTypeId: string;
+        weight: runtime.Decimal;
+        createdAt: Date;
+    }, ExtArgs["result"]["recoveryItem"]>;
+    composites: {};
+};
+export type RecoveryItemGetPayload<S extends boolean | null | undefined | RecoveryItemDefaultArgs> = runtime.Types.Result.GetResult<Prisma.$RecoveryItemPayload, S>;
+export type RecoveryItemCountArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = Omit<RecoveryItemFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+    select?: RecoveryItemCountAggregateInputType | true;
+};
+export interface RecoveryItemDelegate<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: {
+        types: Prisma.TypeMap<ExtArgs>['model']['RecoveryItem'];
+        meta: {
+            name: 'RecoveryItem';
+        };
+    };
+    /**
+     * Find zero or one RecoveryItem that matches the filter.
+     * @param {RecoveryItemFindUniqueArgs} args - Arguments to find a RecoveryItem
+     * @example
+     * // Get one RecoveryItem
+     * const recoveryItem = await prisma.recoveryItem.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends RecoveryItemFindUniqueArgs>(args: Prisma.SelectSubset<T, RecoveryItemFindUniqueArgs<ExtArgs>>): Prisma.Prisma__RecoveryItemClient<runtime.Types.Result.GetResult<Prisma.$RecoveryItemPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find one RecoveryItem that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {RecoveryItemFindUniqueOrThrowArgs} args - Arguments to find a RecoveryItem
+     * @example
+     * // Get one RecoveryItem
+     * const recoveryItem = await prisma.recoveryItem.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends RecoveryItemFindUniqueOrThrowArgs>(args: Prisma.SelectSubset<T, RecoveryItemFindUniqueOrThrowArgs<ExtArgs>>): Prisma.Prisma__RecoveryItemClient<runtime.Types.Result.GetResult<Prisma.$RecoveryItemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find the first RecoveryItem that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RecoveryItemFindFirstArgs} args - Arguments to find a RecoveryItem
+     * @example
+     * // Get one RecoveryItem
+     * const recoveryItem = await prisma.recoveryItem.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends RecoveryItemFindFirstArgs>(args?: Prisma.SelectSubset<T, RecoveryItemFindFirstArgs<ExtArgs>>): Prisma.Prisma__RecoveryItemClient<runtime.Types.Result.GetResult<Prisma.$RecoveryItemPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find the first RecoveryItem that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RecoveryItemFindFirstOrThrowArgs} args - Arguments to find a RecoveryItem
+     * @example
+     * // Get one RecoveryItem
+     * const recoveryItem = await prisma.recoveryItem.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends RecoveryItemFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, RecoveryItemFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__RecoveryItemClient<runtime.Types.Result.GetResult<Prisma.$RecoveryItemPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find zero or more RecoveryItems that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RecoveryItemFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all RecoveryItems
+     * const recoveryItems = await prisma.recoveryItem.findMany()
+     *
+     * // Get first 10 RecoveryItems
+     * const recoveryItems = await prisma.recoveryItem.findMany({ take: 10 })
+     *
+     * // Only select the `id`
+     * const recoveryItemWithIdOnly = await prisma.recoveryItem.findMany({ select: { id: true } })
+     *
+     */
+    findMany<T extends RecoveryItemFindManyArgs>(args?: Prisma.SelectSubset<T, RecoveryItemFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RecoveryItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>;
+    /**
+     * Create a RecoveryItem.
+     * @param {RecoveryItemCreateArgs} args - Arguments to create a RecoveryItem.
+     * @example
+     * // Create one RecoveryItem
+     * const RecoveryItem = await prisma.recoveryItem.create({
+     *   data: {
+     *     // ... data to create a RecoveryItem
+     *   }
+     * })
+     *
+     */
+    create<T extends RecoveryItemCreateArgs>(args: Prisma.SelectSubset<T, RecoveryItemCreateArgs<ExtArgs>>): Prisma.Prisma__RecoveryItemClient<runtime.Types.Result.GetResult<Prisma.$RecoveryItemPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Create many RecoveryItems.
+     * @param {RecoveryItemCreateManyArgs} args - Arguments to create many RecoveryItems.
+     * @example
+     * // Create many RecoveryItems
+     * const recoveryItem = await prisma.recoveryItem.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     */
+    createMany<T extends RecoveryItemCreateManyArgs>(args?: Prisma.SelectSubset<T, RecoveryItemCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Create many RecoveryItems and returns the data saved in the database.
+     * @param {RecoveryItemCreateManyAndReturnArgs} args - Arguments to create many RecoveryItems.
+     * @example
+     * // Create many RecoveryItems
+     * const recoveryItem = await prisma.recoveryItem.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Create many RecoveryItems and only return the `id`
+     * const recoveryItemWithIdOnly = await prisma.recoveryItem.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    createManyAndReturn<T extends RecoveryItemCreateManyAndReturnArgs>(args?: Prisma.SelectSubset<T, RecoveryItemCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RecoveryItemPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>;
+    /**
+     * Delete a RecoveryItem.
+     * @param {RecoveryItemDeleteArgs} args - Arguments to delete one RecoveryItem.
+     * @example
+     * // Delete one RecoveryItem
+     * const RecoveryItem = await prisma.recoveryItem.delete({
+     *   where: {
+     *     // ... filter to delete one RecoveryItem
+     *   }
+     * })
+     *
+     */
+    delete<T extends RecoveryItemDeleteArgs>(args: Prisma.SelectSubset<T, RecoveryItemDeleteArgs<ExtArgs>>): Prisma.Prisma__RecoveryItemClient<runtime.Types.Result.GetResult<Prisma.$RecoveryItemPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Update one RecoveryItem.
+     * @param {RecoveryItemUpdateArgs} args - Arguments to update one RecoveryItem.
+     * @example
+     * // Update one RecoveryItem
+     * const recoveryItem = await prisma.recoveryItem.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    update<T extends RecoveryItemUpdateArgs>(args: Prisma.SelectSubset<T, RecoveryItemUpdateArgs<ExtArgs>>): Prisma.Prisma__RecoveryItemClient<runtime.Types.Result.GetResult<Prisma.$RecoveryItemPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Delete zero or more RecoveryItems.
+     * @param {RecoveryItemDeleteManyArgs} args - Arguments to filter RecoveryItems to delete.
+     * @example
+     * // Delete a few RecoveryItems
+     * const { count } = await prisma.recoveryItem.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     *
+     */
+    deleteMany<T extends RecoveryItemDeleteManyArgs>(args?: Prisma.SelectSubset<T, RecoveryItemDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Update zero or more RecoveryItems.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RecoveryItemUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many RecoveryItems
+     * const recoveryItem = await prisma.recoveryItem.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    updateMany<T extends RecoveryItemUpdateManyArgs>(args: Prisma.SelectSubset<T, RecoveryItemUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Update zero or more RecoveryItems and returns the data updated in the database.
+     * @param {RecoveryItemUpdateManyAndReturnArgs} args - Arguments to update many RecoveryItems.
+     * @example
+     * // Update many RecoveryItems
+     * const recoveryItem = await prisma.recoveryItem.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Update zero or more RecoveryItems and only return the `id`
+     * const recoveryItemWithIdOnly = await prisma.recoveryItem.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    updateManyAndReturn<T extends RecoveryItemUpdateManyAndReturnArgs>(args: Prisma.SelectSubset<T, RecoveryItemUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RecoveryItemPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>;
+    /**
+     * Create or update one RecoveryItem.
+     * @param {RecoveryItemUpsertArgs} args - Arguments to update or create a RecoveryItem.
+     * @example
+     * // Update or create a RecoveryItem
+     * const recoveryItem = await prisma.recoveryItem.upsert({
+     *   create: {
+     *     // ... data to create a RecoveryItem
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the RecoveryItem we want to update
+     *   }
+     * })
+     */
+    upsert<T extends RecoveryItemUpsertArgs>(args: Prisma.SelectSubset<T, RecoveryItemUpsertArgs<ExtArgs>>): Prisma.Prisma__RecoveryItemClient<runtime.Types.Result.GetResult<Prisma.$RecoveryItemPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Count the number of RecoveryItems.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RecoveryItemCountArgs} args - Arguments to filter RecoveryItems to count.
+     * @example
+     * // Count the number of RecoveryItems
+     * const count = await prisma.recoveryItem.count({
+     *   where: {
+     *     // ... the filter for the RecoveryItems we want to count
+     *   }
+     * })
+    **/
+    count<T extends RecoveryItemCountArgs>(args?: Prisma.Subset<T, RecoveryItemCountArgs>): Prisma.PrismaPromise<T extends runtime.Types.Utils.Record<'select', any> ? T['select'] extends true ? number : Prisma.GetScalarType<T['select'], RecoveryItemCountAggregateOutputType> : number>;
+    /**
+     * Allows you to perform aggregations operations on a RecoveryItem.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RecoveryItemAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends RecoveryItemAggregateArgs>(args: Prisma.Subset<T, RecoveryItemAggregateArgs>): Prisma.PrismaPromise<GetRecoveryItemAggregateType<T>>;
+    /**
+     * Group by RecoveryItem.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RecoveryItemGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     *
+    **/
+    groupBy<T extends RecoveryItemGroupByArgs, HasSelectOrTake extends Prisma.Or<Prisma.Extends<'skip', Prisma.Keys<T>>, Prisma.Extends<'take', Prisma.Keys<T>>>, OrderByArg extends Prisma.True extends HasSelectOrTake ? {
+        orderBy: RecoveryItemGroupByArgs['orderBy'];
+    } : {
+        orderBy?: RecoveryItemGroupByArgs['orderBy'];
+    }, OrderFields extends Prisma.ExcludeUnderscoreKeys<Prisma.Keys<Prisma.MaybeTupleToUnion<T['orderBy']>>>, ByFields extends Prisma.MaybeTupleToUnion<T['by']>, ByValid extends Prisma.Has<ByFields, OrderFields>, HavingFields extends Prisma.GetHavingFields<T['having']>, HavingValid extends Prisma.Has<ByFields, HavingFields>, ByEmpty extends T['by'] extends never[] ? Prisma.True : Prisma.False, InputErrors extends ByEmpty extends Prisma.True ? `Error: "by" must not be empty.` : HavingValid extends Prisma.False ? {
+        [P in HavingFields]: P extends ByFields ? never : P extends string ? `Error: Field "${P}" used in "having" needs to be provided in "by".` : [
+            Error,
+            'Field ',
+            P,
+            ` in "having" needs to be provided in "by"`
+        ];
+    }[HavingFields] : 'take' extends Prisma.Keys<T> ? 'orderBy' extends Prisma.Keys<T> ? ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields] : 'Error: If you provide "take", you also need to provide "orderBy"' : 'skip' extends Prisma.Keys<T> ? 'orderBy' extends Prisma.Keys<T> ? ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields] : 'Error: If you provide "skip", you also need to provide "orderBy"' : ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields]>(args: Prisma.SubsetIntersection<T, RecoveryItemGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetRecoveryItemGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
+    /**
+     * Fields of the RecoveryItem model
+     */
+    readonly fields: RecoveryItemFieldRefs;
+}
+/**
+ * The delegate class that acts as a "Promise-like" for RecoveryItem.
+ * Why is this prefixed with `Prisma__`?
+ * Because we want to prevent naming conflicts as mentioned in
+ * https://github.com/prisma/prisma-client-js/issues/707
+ */
+export interface Prisma__RecoveryItemClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise";
+    recovery<T extends Prisma.RecoveryDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.RecoveryDefaultArgs<ExtArgs>>): Prisma.Prisma__RecoveryClient<runtime.Types.Result.GetResult<Prisma.$RecoveryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
+    materialType<T extends Prisma.MaterialTypeDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MaterialTypeDefaultArgs<ExtArgs>>): Prisma.Prisma__MaterialTypeClient<runtime.Types.Result.GetResult<Prisma.$MaterialTypePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): runtime.Types.Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): runtime.Types.Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): runtime.Types.Utils.JsPromise<T>;
+}
+/**
+ * Fields of the RecoveryItem model
+ */
+export interface RecoveryItemFieldRefs {
+    readonly id: Prisma.FieldRef<"RecoveryItem", 'String'>;
+    readonly recoveryId: Prisma.FieldRef<"RecoveryItem", 'String'>;
+    readonly materialTypeId: Prisma.FieldRef<"RecoveryItem", 'String'>;
+    readonly weight: Prisma.FieldRef<"RecoveryItem", 'Decimal'>;
+    readonly createdAt: Prisma.FieldRef<"RecoveryItem", 'DateTime'>;
+}
+/**
+ * RecoveryItem findUnique
+ */
+export type RecoveryItemFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecoveryItem
+     */
+    select?: Prisma.RecoveryItemSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the RecoveryItem
+     */
+    omit?: Prisma.RecoveryItemOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.RecoveryItemInclude<ExtArgs> | null;
+    /**
+     * Filter, which RecoveryItem to fetch.
+     */
+    where: Prisma.RecoveryItemWhereUniqueInput;
+};
+/**
+ * RecoveryItem findUniqueOrThrow
+ */
+export type RecoveryItemFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecoveryItem
+     */
+    select?: Prisma.RecoveryItemSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the RecoveryItem
+     */
+    omit?: Prisma.RecoveryItemOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.RecoveryItemInclude<ExtArgs> | null;
+    /**
+     * Filter, which RecoveryItem to fetch.
+     */
+    where: Prisma.RecoveryItemWhereUniqueInput;
+};
+/**
+ * RecoveryItem findFirst
+ */
+export type RecoveryItemFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecoveryItem
+     */
+    select?: Prisma.RecoveryItemSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the RecoveryItem
+     */
+    omit?: Prisma.RecoveryItemOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.RecoveryItemInclude<ExtArgs> | null;
+    /**
+     * Filter, which RecoveryItem to fetch.
+     */
+    where?: Prisma.RecoveryItemWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of RecoveryItems to fetch.
+     */
+    orderBy?: Prisma.RecoveryItemOrderByWithRelationInput | Prisma.RecoveryItemOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for RecoveryItems.
+     */
+    cursor?: Prisma.RecoveryItemWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` RecoveryItems from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` RecoveryItems.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of RecoveryItems.
+     */
+    distinct?: Prisma.RecoveryItemScalarFieldEnum | Prisma.RecoveryItemScalarFieldEnum[];
+};
+/**
+ * RecoveryItem findFirstOrThrow
+ */
+export type RecoveryItemFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecoveryItem
+     */
+    select?: Prisma.RecoveryItemSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the RecoveryItem
+     */
+    omit?: Prisma.RecoveryItemOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.RecoveryItemInclude<ExtArgs> | null;
+    /**
+     * Filter, which RecoveryItem to fetch.
+     */
+    where?: Prisma.RecoveryItemWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of RecoveryItems to fetch.
+     */
+    orderBy?: Prisma.RecoveryItemOrderByWithRelationInput | Prisma.RecoveryItemOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for RecoveryItems.
+     */
+    cursor?: Prisma.RecoveryItemWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` RecoveryItems from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` RecoveryItems.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of RecoveryItems.
+     */
+    distinct?: Prisma.RecoveryItemScalarFieldEnum | Prisma.RecoveryItemScalarFieldEnum[];
+};
+/**
+ * RecoveryItem findMany
+ */
+export type RecoveryItemFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecoveryItem
+     */
+    select?: Prisma.RecoveryItemSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the RecoveryItem
+     */
+    omit?: Prisma.RecoveryItemOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.RecoveryItemInclude<ExtArgs> | null;
+    /**
+     * Filter, which RecoveryItems to fetch.
+     */
+    where?: Prisma.RecoveryItemWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of RecoveryItems to fetch.
+     */
+    orderBy?: Prisma.RecoveryItemOrderByWithRelationInput | Prisma.RecoveryItemOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for listing RecoveryItems.
+     */
+    cursor?: Prisma.RecoveryItemWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` RecoveryItems from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` RecoveryItems.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of RecoveryItems.
+     */
+    distinct?: Prisma.RecoveryItemScalarFieldEnum | Prisma.RecoveryItemScalarFieldEnum[];
+};
+/**
+ * RecoveryItem create
+ */
+export type RecoveryItemCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecoveryItem
+     */
+    select?: Prisma.RecoveryItemSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the RecoveryItem
+     */
+    omit?: Prisma.RecoveryItemOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.RecoveryItemInclude<ExtArgs> | null;
+    /**
+     * The data needed to create a RecoveryItem.
+     */
+    data: Prisma.XOR<Prisma.RecoveryItemCreateInput, Prisma.RecoveryItemUncheckedCreateInput>;
+};
+/**
+ * RecoveryItem createMany
+ */
+export type RecoveryItemCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many RecoveryItems.
+     */
+    data: Prisma.RecoveryItemCreateManyInput | Prisma.RecoveryItemCreateManyInput[];
+    skipDuplicates?: boolean;
+};
+/**
+ * RecoveryItem createManyAndReturn
+ */
+export type RecoveryItemCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecoveryItem
+     */
+    select?: Prisma.RecoveryItemSelectCreateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the RecoveryItem
+     */
+    omit?: Prisma.RecoveryItemOmit<ExtArgs> | null;
+    /**
+     * The data used to create many RecoveryItems.
+     */
+    data: Prisma.RecoveryItemCreateManyInput | Prisma.RecoveryItemCreateManyInput[];
+    skipDuplicates?: boolean;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.RecoveryItemIncludeCreateManyAndReturn<ExtArgs> | null;
+};
+/**
+ * RecoveryItem update
+ */
+export type RecoveryItemUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecoveryItem
+     */
+    select?: Prisma.RecoveryItemSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the RecoveryItem
+     */
+    omit?: Prisma.RecoveryItemOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.RecoveryItemInclude<ExtArgs> | null;
+    /**
+     * The data needed to update a RecoveryItem.
+     */
+    data: Prisma.XOR<Prisma.RecoveryItemUpdateInput, Prisma.RecoveryItemUncheckedUpdateInput>;
+    /**
+     * Choose, which RecoveryItem to update.
+     */
+    where: Prisma.RecoveryItemWhereUniqueInput;
+};
+/**
+ * RecoveryItem updateMany
+ */
+export type RecoveryItemUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * The data used to update RecoveryItems.
+     */
+    data: Prisma.XOR<Prisma.RecoveryItemUpdateManyMutationInput, Prisma.RecoveryItemUncheckedUpdateManyInput>;
+    /**
+     * Filter which RecoveryItems to update
+     */
+    where?: Prisma.RecoveryItemWhereInput;
+    /**
+     * Limit how many RecoveryItems to update.
+     */
+    limit?: number;
+};
+/**
+ * RecoveryItem updateManyAndReturn
+ */
+export type RecoveryItemUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecoveryItem
+     */
+    select?: Prisma.RecoveryItemSelectUpdateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the RecoveryItem
+     */
+    omit?: Prisma.RecoveryItemOmit<ExtArgs> | null;
+    /**
+     * The data used to update RecoveryItems.
+     */
+    data: Prisma.XOR<Prisma.RecoveryItemUpdateManyMutationInput, Prisma.RecoveryItemUncheckedUpdateManyInput>;
+    /**
+     * Filter which RecoveryItems to update
+     */
+    where?: Prisma.RecoveryItemWhereInput;
+    /**
+     * Limit how many RecoveryItems to update.
+     */
+    limit?: number;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.RecoveryItemIncludeUpdateManyAndReturn<ExtArgs> | null;
+};
+/**
+ * RecoveryItem upsert
+ */
+export type RecoveryItemUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecoveryItem
+     */
+    select?: Prisma.RecoveryItemSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the RecoveryItem
+     */
+    omit?: Prisma.RecoveryItemOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.RecoveryItemInclude<ExtArgs> | null;
+    /**
+     * The filter to search for the RecoveryItem to update in case it exists.
+     */
+    where: Prisma.RecoveryItemWhereUniqueInput;
+    /**
+     * In case the RecoveryItem found by the `where` argument doesn't exist, create a new RecoveryItem with this data.
+     */
+    create: Prisma.XOR<Prisma.RecoveryItemCreateInput, Prisma.RecoveryItemUncheckedCreateInput>;
+    /**
+     * In case the RecoveryItem was found with the provided `where` argument, update it with this data.
+     */
+    update: Prisma.XOR<Prisma.RecoveryItemUpdateInput, Prisma.RecoveryItemUncheckedUpdateInput>;
+};
+/**
+ * RecoveryItem delete
+ */
+export type RecoveryItemDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecoveryItem
+     */
+    select?: Prisma.RecoveryItemSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the RecoveryItem
+     */
+    omit?: Prisma.RecoveryItemOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.RecoveryItemInclude<ExtArgs> | null;
+    /**
+     * Filter which RecoveryItem to delete.
+     */
+    where: Prisma.RecoveryItemWhereUniqueInput;
+};
+/**
+ * RecoveryItem deleteMany
+ */
+export type RecoveryItemDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Filter which RecoveryItems to delete
+     */
+    where?: Prisma.RecoveryItemWhereInput;
+    /**
+     * Limit how many RecoveryItems to delete.
+     */
+    limit?: number;
+};
+/**
+ * RecoveryItem without action
+ */
+export type RecoveryItemDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecoveryItem
+     */
+    select?: Prisma.RecoveryItemSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the RecoveryItem
+     */
+    omit?: Prisma.RecoveryItemOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.RecoveryItemInclude<ExtArgs> | null;
+};

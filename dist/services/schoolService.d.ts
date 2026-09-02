@@ -4,9 +4,9 @@ export declare const createSchool: (teacherId: string, data: {
     districtId?: string;
     regionId?: string;
 }) => Promise<{
-    name: string;
     id: string;
     createdAt: Date;
+    name: string;
     updatedAt: Date;
     regionId: string | null;
     districtId: string | null;
@@ -15,22 +15,22 @@ export declare const createSchool: (teacherId: string, data: {
 }>;
 export declare const getMySchool: (teacherId: string) => Promise<{
     staff: {
-        role: import("@prisma/client").$Enums.SchoolStaffRole;
         userId: string;
+        role: import("../generated/prisma/enums").SchoolStaffRole;
         joinedAt: Date;
         schoolId: string;
     }[];
     classes: {
-        name: string;
         id: string;
         createdAt: Date;
+        name: string;
         updatedAt: Date;
         schoolId: string;
     }[];
 } & {
-    name: string;
     id: string;
     createdAt: Date;
+    name: string;
     updatedAt: Date;
     regionId: string | null;
     districtId: string | null;
@@ -38,16 +38,16 @@ export declare const getMySchool: (teacherId: string) => Promise<{
     isActive: boolean;
 }>;
 export declare const addClass: (teacherId: string, name: string) => Promise<{
-    name: string;
     id: string;
     createdAt: Date;
+    name: string;
     updatedAt: Date;
     schoolId: string;
 }>;
 export declare const getMyClasses: (teacherId: string) => Promise<{
-    name: string;
     id: string;
     createdAt: Date;
+    name: string;
     updatedAt: Date;
     schoolId: string;
 }[]>;
