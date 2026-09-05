@@ -1,4 +1,4 @@
-# CleanLoop Backend  
+# CleanLoop Backend   
 
 Backend API for **CleanLoop**, a plastic recovery and rewards platform initially focused on the Ghanaian market.
 
