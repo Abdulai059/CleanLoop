@@ -40,7 +40,7 @@ export const getAllUsers = catchAsync(
       status: "success",
       results: users.length, // we are sending array of users
       data: {
-        users: { formattedUsers },
+        users: formattedUsers,
       },
     });
   },
@@ -129,8 +129,14 @@ export const getUser = catchAsync(
     }
 
     // Flatten the many-to-many roles array into a simple string array
+    const {
+      passwordHash,
+      passwordResetToken,
+      passwordResetExpires,
+      ...safeUser
+    } = user;
     const formattedUser = {
-      ...user,
+      ...safeUser,
       roles: user.roles.map((userRole) => userRole.role.name),
     };
 
@@ -138,11 +144,17 @@ export const getUser = catchAsync(
     res.status(200).json({
       status: "success",
       data: {
-        user: { formattedUser },
+        user: formattedUser,
       },
     });
   },
 );
+
+// userController.ts
+export const getMe = (req: any, res: Response, next: NextFunction) => {
+  req.params.id = req.user.id;
+  next();
+};
 
 // create user
 export const createUser = catchAsync(

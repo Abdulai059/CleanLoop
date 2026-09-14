@@ -18,6 +18,7 @@ import {
   updateMe,
   deleteUser,
   updateUser,
+  getMe,
 } from "../controllers/userController";
 
 const router = express.Router();
@@ -36,6 +37,7 @@ router.route("/updateMe").patch(protect, updateMe);
 
 router.route("/").get(getAllUsers).post(createUser);
 router.route("/:id").get(getUser).patch(updateUser).delete(deleteUser);
+router.get("/me", protect, getMe, getUser);
 
 // Assign role to user (SUPER_ADMIN only)
 router.post("/assign-role", protect, restrictTo("SUPER_ADMIN"), assignRole);
