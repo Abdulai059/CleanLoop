@@ -30,6 +30,8 @@ export const getMyTransactions = async (userId: string) => {
       id: true,
       type: true,
       amount: true,
+      balanceAfter: true,
+      referenceId: true,
       description: true,
       createdAt: true,
     },

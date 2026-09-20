@@ -80,16 +80,20 @@ export const createSendToken = async (
 
 export const singUp = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
+    const { phone, password } = req.body;
+
+    // 0) Require only phone and password at signup
+    if (!phone || !password) {
+      return next(new AppError("Phone and password are required", 400));
+    }
+
     // 1) Hash the incoming plaintext password
-    const hashedPassword = await hashPassword(req.body.password);
+    const hashedPassword = await hashPassword(password);
 
     // 2) Store the hashed string into your database with default HOUSEHOLD role
     const newUser = await prisma.user.create({
       data: {
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        phone: req.body.phone,
-        email: req.body.email,
+        phone,
         passwordHash: hashedPassword,
         roles: {
           create: {
@@ -111,7 +115,6 @@ export const singUp = catchAsync(
     createSendToken(newUser, 201, res);
   },
 );
-
 export const login = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     const { phone, password } = req.body;
